@@ -156,6 +156,7 @@
             btnSmsHistory.TabIndex = 3;
             btnSmsHistory.Text = "SMS History";
             btnSmsHistory.TextAlign = ContentAlignment.MiddleLeft;
+            btnSmsHistory.Click += btnSmsHistory_Click;
             // 
             // btnPatients
             // 
@@ -170,6 +171,7 @@
             btnPatients.TabIndex = 4;
             btnPatients.Text = "Patients";
             btnPatients.TextAlign = ContentAlignment.MiddleLeft;
+            btnPatients.Click += btnPatients_Click;
             // 
             // btnTestTypes
             // 
@@ -184,6 +186,7 @@
             btnTestTypes.TabIndex = 5;
             btnTestTypes.Text = "Test Types";
             btnTestTypes.TextAlign = ContentAlignment.MiddleLeft;
+            btnTestTypes.Click += btnTestTypes_Click;
             // 
             // btnSettings
             // 
@@ -198,6 +201,7 @@
             btnSettings.TabIndex = 6;
             btnSettings.Text = "Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
+            btnSettings.Click += btnSettings_Click;
             // 
             // gradientPanel3
             // 
@@ -226,6 +230,7 @@
             btnLogout.TabIndex = 7;
             btnLogout.Text = "Logout";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Click += btnLogout_Click;
             // 
             // gradientPanel2
             // 

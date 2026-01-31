@@ -32,11 +32,16 @@
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             lblDateTime = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
-            mainPanel = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             clock = new System.Windows.Forms.Timer(components);
+            gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
+            statusStripLabel1 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
+            mainPanel = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
+            gradientPanel2.SuspendLayout();
+            statusStripEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)mainPanel).BeginInit();
             SuspendLayout();
             // 
@@ -80,52 +85,68 @@
             lblDateTime.TabIndex = 1;
             lblDateTime.Text = "Time";
             // 
-            // statusStripEx1
-            // 
-            statusStripEx1.BackColor = Color.White;
-            statusStripEx1.BeforeTouchSize = new Size(1350, 22);
-            statusStripEx1.Dock = Syncfusion.Windows.Forms.Tools.DockStyleEx.Bottom;
-            statusStripEx1.Location = new Point(0, 707);
-            statusStripEx1.MetroColor = Color.FromArgb(135, 206, 255);
-            statusStripEx1.Name = "statusStripEx1";
-            statusStripEx1.ShowSeparator = false;
-            statusStripEx1.Size = new Size(1350, 22);
-            statusStripEx1.SizingGrip = false;
-            statusStripEx1.TabIndex = 2;
-            statusStripEx1.Text = "statusStripEx1";
-            statusStripEx1.ThemeName = "Metro";
-            statusStripEx1.VisualStyle = Syncfusion.Windows.Forms.Tools.StatusStripExStyle.Metro;
-            // 
-            // mainPanel
-            // 
-            mainPanel.BorderColor = Color.FromArgb(218, 223, 231);
-            mainPanel.BorderSides = Border3DSide.Bottom;
-            mainPanel.BorderStyle = BorderStyle.FixedSingle;
-            mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(0, 67);
-            mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(1350, 640);
-            mainPanel.TabIndex = 3;
-            // 
             // clock
             // 
             clock.Interval = 1000;
             clock.Tick += clock_Tick;
             // 
+            // gradientPanel2
+            // 
+            gradientPanel2.BorderColor = Color.FromArgb(218, 223, 231);
+            gradientPanel2.BorderSides = Border3DSide.Top;
+            gradientPanel2.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel2.Controls.Add(statusStripEx1);
+            gradientPanel2.Dock = DockStyle.Bottom;
+            gradientPanel2.Location = new Point(0, 702);
+            gradientPanel2.Name = "gradientPanel2";
+            gradientPanel2.Padding = new Padding(10, 0, 0, 0);
+            gradientPanel2.Size = new Size(1350, 27);
+            gradientPanel2.TabIndex = 2;
+            // 
+            // statusStripEx1
+            // 
+            statusStripEx1.BackColor = Color.Transparent;
+            statusStripEx1.BeforeTouchSize = new Size(1338, 25);
+            statusStripEx1.Dock = Syncfusion.Windows.Forms.Tools.DockStyleEx.Fill;
+            statusStripEx1.Items.AddRange(new ToolStripItem[] { statusStripLabel1 });
+            statusStripEx1.Location = new Point(10, 0);
+            statusStripEx1.MetroColor = Color.FromArgb(135, 206, 255);
+            statusStripEx1.Name = "statusStripEx1";
+            statusStripEx1.ShowSeparator = false;
+            statusStripEx1.Size = new Size(1338, 25);
+            statusStripEx1.SizingGrip = false;
+            statusStripEx1.TabIndex = 0;
+            statusStripEx1.Text = "statusStripEx1";
+            statusStripEx1.ThemeName = "Metro";
+            statusStripEx1.VisualStyle = Syncfusion.Windows.Forms.Tools.StatusStripExStyle.Metro;
+            // 
+            // statusStripLabel1
+            // 
+            statusStripLabel1.Margin = new Padding(0, 3, 0, 2);
+            statusStripLabel1.Name = "statusStripLabel1";
+            statusStripLabel1.Size = new Size(96, 15);
+            statusStripLabel1.Text = "statusStripLabel1";
+            // 
+            // mainPanel
+            // 
+            mainPanel.BorderColor = Color.FromArgb(218, 223, 231);
+            mainPanel.BorderSides = Border3DSide.Bottom;
+            mainPanel.BorderStyle = BorderStyle.None;
+            mainPanel.Dock = DockStyle.Fill;
+            mainPanel.Location = new Point(0, 67);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(1350, 635);
+            mainPanel.TabIndex = 4;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CaptionAlign = HorizontalAlignment.Left;
-            CaptionBarColor = Color.FromArgb(41, 59, 80);
-            CaptionFont = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            CaptionForeColor = Color.White;
+            BackColor = Color.White;
             ClientSize = new Size(1350, 729);
             Controls.Add(mainPanel);
-            Controls.Add(statusStripEx1);
+            Controls.Add(gradientPanel2);
             Controls.Add(gradientPanel1);
-            InnerBorderVisibility = false;
-            MetroColor = Color.FromArgb(41, 59, 80);
             Name = "frmMain";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -133,9 +154,12 @@
             Load += frmMain_Load;
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).EndInit();
             gradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
+            gradientPanel2.ResumeLayout(false);
+            gradientPanel2.PerformLayout();
+            statusStripEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -144,8 +168,10 @@
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel lblDateTime;
+        private System.Windows.Forms.Timer clock;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
         private Syncfusion.Windows.Forms.Tools.StatusStripEx statusStripEx1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel mainPanel;
-        private System.Windows.Forms.Timer clock;
+        private Syncfusion.Windows.Forms.Tools.StatusStripLabel statusStripLabel1;
     }
 }

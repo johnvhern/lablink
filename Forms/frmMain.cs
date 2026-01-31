@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace LabLink.Forms
 {
-    public partial class frmMain : MetroForm
+    public partial class frmMain : Form
     {
         private DateTime currentTime;
         private bool useOnlineTime = false;

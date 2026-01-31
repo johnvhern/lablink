@@ -45,5 +45,29 @@ namespace LabLink.Helper
                 }
             }
         }
+
+        public static void PrimaryButton(SfButton button)
+        {
+            button.Style.Border = null;
+            button.Style.FocusedBorder = null;
+            button.Style.HoverBorder = null;
+            button.Style.PressedBorder = null;
+
+            button.Style.BackColor = Color.FromArgb(5, 142, 223);
+            button.Style.ForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.ImageForeColor = Color.FromArgb(255, 255, 255);
+
+            button.Style.HoverBackColor = Color.FromArgb(29, 153, 225);
+            button.Style.HoverForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.HoverImageForeColor = Color.FromArgb(255, 255, 255);
+
+            button.Style.PressedBackColor = Color.FromArgb(29, 153, 225);
+            button.Style.PressedForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.PressedImageForeColor = Color.FromArgb(255, 255, 255);
+
+            button.Style.FocusedBackColor = Color.FromArgb(5, 142, 223);
+            button.Style.FocusedForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.FocusedImageForeColor = Color.FromArgb(255, 255, 255);
+        }
     }
 }

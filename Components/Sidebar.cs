@@ -20,6 +20,7 @@ namespace LabLink.Components
         private Dashboard dashboard;
         private PendingTests pendingTests;
         private CompletedTests completedTests;
+        private Patients patients;
         public Sidebar(frmMain main)
         {
             InitializeComponent();
@@ -30,6 +31,7 @@ namespace LabLink.Components
             dashboard = new Dashboard();
             pendingTests = new PendingTests();
             completedTests = new CompletedTests();
+            patients = new Patients();
         }
 
         private void ColorActiveButton(SfButton button)
@@ -63,6 +65,32 @@ namespace LabLink.Components
         {
             _main.OpenScreen(completedTests);
             ColorActiveButton(btnCompletedTest);
+        }
+
+        private void btnSmsHistory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPatients_Click(object sender, EventArgs e)
+        {
+            _main.OpenScreen(patients);
+            ColorActiveButton(btnPatients);
+        }
+
+        private void btnTestTypes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
