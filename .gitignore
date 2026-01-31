@@ -387,5 +387,8 @@ FodyWeavers.xsd
 .idea/
 *.sln.iml
 
+# Key
+App.config
+
 
 # End of https://mrkandreev.name/snippets/gitignore-generator/#VisualStudio,csha

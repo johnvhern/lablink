@@ -58,7 +58,7 @@
             // 
             // gradientPanel1
             // 
-            gradientPanel1.BackColor = Color.FromArgb(41, 59, 80);
+            gradientPanel1.BackColor = SystemColors.Control;
             gradientPanel1.BorderSides = Border3DSide.Right;
             gradientPanel1.BorderStyle = BorderStyle.None;
             gradientPanel1.Controls.Add(panel1);
@@ -70,6 +70,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.FromArgb(41, 59, 80);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(gradientPanel3);
             panel1.Controls.Add(gradientPanel2);
@@ -94,7 +95,7 @@
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(10);
             flowLayoutPanel1.Size = new Size(255, 622);
-            flowLayoutPanel1.TabIndex = 2;
+            flowLayoutPanel1.TabIndex = 0;
             flowLayoutPanel1.WrapContents = false;
             // 
             // btnDashboard
@@ -125,6 +126,7 @@
             btnPendingTests.TabIndex = 1;
             btnPendingTests.Text = "Pending Lab Tests";
             btnPendingTests.TextAlign = ContentAlignment.MiddleLeft;
+            btnPendingTests.Click += btnPendingTests_Click;
             // 
             // btnCompletedTest
             // 
@@ -139,6 +141,7 @@
             btnCompletedTest.TabIndex = 2;
             btnCompletedTest.Text = "Completed Tests";
             btnCompletedTest.TextAlign = ContentAlignment.MiddleLeft;
+            btnCompletedTest.Click += btnCompletedTest_Click;
             // 
             // btnSmsHistory
             // 
@@ -207,7 +210,7 @@
             gradientPanel3.Location = new Point(0, 689);
             gradientPanel3.Name = "gradientPanel3";
             gradientPanel3.Size = new Size(255, 67);
-            gradientPanel3.TabIndex = 1;
+            gradientPanel3.TabIndex = 100;
             // 
             // btnLogout
             // 
@@ -237,7 +240,7 @@
             gradientPanel2.Name = "gradientPanel2";
             gradientPanel2.Padding = new Padding(10);
             gradientPanel2.Size = new Size(255, 67);
-            gradientPanel2.TabIndex = 0;
+            gradientPanel2.TabIndex = 99;
             // 
             // label2
             // 
@@ -274,6 +277,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(41, 59, 80);
             Controls.Add(gradientPanel1);
             Name = "Sidebar";
             Size = new Size(255, 756);

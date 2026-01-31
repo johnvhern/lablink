@@ -18,23 +18,18 @@ namespace LabLink.Components
         private SfButton activeButton;
 
         private Dashboard dashboard;
+        private PendingTests pendingTests;
+        private CompletedTests completedTests;
         public Sidebar(frmMain main)
         {
             InitializeComponent();
-
-            _main = main;
+            ButtonStyles.ApplyNavButtonStyle(this);
             ColorActiveButton(btnDashboard);
-
-            ButtonStyles.Default(btnDashboard);
-            ButtonStyles.Default(btnPendingTests);
-            ButtonStyles.Default(btnCompletedTest);
-            ButtonStyles.Default(btnSmsHistory);
-            ButtonStyles.Default(btnPatients);
-            ButtonStyles.Default(btnTestTypes);
-            ButtonStyles.Default(btnSettings);
-            ButtonStyles.Default(btnLogout);
+            _main = main;
 
             dashboard = new Dashboard();
+            pendingTests = new PendingTests();
+            completedTests = new CompletedTests();
         }
 
         private void ColorActiveButton(SfButton button)
@@ -56,6 +51,18 @@ namespace LabLink.Components
         {
             _main.OpenScreen(dashboard);
             ColorActiveButton(btnDashboard);
+        }
+
+        private void btnPendingTests_Click(object sender, EventArgs e)
+        {
+            _main.OpenScreen(pendingTests);
+            ColorActiveButton(btnPendingTests);
+        }
+
+        private void btnCompletedTest_Click(object sender, EventArgs e)
+        {
+            _main.OpenScreen(completedTests);
+            ColorActiveButton(btnCompletedTest);
         }
     }
 }

@@ -1,3 +1,5 @@
+using System.Configuration;
+
 namespace LabLink
 {
     internal static class Program
@@ -8,7 +10,8 @@ namespace LabLink
         [STAThread]
         static void Main()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1JGaF5cXGpCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdlWX5dcHZUQ2RdUUJwXEBWYEs=");
+            string licenseKey = ConfigurationManager.AppSettings["SyncfusionLicenseKey"];
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(licenseKey);
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
