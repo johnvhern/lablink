@@ -41,26 +41,20 @@
             btnSettings = new Syncfusion.WinForms.Controls.SfButton();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnLogout = new Syncfusion.WinForms.Controls.SfButton();
-            gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            label2 = new Label();
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
-            gradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // gradientPanel1
             // 
             gradientPanel1.BackColor = SystemColors.Control;
+            gradientPanel1.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel1.BorderSides = Border3DSide.Right;
-            gradientPanel1.BorderStyle = BorderStyle.None;
+            gradientPanel1.BorderStyle = BorderStyle.FixedSingle;
             gradientPanel1.Controls.Add(panel1);
             gradientPanel1.Dock = DockStyle.Fill;
             gradientPanel1.Location = new Point(0, 0);
@@ -73,15 +67,15 @@
             panel1.BackColor = Color.FromArgb(41, 59, 80);
             panel1.Controls.Add(flowLayoutPanel1);
             panel1.Controls.Add(gradientPanel3);
-            panel1.Controls.Add(gradientPanel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(255, 756);
+            panel1.Size = new Size(253, 754);
             panel1.TabIndex = 1;
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.BackColor = Color.White;
             flowLayoutPanel1.Controls.Add(btnDashboard);
             flowLayoutPanel1.Controls.Add(btnPendingTests);
             flowLayoutPanel1.Controls.Add(btnCompletedTest);
@@ -91,10 +85,10 @@
             flowLayoutPanel1.Controls.Add(btnSettings);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(0, 67);
+            flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(10);
-            flowLayoutPanel1.Size = new Size(255, 622);
+            flowLayoutPanel1.Padding = new Padding(0, 10, 0, 10);
+            flowLayoutPanel1.Size = new Size(253, 687);
             flowLayoutPanel1.TabIndex = 0;
             flowLayoutPanel1.WrapContents = false;
             // 
@@ -103,10 +97,11 @@
             btnDashboard.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
             btnDashboard.ImageSize = new Size(24, 24);
-            btnDashboard.Location = new Point(13, 13);
+            btnDashboard.Location = new Point(0, 13);
+            btnDashboard.Margin = new Padding(0, 3, 0, 3);
             btnDashboard.Name = "btnDashboard";
             btnDashboard.Padding = new Padding(10, 0, 0, 0);
-            btnDashboard.Size = new Size(228, 48);
+            btnDashboard.Size = new Size(252, 48);
             btnDashboard.Style.Image = (Image)resources.GetObject("resource.Image");
             btnDashboard.TabIndex = 0;
             btnDashboard.Text = "Dashboard";
@@ -118,10 +113,11 @@
             btnPendingTests.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnPendingTests.ImageAlign = ContentAlignment.MiddleLeft;
             btnPendingTests.ImageSize = new Size(24, 24);
-            btnPendingTests.Location = new Point(13, 67);
+            btnPendingTests.Location = new Point(0, 67);
+            btnPendingTests.Margin = new Padding(0, 3, 0, 3);
             btnPendingTests.Name = "btnPendingTests";
             btnPendingTests.Padding = new Padding(10, 0, 0, 0);
-            btnPendingTests.Size = new Size(228, 48);
+            btnPendingTests.Size = new Size(252, 48);
             btnPendingTests.Style.Image = (Image)resources.GetObject("resource.Image1");
             btnPendingTests.TabIndex = 1;
             btnPendingTests.Text = "Pending Lab Tests";
@@ -133,10 +129,11 @@
             btnCompletedTest.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnCompletedTest.ImageAlign = ContentAlignment.MiddleLeft;
             btnCompletedTest.ImageSize = new Size(24, 24);
-            btnCompletedTest.Location = new Point(13, 121);
+            btnCompletedTest.Location = new Point(0, 121);
+            btnCompletedTest.Margin = new Padding(0, 3, 0, 3);
             btnCompletedTest.Name = "btnCompletedTest";
             btnCompletedTest.Padding = new Padding(10, 0, 0, 0);
-            btnCompletedTest.Size = new Size(228, 48);
+            btnCompletedTest.Size = new Size(252, 48);
             btnCompletedTest.Style.Image = (Image)resources.GetObject("resource.Image2");
             btnCompletedTest.TabIndex = 2;
             btnCompletedTest.Text = "Completed Tests";
@@ -148,10 +145,11 @@
             btnSmsHistory.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnSmsHistory.ImageAlign = ContentAlignment.MiddleLeft;
             btnSmsHistory.ImageSize = new Size(24, 24);
-            btnSmsHistory.Location = new Point(13, 175);
+            btnSmsHistory.Location = new Point(0, 175);
+            btnSmsHistory.Margin = new Padding(0, 3, 0, 3);
             btnSmsHistory.Name = "btnSmsHistory";
             btnSmsHistory.Padding = new Padding(10, 0, 0, 0);
-            btnSmsHistory.Size = new Size(228, 48);
+            btnSmsHistory.Size = new Size(252, 48);
             btnSmsHistory.Style.Image = (Image)resources.GetObject("resource.Image3");
             btnSmsHistory.TabIndex = 3;
             btnSmsHistory.Text = "SMS History";
@@ -163,10 +161,11 @@
             btnPatients.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnPatients.ImageAlign = ContentAlignment.MiddleLeft;
             btnPatients.ImageSize = new Size(24, 24);
-            btnPatients.Location = new Point(13, 229);
+            btnPatients.Location = new Point(0, 229);
+            btnPatients.Margin = new Padding(0, 3, 0, 3);
             btnPatients.Name = "btnPatients";
             btnPatients.Padding = new Padding(10, 0, 0, 0);
-            btnPatients.Size = new Size(228, 48);
+            btnPatients.Size = new Size(252, 48);
             btnPatients.Style.Image = (Image)resources.GetObject("resource.Image4");
             btnPatients.TabIndex = 4;
             btnPatients.Text = "Patients";
@@ -178,10 +177,11 @@
             btnTestTypes.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnTestTypes.ImageAlign = ContentAlignment.MiddleLeft;
             btnTestTypes.ImageSize = new Size(24, 24);
-            btnTestTypes.Location = new Point(13, 283);
+            btnTestTypes.Location = new Point(0, 283);
+            btnTestTypes.Margin = new Padding(0, 3, 0, 3);
             btnTestTypes.Name = "btnTestTypes";
             btnTestTypes.Padding = new Padding(10, 0, 0, 0);
-            btnTestTypes.Size = new Size(228, 48);
+            btnTestTypes.Size = new Size(252, 48);
             btnTestTypes.Style.Image = (Image)resources.GetObject("resource.Image5");
             btnTestTypes.TabIndex = 5;
             btnTestTypes.Text = "Test Types";
@@ -193,10 +193,11 @@
             btnSettings.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
             btnSettings.ImageSize = new Size(24, 24);
-            btnSettings.Location = new Point(13, 337);
+            btnSettings.Location = new Point(0, 337);
+            btnSettings.Margin = new Padding(0, 3, 0, 3);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(10, 0, 0, 0);
-            btnSettings.Size = new Size(228, 48);
+            btnSettings.Size = new Size(252, 48);
             btnSettings.Style.Image = (Image)resources.GetObject("resource.Image6");
             btnSettings.TabIndex = 6;
             btnSettings.Text = "Settings";
@@ -205,15 +206,16 @@
             // 
             // gradientPanel3
             // 
+            gradientPanel3.BackColor = Color.White;
             gradientPanel3.Border3DStyle = Border3DStyle.Flat;
-            gradientPanel3.BorderColor = Color.FromArgb(46, 66, 90);
+            gradientPanel3.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel3.BorderSides = Border3DSide.Top;
             gradientPanel3.BorderStyle = BorderStyle.FixedSingle;
             gradientPanel3.Controls.Add(btnLogout);
             gradientPanel3.Dock = DockStyle.Bottom;
-            gradientPanel3.Location = new Point(0, 689);
+            gradientPanel3.Location = new Point(0, 687);
             gradientPanel3.Name = "gradientPanel3";
-            gradientPanel3.Size = new Size(255, 67);
+            gradientPanel3.Size = new Size(253, 67);
             gradientPanel3.TabIndex = 100;
             // 
             // btnLogout
@@ -222,67 +224,22 @@
             btnLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
             btnLogout.ImageSize = new Size(24, 24);
-            btnLogout.Location = new Point(13, 9);
+            btnLogout.Location = new Point(-1, 9);
+            btnLogout.Margin = new Padding(0, 3, 0, 3);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(10);
-            btnLogout.Size = new Size(227, 48);
+            btnLogout.Size = new Size(253, 48);
             btnLogout.Style.Image = (Image)resources.GetObject("resource.Image7");
             btnLogout.TabIndex = 7;
             btnLogout.Text = "Logout";
             btnLogout.TextAlign = ContentAlignment.MiddleLeft;
             btnLogout.Click += btnLogout_Click;
             // 
-            // gradientPanel2
-            // 
-            gradientPanel2.BorderColor = Color.FromArgb(46, 66, 90);
-            gradientPanel2.BorderSides = Border3DSide.Bottom;
-            gradientPanel2.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel2.Controls.Add(label2);
-            gradientPanel2.Controls.Add(label1);
-            gradientPanel2.Controls.Add(pictureBox1);
-            gradientPanel2.Dock = DockStyle.Top;
-            gradientPanel2.Location = new Point(0, 0);
-            gradientPanel2.Name = "gradientPanel2";
-            gradientPanel2.Padding = new Padding(10);
-            gradientPanel2.Size = new Size(255, 67);
-            gradientPanel2.TabIndex = 99;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(57, 34);
-            label2.Name = "label2";
-            label2.Size = new Size(108, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Notification Center";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(55, 13);
-            label1.Name = "label1";
-            label1.Size = new Size(65, 21);
-            label1.TabIndex = 2;
-            label1.Text = "LabLink";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.Untitled_design__11_;
-            pictureBox1.Location = new Point(13, 13);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(36, 36);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
-            // 
             // Sidebar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(41, 59, 80);
+            BackColor = Color.White;
             Controls.Add(gradientPanel1);
             Name = "Sidebar";
             Size = new Size(255, 756);
@@ -292,10 +249,6 @@
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
-            gradientPanel2.ResumeLayout(false);
-            gradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -303,10 +256,6 @@
 
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private Panel panel1;
-        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
-        private Label label2;
-        private Label label1;
-        private PictureBox pictureBox1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
         private FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.WinForms.Controls.SfButton btnDashboard;

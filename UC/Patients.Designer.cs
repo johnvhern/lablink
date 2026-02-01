@@ -344,11 +344,12 @@
             // 
             // autoLabel6
             // 
+            autoLabel6.ForeColor = Color.FromArgb(107, 121, 148);
             autoLabel6.Location = new Point(29, 35);
             autoLabel6.Name = "autoLabel6";
-            autoLabel6.Size = new Size(133, 15);
+            autoLabel6.Size = new Size(316, 15);
             autoLabel6.TabIndex = 1;
-            autoLabel6.Text = "Last updated: 1/31/2024";
+            autoLabel6.Text = "Patient agrees to receive automated lab result notifications";
             // 
             // checkBox1
             // 

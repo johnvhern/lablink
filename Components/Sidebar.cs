@@ -38,21 +38,23 @@ namespace LabLink.Components
         {
             if (activeButton != null)
             {
-                activeButton.Style.BackColor = Color.FromArgb(41, 59, 80);
-                activeButton.Style.ForeColor = Color.FromArgb(199, 206, 212);
-                activeButton.Style.ImageForeColor = Color.FromArgb(199, 206, 212);
-                activeButton.Style.HoverBackColor = Color.FromArgb(51, 74, 100);
-                activeButton.Style.HoverForeColor = Color.FromArgb(239, 242, 245);
-                activeButton.Style.HoverImageForeColor = Color.FromArgb(239, 242, 245);
+                activeButton.Style.BackColor = Color.White;
+                activeButton.Style.ForeColor = Color.FromArgb(74, 83, 100);
+                activeButton.Style.ImageForeColor = Color.FromArgb(107, 112, 129);
+
+                activeButton.Style.HoverBackColor = Color.FromArgb(249, 250, 251);
+                activeButton.Style.HoverForeColor = Color.FromArgb(74, 83, 100);
+                activeButton.Style.HoverImageForeColor = Color.FromArgb(54, 63, 82);
             }
 
             activeButton = button;
-            activeButton.Style.BackColor = Color.FromArgb(5, 142, 223);
-            activeButton.Style.ForeColor = Color.FromArgb(239, 242, 245);
-            activeButton.Style.ImageForeColor = Color.FromArgb(239, 242, 245);
-            activeButton.Style.HoverBackColor = Color.FromArgb(5, 142, 223);
-            activeButton.Style.HoverForeColor = Color.FromArgb(239, 242, 245);
-            activeButton.Style.HoverImageForeColor = Color.FromArgb(239, 242, 245);
+            activeButton.Style.BackColor = Color.FromArgb(235, 242, 255);
+            activeButton.Style.ForeColor = Color.FromArgb(30, 72, 207);
+            activeButton.Style.ImageForeColor = Color.FromArgb(30, 72, 207);
+
+            activeButton.Style.HoverBackColor = Color.FromArgb(235, 242, 255);
+            activeButton.Style.HoverForeColor = Color.FromArgb(30, 72, 207);
+            activeButton.Style.HoverImageForeColor = Color.FromArgb(30, 72, 207);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)

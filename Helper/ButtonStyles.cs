@@ -20,21 +20,21 @@ namespace LabLink.Helper
                     button.Style.HoverBorder = null;
                     button.Style.PressedBorder = null;
 
-                    button.Style.BackColor = Color.FromArgb(41, 59, 80);
-                    button.Style.ForeColor = Color.FromArgb(199, 206, 212);
-                    button.Style.ImageForeColor = Color.FromArgb(199, 206, 212);
+                    button.Style.BackColor = Color.White;
+                    button.Style.ForeColor = Color.FromArgb(74, 83, 100);
+                    button.Style.ImageForeColor = Color.FromArgb(107, 112, 129);
 
-                    button.Style.HoverBackColor = Color.FromArgb(51, 74, 100);
-                    button.Style.HoverForeColor = Color.FromArgb(239, 242, 245);
-                    button.Style.HoverImageForeColor = Color.FromArgb(239, 242, 245);
+                    button.Style.HoverBackColor = Color.FromArgb(249, 250, 251);
+                    button.Style.HoverForeColor = Color.FromArgb(74, 83, 100);
+                    button.Style.HoverImageForeColor = Color.FromArgb(54, 63, 82);
 
-                    button.Style.PressedBackColor = Color.FromArgb(51, 74, 100);
-                    button.Style.PressedForeColor = Color.FromArgb(239, 242, 245);
-                    button.Style.PressedImageForeColor = Color.FromArgb(239, 242, 245);
+                    button.Style.PressedBackColor = Color.FromArgb(249, 250, 251);
+                    button.Style.PressedForeColor = Color.FromArgb(74, 83, 100);
+                    button.Style.PressedImageForeColor = Color.FromArgb(54, 63, 82);
 
-                    button.Style.FocusedBackColor = Color.FromArgb(5, 142, 223);
-                    button.Style.FocusedForeColor = Color.FromArgb(239, 242, 245);
-                    button.Style.FocusedImageForeColor = Color.FromArgb(239, 242, 245);
+                    button.Style.FocusedBackColor = Color.FromArgb(235, 242, 255);
+                    button.Style.FocusedForeColor = Color.FromArgb(30, 72, 207);
+                    button.Style.FocusedImageForeColor = Color.FromArgb(30, 72, 207);
 
                 }
 
@@ -53,21 +53,21 @@ namespace LabLink.Helper
             button.Style.HoverBorder = null;
             button.Style.PressedBorder = null;
 
-            button.Style.BackColor = Color.FromArgb(5, 142, 223);
-            button.Style.ForeColor = Color.FromArgb(255, 255, 255);
-            button.Style.ImageForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.BackColor = Color.FromArgb(30, 72, 207);
+            button.Style.ForeColor = Color.White;
+            button.Style.ImageForeColor = Color.White;
 
-            button.Style.HoverBackColor = Color.FromArgb(29, 153, 225);
-            button.Style.HoverForeColor = Color.FromArgb(255, 255, 255);
-            button.Style.HoverImageForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.HoverBackColor = Color.FromArgb(67, 0, 219);
+            button.Style.HoverForeColor = Color.White;
+            button.Style.HoverImageForeColor = Color.White;
 
-            button.Style.PressedBackColor = Color.FromArgb(29, 153, 225);
-            button.Style.PressedForeColor = Color.FromArgb(255, 255, 255);
-            button.Style.PressedImageForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.PressedBackColor = Color.FromArgb(67, 0, 219);
+            button.Style.PressedForeColor = Color.White;
+            button.Style.PressedImageForeColor = Color.White;
 
-            button.Style.FocusedBackColor = Color.FromArgb(5, 142, 223);
-            button.Style.FocusedForeColor = Color.FromArgb(255, 255, 255);
-            button.Style.FocusedImageForeColor = Color.FromArgb(255, 255, 255);
+            button.Style.FocusedBackColor = Color.FromArgb(30, 72, 207);
+            button.Style.FocusedForeColor = Color.White;
+            button.Style.FocusedImageForeColor = Color.White;
         }
 
         public static void SecondaryButton(SfButton button)
@@ -81,15 +81,15 @@ namespace LabLink.Helper
             button.Style.ForeColor = Color.Black;
             button.Style.ImageForeColor = Color.Black;
 
-            button.Style.HoverBackColor = Color.FromArgb(231, 244, 252);
-            button.Style.HoverForeColor = Color.FromArgb(0, 107, 176);
-            button.Style.HoverImageForeColor = Color.FromArgb(0, 107, 176);
+            button.Style.HoverBackColor = Color.FromArgb(249, 250, 251);
+            button.Style.HoverForeColor = Color.FromArgb(54, 63, 82);
+            button.Style.HoverImageForeColor = Color.FromArgb(54, 63, 82);
 
-            button.Style.PressedBackColor = Color.FromArgb(231, 244, 252);
-            button.Style.PressedForeColor = Color.FromArgb(0, 107, 176);
-            button.Style.PressedImageForeColor = Color.FromArgb(0, 107, 176);
+            button.Style.PressedBackColor = Color.FromArgb(249, 250, 251);
+            button.Style.PressedForeColor = Color.Black;
+            button.Style.PressedImageForeColor = Color.Black;
 
-            button.Style.FocusedBackColor = Color.FromArgb(249, 250, 251);
+            button.Style.FocusedBackColor = Color.White;
             button.Style.FocusedForeColor = Color.Black;
             button.Style.FocusedImageForeColor = Color.Black;
         }
@@ -105,13 +105,13 @@ namespace LabLink.Helper
             button.Style.ForeColor = Color.Black;
             button.Style.ImageForeColor = Color.Black;
 
-            button.Style.HoverBackColor = Color.FromArgb(231, 244, 252);
-            button.Style.HoverForeColor = Color.FromArgb(0, 107, 176);
-            button.Style.HoverImageForeColor = Color.FromArgb(0, 107, 176);
+            button.Style.HoverBackColor = Color.FromArgb(245, 245, 245);
+            button.Style.HoverForeColor = Color.FromArgb(54, 63, 82);
+            button.Style.HoverImageForeColor = Color.FromArgb(54, 63, 82);
 
-            button.Style.PressedBackColor = Color.FromArgb(231, 244, 252);
-            button.Style.PressedForeColor = Color.FromArgb(0, 107, 176);
-            button.Style.PressedImageForeColor = Color.FromArgb(0, 107, 176);
+            button.Style.PressedBackColor = Color.FromArgb(247, 247, 247);
+            button.Style.PressedForeColor = Color.Black;
+            button.Style.PressedImageForeColor = Color.Black;
 
             button.Style.FocusedBackColor = Color.FromArgb(249, 250, 251);
             button.Style.FocusedForeColor = Color.Black;
