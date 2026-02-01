@@ -41,12 +41,18 @@ namespace LabLink.Components
                 activeButton.Style.BackColor = Color.FromArgb(41, 59, 80);
                 activeButton.Style.ForeColor = Color.FromArgb(199, 206, 212);
                 activeButton.Style.ImageForeColor = Color.FromArgb(199, 206, 212);
+                activeButton.Style.HoverBackColor = Color.FromArgb(51, 74, 100);
+                activeButton.Style.HoverForeColor = Color.FromArgb(239, 242, 245);
+                activeButton.Style.HoverImageForeColor = Color.FromArgb(239, 242, 245);
             }
 
             activeButton = button;
             activeButton.Style.BackColor = Color.FromArgb(5, 142, 223);
             activeButton.Style.ForeColor = Color.FromArgb(239, 242, 245);
             activeButton.Style.ImageForeColor = Color.FromArgb(239, 242, 245);
+            activeButton.Style.HoverBackColor = Color.FromArgb(5, 142, 223);
+            activeButton.Style.HoverForeColor = Color.FromArgb(239, 242, 245);
+            activeButton.Style.HoverImageForeColor = Color.FromArgb(239, 242, 245);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)

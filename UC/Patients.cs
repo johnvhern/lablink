@@ -19,5 +19,10 @@ namespace LabLink.UC
             ButtonStyles.SecondaryButton(btnNewTest);
             ButtonStyles.TernaryButton(btnCancel);
         }
+
+        private void btnAddPatient_Click(object sender, EventArgs e)
+        {
+            new Forms.Patients.frmNewPatient().ShowDialog();
+        }
     }
 }

@@ -114,10 +114,12 @@
             btnAddPatient.TabIndex = 2;
             btnAddPatient.Text = "Add Patient";
             btnAddPatient.TextAlign = ContentAlignment.MiddleRight;
+            btnAddPatient.Click += btnAddPatient_Click;
             // 
             // autoLabel2
             // 
             autoLabel2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            autoLabel2.ForeColor = Color.FromArgb(107, 121, 148);
             autoLabel2.Location = new Point(3, 28);
             autoLabel2.Name = "autoLabel2";
             autoLabel2.Size = new Size(276, 17);
@@ -367,16 +369,17 @@
             textBoxExt3.BeforeTouchSize = new Size(611, 25);
             textBoxExt3.FocusBorderColor = Color.FromArgb(5, 142, 223);
             textBoxExt3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxExt3.Location = new Point(5, 87);
+            textBoxExt3.Location = new Point(3, 87);
             textBoxExt3.Margin = new Padding(3, 3, 3, 7);
             textBoxExt3.Name = "textBoxExt3";
-            textBoxExt3.Size = new Size(609, 25);
+            textBoxExt3.Size = new Size(611, 25);
             textBoxExt3.TabIndex = 3;
             // 
             // autoLabel5
             // 
             autoLabel5.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            autoLabel5.Location = new Point(2, 60);
+            autoLabel5.ForeColor = Color.FromArgb(107, 121, 148);
+            autoLabel5.Location = new Point(0, 60);
             autoLabel5.Margin = new Padding(3, 0, 3, 7);
             autoLabel5.Name = "autoLabel5";
             autoLabel5.Size = new Size(101, 17);
@@ -398,6 +401,7 @@
             // autoLabel4
             // 
             autoLabel4.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            autoLabel4.ForeColor = Color.FromArgb(107, 121, 148);
             autoLabel4.Location = new Point(0, 0);
             autoLabel4.Margin = new Padding(3, 0, 3, 7);
             autoLabel4.Name = "autoLabel4";
