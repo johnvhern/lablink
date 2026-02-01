@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace LabLink.Forms.Patients
 {
-    public partial class frmNewPatient : Form
+    public partial class frmNewPatient : MetroForm
     {
         public frmNewPatient()
         {

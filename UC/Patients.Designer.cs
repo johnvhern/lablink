@@ -107,12 +107,12 @@
             btnAddPatient.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAddPatient.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddPatient.ImageSize = new Size(16, 16);
-            btnAddPatient.Location = new Point(1095, 5);
+            btnAddPatient.Location = new Point(1064, 5);
             btnAddPatient.Name = "btnAddPatient";
-            btnAddPatient.Size = new Size(127, 40);
+            btnAddPatient.Size = new Size(158, 40);
             btnAddPatient.Style.Image = (Image)resources.GetObject("resource.Image");
             btnAddPatient.TabIndex = 2;
-            btnAddPatient.Text = "Add Patient";
+            btnAddPatient.Text = "Add New Patient";
             btnAddPatient.TextAlign = ContentAlignment.MiddleRight;
             btnAddPatient.Click += btnAddPatient_Click;
             // 

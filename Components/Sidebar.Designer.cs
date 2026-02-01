@@ -197,8 +197,8 @@
             btnSettings.Margin = new Padding(0, 3, 0, 3);
             btnSettings.Name = "btnSettings";
             btnSettings.Padding = new Padding(10, 0, 0, 0);
-            btnSettings.Size = new Size(252, 48);
-            btnSettings.Style.Image = (Image)resources.GetObject("resource.Image6");
+            btnSettings.Size = new Size(254, 48);
+            btnSettings.Style.Image = (Image)resources.GetObject("resource.Image1");
             btnSettings.TabIndex = 6;
             btnSettings.Text = "Settings";
             btnSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -228,7 +228,7 @@
             btnLogout.Margin = new Padding(0, 3, 0, 3);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(10);
-            btnLogout.Size = new Size(253, 48);
+            btnLogout.Size = new Size(254, 48);
             btnLogout.Style.Image = (Image)resources.GetObject("resource.Image7");
             btnLogout.TabIndex = 7;
             btnLogout.Text = "Logout";
