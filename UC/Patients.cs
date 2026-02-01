@@ -16,6 +16,8 @@ namespace LabLink.UC
             InitializeComponent();
             ButtonStyles.PrimaryButton(btnAddPatient);
             ButtonStyles.PrimaryButton(btnSaveChanges);
+            ButtonStyles.SecondaryButton(btnNewTest);
+            ButtonStyles.TernaryButton(btnCancel);
         }
     }
 }

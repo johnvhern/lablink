@@ -129,6 +129,7 @@
             // 
             // mainPanel
             // 
+            mainPanel.BackColor = Color.FromArgb(249, 250, 251);
             mainPanel.BorderColor = Color.FromArgb(218, 223, 231);
             mainPanel.BorderSides = Border3DSide.Bottom;
             mainPanel.BorderStyle = BorderStyle.None;

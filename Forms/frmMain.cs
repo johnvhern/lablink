@@ -74,6 +74,7 @@ namespace LabLink.Forms
                 currentTime = DateTime.Now;
             }
 
+
             lblDateTime.Text = currentTime.ToString("dddd, MMMM dd, yyyy - hh:mm:ss tt");
         }
 
