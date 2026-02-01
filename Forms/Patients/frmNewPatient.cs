@@ -1,4 +1,5 @@
-﻿using Syncfusion.Windows.Forms;
+﻿using LabLink.Helper;
+using Syncfusion.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,8 @@ namespace LabLink.Forms.Patients
         public frmNewPatient()
         {
             InitializeComponent();
+            ButtonStyles.PrimaryButton(btnAddPatient);
+            ButtonStyles.SecondaryButton(btnCancel);
         }
     }
 }

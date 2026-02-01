@@ -82,7 +82,7 @@
             lblDateTime.ForeColor = Color.FromArgb(107, 121, 148);
             lblDateTime.Location = new Point(808, 0);
             lblDateTime.Name = "lblDateTime";
-            lblDateTime.Padding = new Padding(3, 0, 0, 0);
+            lblDateTime.Padding = new Padding(3, 0, 7, 0);
             lblDateTime.Size = new Size(463, 58);
             lblDateTime.TabIndex = 1;
             lblDateTime.Text = "Time";
