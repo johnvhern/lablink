@@ -1,8 +1,11 @@
 ﻿using LabLink.Data;
+using LabLink.Models;
+using LabLink.UC;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Text;
 namespace LabLink.Services
@@ -74,6 +77,45 @@ namespace LabLink.Services
             }
 
             return dataTable;
+        }
+
+        public async static Task<PatientsModel?> GetPatientById(int patientId)
+        {
+            string query = "SELECT PatientID, FullName, PhoneNumber, ConsentToSMS FROM Patients WHERE PatientID = @PatientID";
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@PatientID", patientId);
+
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                return new PatientsModel
+                                {
+                                    PatientID = reader.GetInt32(reader.GetOrdinal("PatientID")),
+                                    FullName = reader.GetString(reader.GetOrdinal("FullName")),
+                                    PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                                    ConsentToSMS = reader.GetBoolean(reader.GetOrdinal("ConsentToSMS"))
+                                };
+                            }
+
+                            return null; // Patient not found
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving the patient: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
 }

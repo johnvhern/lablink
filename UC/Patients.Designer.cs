@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddPatient = new Syncfusion.WinForms.Controls.SfButton();
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -55,10 +56,10 @@
             gradientPanel11 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel12 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            checkBox1 = new CheckBox();
-            textBoxExt3 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            cbConsentSMS = new CheckBox();
+            txtPhoneNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            textBoxExt2 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtFullname = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
@@ -89,13 +90,14 @@
             gradientPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel12).BeginInit();
             gradientPanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtFullname).BeginInit();
             SuspendLayout();
             // 
             // gradientPanel1
             // 
             gradientPanel1.BorderStyle = BorderStyle.None;
+            gradientPanel1.Controls.Add(btnRefresh);
             gradientPanel1.Controls.Add(btnAddPatient);
             gradientPanel1.Controls.Add(autoLabel2);
             gradientPanel1.Controls.Add(autoLabel1);
@@ -105,15 +107,29 @@
             gradientPanel1.Size = new Size(1222, 69);
             gradientPanel1.TabIndex = 0;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnRefresh.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRefresh.ImageSize = new Size(16, 16);
+            btnRefresh.Location = new Point(1105, 5);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(117, 40);
+            btnRefresh.Style.Image = (Image)resources.GetObject("resource.Image");
+            btnRefresh.TabIndex = 3;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.TextAlign = ContentAlignment.MiddleRight;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // btnAddPatient
             // 
             btnAddPatient.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAddPatient.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddPatient.ImageSize = new Size(16, 16);
-            btnAddPatient.Location = new Point(1064, 5);
+            btnAddPatient.Location = new Point(941, 5);
             btnAddPatient.Name = "btnAddPatient";
             btnAddPatient.Size = new Size(158, 40);
-            btnAddPatient.Style.Image = (Image)resources.GetObject("resource.Image");
+            btnAddPatient.Style.Image = (Image)resources.GetObject("resource.Image1");
             btnAddPatient.TabIndex = 2;
             btnAddPatient.Text = "Add New Patient";
             btnAddPatient.TextAlign = ContentAlignment.MiddleRight;
@@ -192,6 +208,7 @@
             dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPatients.Size = new Size(563, 435);
             dgvPatients.TabIndex = 1;
+            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
             // 
             // gradientPanel9
             // 
@@ -310,7 +327,7 @@
             btnNewTest.Location = new Point(141, 17);
             btnNewTest.Name = "btnNewTest";
             btnNewTest.Size = new Size(123, 40);
-            btnNewTest.Style.Image = (Image)resources.GetObject("resource.Image1");
+            btnNewTest.Style.Image = (Image)resources.GetObject("resource.Image2");
             btnNewTest.TabIndex = 1;
             btnNewTest.Text = "New Lab Test";
             btnNewTest.TextAlign = ContentAlignment.MiddleRight;
@@ -322,7 +339,7 @@
             btnSaveChanges.Location = new Point(0, 17);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(135, 40);
-            btnSaveChanges.Style.Image = (Image)resources.GetObject("resource.Image2");
+            btnSaveChanges.Style.Image = (Image)resources.GetObject("resource.Image3");
             btnSaveChanges.TabIndex = 0;
             btnSaveChanges.Text = "Save Changes";
             btnSaveChanges.TextAlign = ContentAlignment.MiddleRight;
@@ -355,9 +372,9 @@
             gradientPanel11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gradientPanel11.BorderStyle = BorderStyle.None;
             gradientPanel11.Controls.Add(gradientPanel12);
-            gradientPanel11.Controls.Add(textBoxExt3);
+            gradientPanel11.Controls.Add(txtPhoneNumber);
             gradientPanel11.Controls.Add(autoLabel5);
-            gradientPanel11.Controls.Add(textBoxExt2);
+            gradientPanel11.Controls.Add(txtFullname);
             gradientPanel11.Controls.Add(autoLabel4);
             gradientPanel11.Location = new Point(13, 60);
             gradientPanel11.Name = "gradientPanel11";
@@ -370,7 +387,7 @@
             gradientPanel12.BackColor = Color.FromArgb(248, 249, 250);
             gradientPanel12.BorderStyle = BorderStyle.None;
             gradientPanel12.Controls.Add(autoLabel6);
-            gradientPanel12.Controls.Add(checkBox1);
+            gradientPanel12.Controls.Add(cbConsentSMS);
             gradientPanel12.Location = new Point(5, 122);
             gradientPanel12.Name = "gradientPanel12";
             gradientPanel12.Padding = new Padding(10);
@@ -386,30 +403,30 @@
             autoLabel6.TabIndex = 1;
             autoLabel6.Text = "Patient agrees to receive automated lab result notifications";
             // 
-            // checkBox1
+            // cbConsentSMS
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Checked = true;
-            checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.Location = new Point(13, 13);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(224, 19);
-            checkBox1.TabIndex = 0;
-            checkBox1.Text = "Patient consents to SMS notifications";
-            checkBox1.UseVisualStyleBackColor = true;
+            cbConsentSMS.AutoSize = true;
+            cbConsentSMS.Checked = true;
+            cbConsentSMS.CheckState = CheckState.Checked;
+            cbConsentSMS.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cbConsentSMS.Location = new Point(13, 13);
+            cbConsentSMS.Name = "cbConsentSMS";
+            cbConsentSMS.Size = new Size(224, 19);
+            cbConsentSMS.TabIndex = 0;
+            cbConsentSMS.Text = "Patient consents to SMS notifications";
+            cbConsentSMS.UseVisualStyleBackColor = true;
             // 
-            // textBoxExt3
+            // txtPhoneNumber
             // 
-            textBoxExt3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBoxExt3.BeforeTouchSize = new Size(611, 25);
-            textBoxExt3.FocusBorderColor = Color.FromArgb(5, 142, 223);
-            textBoxExt3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxExt3.Location = new Point(3, 87);
-            textBoxExt3.Margin = new Padding(3, 3, 3, 7);
-            textBoxExt3.Name = "textBoxExt3";
-            textBoxExt3.Size = new Size(611, 25);
-            textBoxExt3.TabIndex = 3;
+            txtPhoneNumber.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtPhoneNumber.BeforeTouchSize = new Size(611, 25);
+            txtPhoneNumber.FocusBorderColor = Color.FromArgb(5, 142, 223);
+            txtPhoneNumber.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhoneNumber.Location = new Point(3, 87);
+            txtPhoneNumber.Margin = new Padding(3, 3, 3, 7);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(611, 25);
+            txtPhoneNumber.TabIndex = 3;
             // 
             // autoLabel5
             // 
@@ -422,17 +439,17 @@
             autoLabel5.TabIndex = 2;
             autoLabel5.Text = "Phone Number";
             // 
-            // textBoxExt2
+            // txtFullname
             // 
-            textBoxExt2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBoxExt2.BeforeTouchSize = new Size(611, 25);
-            textBoxExt2.FocusBorderColor = Color.FromArgb(5, 142, 223);
-            textBoxExt2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxExt2.Location = new Point(3, 27);
-            textBoxExt2.Margin = new Padding(3, 3, 3, 7);
-            textBoxExt2.Name = "textBoxExt2";
-            textBoxExt2.Size = new Size(611, 25);
-            textBoxExt2.TabIndex = 1;
+            txtFullname.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtFullname.BeforeTouchSize = new Size(611, 25);
+            txtFullname.FocusBorderColor = Color.FromArgb(5, 142, 223);
+            txtFullname.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtFullname.Location = new Point(3, 27);
+            txtFullname.Margin = new Padding(3, 3, 3, 7);
+            txtFullname.Name = "txtFullname";
+            txtFullname.Size = new Size(611, 25);
+            txtFullname.TabIndex = 1;
             // 
             // autoLabel4
             // 
@@ -498,8 +515,8 @@
             ((System.ComponentModel.ISupportInitialize)gradientPanel12).EndInit();
             gradientPanel12.ResumeLayout(false);
             gradientPanel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtFullname).EndInit();
             ResumeLayout(false);
         }
 
@@ -526,14 +543,15 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel11;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt3;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPhoneNumber;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel5;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel12;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
-        private CheckBox checkBox1;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtFullname;
+        private CheckBox cbConsentSMS;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel13;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private DataGridView dgvPatients;
+        private Syncfusion.WinForms.Controls.SfButton btnRefresh;
     }
 }

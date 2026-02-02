@@ -1,4 +1,6 @@
 ﻿using LabLink.Helper;
+using LabLink.Models;
+using LabLink.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +19,7 @@ namespace LabLink.UC
             InitializeComponent();
             ButtonStyles.PrimaryButton(btnAddPatient);
             ButtonStyles.PrimaryButton(btnSaveChanges);
+            ButtonStyles.SecondaryButton(btnRefresh);
             ButtonStyles.SecondaryButton(btnNewTest);
             ButtonStyles.TernaryButton(btnCancel);
         }
@@ -42,6 +45,44 @@ namespace LabLink.UC
         private async void Patients_Load(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private async void btnRefresh_Click(object sender, EventArgs e)
+        {
+            dgvPatients.DataSource = await PatientService.GetPatients();
+        }
+
+        private async void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int patientId = Convert.ToInt32(dgvPatients.Rows[e.RowIndex].Cells["PatientID"].Value);
+                await PopulatePatientInfo(patientId);
+            }
+        }
+
+        private async Task PopulatePatientInfo(int patientId)
+        {
+            try
+            {
+                PatientsModel patient = await PatientService.GetPatientById(patientId);
+
+                if (patient != null)
+                {
+                    txtFullname.Text = patient.FullName;
+                    txtPhoneNumber.Text = patient.PhoneNumber;
+                    cbConsentSMS.Checked = patient.ConsentToSMS;
+
+                }
+                else
+                {
+                    MessageBox.Show("Patient not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving patient details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
