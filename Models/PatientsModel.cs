@@ -12,7 +12,7 @@ namespace LabLink.Models
         [StringLength(100, MinimumLength = 2)]
         public string FullName { get; set; }
         [Required(ErrorMessage = "Phone number of the patient is required.")]
-        [RegularExpression(@"^(\+63|0)9\d{9}$", ErrorMessage = "Invalid Philippine mobile number format (+639XXXXXXXXX)")]
+        [RegularExpression(@"^(\+63|0)9\d{9}$", ErrorMessage = "Invalid mobile number format (+639XXXXXXXXX)")]
         public string PhoneNumber { get; set; }
         public bool ConsentToSMS { get; set; }
 

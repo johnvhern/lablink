@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Text;
 namespace LabLink.Services
@@ -15,11 +16,11 @@ namespace LabLink.Services
 
             try
             {
-                using (SqlConnection conn = DBConnection.GetConnection())
+                using (var conn = DBConnection.GetConnection())
                 {
                     conn.Open();
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (var cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@FullName", fullName);
                         cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
@@ -44,6 +45,35 @@ namespace LabLink.Services
                 MessageBox.Show("An error occurred while adding the patient: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public async static Task<DataTable> GetPatients()
+        {
+            string query = "SELECT PatientID, FullName, PhoneNumber FROM Patients";
+
+            var dataTable = new DataTable();
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            dataTable.Load(reader);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while retrieving patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return dataTable;
         }
     }
 }

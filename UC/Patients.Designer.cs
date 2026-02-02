@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patients));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnAddPatient = new Syncfusion.WinForms.Controls.SfButton();
@@ -37,6 +38,7 @@
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel4 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            dgvPatients = new DataGridView();
             gradientPanel9 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel10 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
@@ -66,6 +68,7 @@
             gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel4).BeginInit();
             gradientPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPatients).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel9).BeginInit();
             gradientPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel10).BeginInit();
@@ -151,12 +154,44 @@
             gradientPanel4.BackColor = Color.White;
             gradientPanel4.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel4.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel4.Controls.Add(dgvPatients);
             gradientPanel4.Controls.Add(gradientPanel9);
             gradientPanel4.Dock = DockStyle.Fill;
             gradientPanel4.Location = new Point(0, 0);
             gradientPanel4.Name = "gradientPanel4";
             gradientPanel4.Size = new Size(565, 498);
             gradientPanel4.TabIndex = 0;
+            // 
+            // dgvPatients
+            // 
+            dgvPatients.AllowUserToAddRows = false;
+            dgvPatients.AllowUserToDeleteRows = false;
+            dgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPatients.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            dgvPatients.BackgroundColor = Color.White;
+            dgvPatients.BorderStyle = BorderStyle.None;
+            dgvPatients.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new Padding(10);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(235, 242, 255);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvPatients.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvPatients.Dock = DockStyle.Fill;
+            dgvPatients.EnableHeadersVisualStyles = false;
+            dgvPatients.GridColor = Color.FromArgb(218, 223, 231);
+            dgvPatients.Location = new Point(0, 61);
+            dgvPatients.MultiSelect = false;
+            dgvPatients.Name = "dgvPatients";
+            dgvPatients.ReadOnly = true;
+            dgvPatients.ScrollBars = ScrollBars.Vertical;
+            dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPatients.Size = new Size(563, 435);
+            dgvPatients.TabIndex = 1;
             // 
             // gradientPanel9
             // 
@@ -429,6 +464,7 @@
             Name = "Patients";
             Padding = new Padding(15);
             Size = new Size(1252, 612);
+            Load += Patients_Load;
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).EndInit();
             gradientPanel1.ResumeLayout(false);
             gradientPanel1.PerformLayout();
@@ -436,6 +472,7 @@
             gradientPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel4).EndInit();
             gradientPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPatients).EndInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel9).EndInit();
             gradientPanel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel10).EndInit();
@@ -497,5 +534,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel13;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
+        private DataGridView dgvPatients;
     }
 }

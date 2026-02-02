@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LabLink.UC
@@ -20,14 +21,27 @@ namespace LabLink.UC
             ButtonStyles.TernaryButton(btnCancel);
         }
 
-        private void btnAddPatient_Click(object sender, EventArgs e)
+        private async void btnAddPatient_Click(object sender, EventArgs e)
         {
             DialogResult result = new Forms.Patients.frmNewPatient().ShowDialog();
 
             if (result == DialogResult.OK)
             {
-
+                dgvPatients.DataSource = await Services.PatientService.GetPatients();
             }
+        }
+
+        private async void LoadData()
+        {
+            dgvPatients.DataSource = await Services.PatientService.GetPatients();
+            dgvPatients.Columns["PatientID"].Visible = false;
+            dgvPatients.RowHeadersVisible = false;
+            dgvPatients.ColumnHeadersVisible = false;
+        }
+
+        private async void Patients_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
