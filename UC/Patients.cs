@@ -22,7 +22,12 @@ namespace LabLink.UC
 
         private void btnAddPatient_Click(object sender, EventArgs e)
         {
-            new Forms.Patients.frmNewPatient().ShowDialog();
+            DialogResult result = new Forms.Patients.frmNewPatient().ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

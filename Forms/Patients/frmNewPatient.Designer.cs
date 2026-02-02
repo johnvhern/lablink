@@ -30,8 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewPatient));
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo3 = new Syncfusion.Windows.Forms.BannerTextInfo();
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo4 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnCancel = new Syncfusion.WinForms.Controls.SfButton();
             btnAddPatient = new Syncfusion.WinForms.Controls.SfButton();
@@ -40,11 +40,11 @@
             autoLabel5 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            checkBoxAdv1 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            cbConsentToSMS = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            textBoxExt2 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtPhoneNumber = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
-            textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtFullName = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
@@ -53,9 +53,9 @@
             gradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cbConsentToSMS).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtFullName).BeginInit();
             SuspendLayout();
             // 
             // gradientPanel1
@@ -86,6 +86,7 @@
             // btnAddPatient
             // 
             btnAddPatient.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAddPatient.Enabled = false;
             btnAddPatient.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddPatient.ImageSize = new Size(16, 16);
             btnAddPatient.Location = new Point(287, 11);
@@ -95,6 +96,7 @@
             btnAddPatient.TabIndex = 1;
             btnAddPatient.Text = "Add Patient";
             btnAddPatient.TextAlign = ContentAlignment.MiddleRight;
+            btnAddPatient.Click += btnAddPatient_Click;
             // 
             // gradientPanel2
             // 
@@ -105,9 +107,9 @@
             gradientPanel2.Controls.Add(autoLabel5);
             gradientPanel2.Controls.Add(gradientPanel3);
             gradientPanel2.Controls.Add(autoLabel3);
-            gradientPanel2.Controls.Add(textBoxExt2);
+            gradientPanel2.Controls.Add(txtPhoneNumber);
             gradientPanel2.Controls.Add(autoLabel2);
-            gradientPanel2.Controls.Add(textBoxExt1);
+            gradientPanel2.Controls.Add(txtFullName);
             gradientPanel2.Controls.Add(autoLabel1);
             gradientPanel2.Dock = DockStyle.Fill;
             gradientPanel2.Location = new Point(0, 0);
@@ -145,7 +147,7 @@
             gradientPanel3.BorderColor = Color.FromArgb(161, 255, 210);
             gradientPanel3.BorderStyle = BorderStyle.FixedSingle;
             gradientPanel3.Controls.Add(autoLabel4);
-            gradientPanel3.Controls.Add(checkBoxAdv1);
+            gradientPanel3.Controls.Add(cbConsentToSMS);
             gradientPanel3.Location = new Point(23, 173);
             gradientPanel3.Name = "gradientPanel3";
             gradientPanel3.Padding = new Padding(5);
@@ -162,20 +164,22 @@
             autoLabel4.TabIndex = 1;
             autoLabel4.Text = "Patient agrees to receive automated SMS notifications when lab results are ready for pickup.";
             // 
-            // checkBoxAdv1
+            // cbConsentToSMS
             // 
-            checkBoxAdv1.AccessibilityEnabled = true;
-            checkBoxAdv1.BeforeTouchSize = new Size(188, 32);
-            checkBoxAdv1.DrawFocusRectangle = false;
-            checkBoxAdv1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBoxAdv1.Location = new Point(8, 8);
-            checkBoxAdv1.MetroColor = Color.FromArgb(46, 204, 113);
-            checkBoxAdv1.Name = "checkBoxAdv1";
-            checkBoxAdv1.Size = new Size(188, 32);
-            checkBoxAdv1.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
-            checkBoxAdv1.TabIndex = 0;
-            checkBoxAdv1.Text = "SMS Notification Consent";
-            checkBoxAdv1.ThemeName = "Metro";
+            cbConsentToSMS.AccessibilityEnabled = true;
+            cbConsentToSMS.BeforeTouchSize = new Size(188, 32);
+            cbConsentToSMS.Checked = true;
+            cbConsentToSMS.CheckState = CheckState.Checked;
+            cbConsentToSMS.DrawFocusRectangle = false;
+            cbConsentToSMS.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cbConsentToSMS.Location = new Point(8, 8);
+            cbConsentToSMS.MetroColor = Color.FromArgb(46, 204, 113);
+            cbConsentToSMS.Name = "cbConsentToSMS";
+            cbConsentToSMS.Size = new Size(188, 32);
+            cbConsentToSMS.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            cbConsentToSMS.TabIndex = 0;
+            cbConsentToSMS.Text = "SMS Notification Consent";
+            cbConsentToSMS.ThemeName = "Metro";
             // 
             // autoLabel3
             // 
@@ -186,26 +190,26 @@
             autoLabel3.TabIndex = 2;
             autoLabel3.Text = "Format: +63-XXX-XXX-XXXX";
             // 
-            // textBoxExt2
+            // txtPhoneNumber
             // 
-            textBoxExt2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            bannerTextInfo3.Text = "+63-XXX-XXX-XXXX";
-            bannerTextInfo3.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt2, bannerTextInfo3);
-            textBoxExt2.BeforeTouchSize = new Size(399, 25);
-            textBoxExt2.BorderColor = Color.FromArgb(209, 211, 212);
-            textBoxExt2.BorderStyle = BorderStyle.FixedSingle;
-            textBoxExt2.FocusBorderColor = Color.FromArgb(30, 72, 207);
-            textBoxExt2.Font = new Font("Segoe UI", 9.75F);
-            textBoxExt2.Location = new Point(23, 105);
-            textBoxExt2.Margin = new Padding(3, 3, 3, 10);
-            textBoxExt2.Name = "textBoxExt2";
-            textBoxExt2.Size = new Size(399, 25);
-            textBoxExt2.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            textBoxExt2.TabIndex = 3;
-            textBoxExt2.ThemeName = "Metro";
-            textBoxExt2.UseBorderColorOnFocus = true;
-            textBoxExt2.WordWrap = false;
+            txtPhoneNumber.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            bannerTextInfo1.Text = "+63-XXX-XXX-XXXX";
+            bannerTextInfo1.Visible = true;
+            bannerTextProvider1.SetBannerText(txtPhoneNumber, bannerTextInfo1);
+            txtPhoneNumber.BeforeTouchSize = new Size(399, 25);
+            txtPhoneNumber.BorderColor = Color.FromArgb(209, 211, 212);
+            txtPhoneNumber.BorderStyle = BorderStyle.FixedSingle;
+            txtPhoneNumber.FocusBorderColor = Color.FromArgb(30, 72, 207);
+            txtPhoneNumber.Font = new Font("Segoe UI", 9.75F);
+            txtPhoneNumber.Location = new Point(23, 105);
+            txtPhoneNumber.Margin = new Padding(3, 3, 3, 10);
+            txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.Size = new Size(399, 25);
+            txtPhoneNumber.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            txtPhoneNumber.TabIndex = 3;
+            txtPhoneNumber.ThemeName = "Metro";
+            txtPhoneNumber.UseBorderColorOnFocus = true;
+            txtPhoneNumber.WordWrap = false;
             // 
             // autoLabel2
             // 
@@ -217,26 +221,26 @@
             autoLabel2.TabIndex = 2;
             autoLabel2.Text = "Phone Number";
             // 
-            // textBoxExt1
+            // txtFullName
             // 
-            textBoxExt1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            bannerTextInfo4.Text = "Enter patient's full name";
-            bannerTextInfo4.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo4);
-            textBoxExt1.BeforeTouchSize = new Size(399, 25);
-            textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
-            textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
-            textBoxExt1.FocusBorderColor = Color.FromArgb(30, 72, 207);
-            textBoxExt1.Font = new Font("Segoe UI", 9.75F);
-            textBoxExt1.Location = new Point(23, 40);
-            textBoxExt1.Margin = new Padding(3, 3, 3, 15);
-            textBoxExt1.Name = "textBoxExt1";
-            textBoxExt1.Size = new Size(399, 25);
-            textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            textBoxExt1.TabIndex = 1;
-            textBoxExt1.ThemeName = "Metro";
-            textBoxExt1.UseBorderColorOnFocus = true;
-            textBoxExt1.WordWrap = false;
+            txtFullName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            bannerTextInfo2.Text = "Enter patient's full name";
+            bannerTextInfo2.Visible = true;
+            bannerTextProvider1.SetBannerText(txtFullName, bannerTextInfo2);
+            txtFullName.BeforeTouchSize = new Size(399, 25);
+            txtFullName.BorderColor = Color.FromArgb(209, 211, 212);
+            txtFullName.BorderStyle = BorderStyle.FixedSingle;
+            txtFullName.FocusBorderColor = Color.FromArgb(30, 72, 207);
+            txtFullName.Font = new Font("Segoe UI", 9.75F);
+            txtFullName.Location = new Point(23, 40);
+            txtFullName.Margin = new Padding(3, 3, 3, 15);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(399, 25);
+            txtFullName.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            txtFullName.TabIndex = 1;
+            txtFullName.ThemeName = "Metro";
+            txtFullName.UseBorderColorOnFocus = true;
+            txtFullName.WordWrap = false;
             // 
             // autoLabel1
             // 
@@ -277,9 +281,9 @@
             gradientPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cbConsentToSMS).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtFullName).EndInit();
             ResumeLayout(false);
         }
 
@@ -288,13 +292,13 @@
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtFullName;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt2;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtPhoneNumber;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel2;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv checkBoxAdv1;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv cbConsentToSMS;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel4;
         private Syncfusion.WinForms.Controls.SfButton btnAddPatient;
         private Syncfusion.WinForms.Controls.SfButton btnCancel;

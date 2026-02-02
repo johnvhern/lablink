@@ -68,6 +68,10 @@ namespace LabLink.Helper
             button.Style.FocusedBackColor = Color.FromArgb(30, 72, 207);
             button.Style.FocusedForeColor = Color.White;
             button.Style.FocusedImageForeColor = Color.White;
+
+            button.Style.DisabledBackColor = Color.FromArgb(106, 129, 204);
+            button.Style.DisabledForeColor = Color.White;
+            button.Style.DisabledImageForeColor = Color.White;
         }
 
         public static void SecondaryButton(SfButton button)

@@ -1,0 +1,49 @@
+﻿using LabLink.Data;
+using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text;
+namespace LabLink.Services
+{
+    public static class PatientService
+    {
+        public static bool AddPatient(string fullName, string phoneNumber, bool consentToSMS)
+        {
+            string query = "INSERT INTO Patients (FullName, PhoneNumber, ConsentToSMS) " +
+                           "VALUES (@FullName, @PhoneNumber, @ConsentToSMS)";
+
+            try
+            {
+                using (SqlConnection conn = DBConnection.GetConnection())
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FullName", fullName);
+                        cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
+                        cmd.Parameters.AddWithValue("@ConsentToSMS", consentToSMS);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Patient added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add patient.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while adding the patient: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+    }
+}
