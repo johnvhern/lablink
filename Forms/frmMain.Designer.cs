@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
             statusStripLabel1 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             mainPanel = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
             gradientPanel2.SuspendLayout();
             statusStripEx1.SuspendLayout();
@@ -47,21 +49,23 @@
             gradientPanel2.Dock = DockStyle.Bottom;
             gradientPanel2.Location = new Point(0, 702);
             gradientPanel2.Name = "gradientPanel2";
-            gradientPanel2.Padding = new Padding(10, 0, 0, 0);
+            gradientPanel2.Padding = new Padding(10, 0, 10, 0);
             gradientPanel2.Size = new Size(1350, 27);
             gradientPanel2.TabIndex = 2;
             // 
             // statusStripEx1
             // 
-            statusStripEx1.BackColor = Color.Transparent;
-            statusStripEx1.BeforeTouchSize = new Size(1338, 25);
+            statusStripEx1.AutoSize = false;
+            statusStripEx1.BackColor = Color.White;
+            statusStripEx1.BeforeTouchSize = new Size(1328, 25);
             statusStripEx1.Dock = Syncfusion.Windows.Forms.Tools.DockStyleEx.Fill;
-            statusStripEx1.Items.AddRange(new ToolStripItem[] { statusStripLabel1 });
+            statusStripEx1.ImageScalingSize = new Size(14, 14);
+            statusStripEx1.Items.AddRange(new ToolStripItem[] { statusStripLabel1, toolStripStatusLabel1 });
             statusStripEx1.Location = new Point(10, 0);
-            statusStripEx1.MetroColor = Color.FromArgb(135, 206, 255);
+            statusStripEx1.MetroColor = Color.White;
             statusStripEx1.Name = "statusStripEx1";
             statusStripEx1.ShowSeparator = false;
-            statusStripEx1.Size = new Size(1338, 25);
+            statusStripEx1.Size = new Size(1328, 25);
             statusStripEx1.SizingGrip = false;
             statusStripEx1.TabIndex = 0;
             statusStripEx1.Text = "statusStripEx1";
@@ -70,9 +74,10 @@
             // 
             // statusStripLabel1
             // 
+            statusStripLabel1.Image = (Image)resources.GetObject("statusStripLabel1.Image");
             statusStripLabel1.Margin = new Padding(0, 3, 0, 2);
             statusStripLabel1.Name = "statusStripLabel1";
-            statusStripLabel1.Size = new Size(96, 15);
+            statusStripLabel1.Size = new Size(110, 15);
             statusStripLabel1.Text = "statusStripLabel1";
             // 
             // mainPanel
@@ -86,6 +91,12 @@
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1350, 702);
             mainPanel.TabIndex = 4;
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(118, 15);
+            toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // frmMain
             // 
@@ -102,7 +113,6 @@
             Load += frmMain_Load;
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
             gradientPanel2.ResumeLayout(false);
-            gradientPanel2.PerformLayout();
             statusStripEx1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)mainPanel).EndInit();
             ResumeLayout(false);
@@ -115,5 +125,6 @@
         private Syncfusion.Windows.Forms.Tools.StatusStripEx statusStripEx1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel mainPanel;
         private Syncfusion.Windows.Forms.Tools.StatusStripLabel statusStripLabel1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
