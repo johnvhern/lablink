@@ -53,6 +53,7 @@
             btnSaveChanges = new Syncfusion.WinForms.Controls.SfButton();
             gradientPanel6 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel5 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            btnEdit = new Syncfusion.WinForms.Controls.SfButton();
             gradientPanel11 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel12 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             autoLabel6 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -358,6 +359,7 @@
             gradientPanel5.BackColor = Color.White;
             gradientPanel5.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel5.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel5.Controls.Add(btnEdit);
             gradientPanel5.Controls.Add(gradientPanel11);
             gradientPanel5.Controls.Add(autoLabel3);
             gradientPanel5.Dock = DockStyle.Top;
@@ -366,6 +368,18 @@
             gradientPanel5.Padding = new Padding(10);
             gradientPanel5.Size = new Size(642, 260);
             gradientPanel5.TabIndex = 0;
+            // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEdit.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEdit.ImageSize = new Size(16, 16);
+            btnEdit.Location = new Point(571, 15);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(56, 25);
+            btnEdit.TabIndex = 4;
+            btnEdit.Text = "Edit";
+            btnEdit.Click += btnEdit_Click;
             // 
             // gradientPanel11
             // 
@@ -406,8 +420,7 @@
             // cbConsentSMS
             // 
             cbConsentSMS.AutoSize = true;
-            cbConsentSMS.Checked = true;
-            cbConsentSMS.CheckState = CheckState.Checked;
+            cbConsentSMS.Enabled = false;
             cbConsentSMS.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cbConsentSMS.Location = new Point(13, 13);
             cbConsentSMS.Name = "cbConsentSMS";
@@ -425,6 +438,7 @@
             txtPhoneNumber.Location = new Point(3, 87);
             txtPhoneNumber.Margin = new Padding(3, 3, 3, 7);
             txtPhoneNumber.Name = "txtPhoneNumber";
+            txtPhoneNumber.ReadOnly = true;
             txtPhoneNumber.Size = new Size(611, 25);
             txtPhoneNumber.TabIndex = 3;
             // 
@@ -448,6 +462,7 @@
             txtFullname.Location = new Point(3, 27);
             txtFullname.Margin = new Padding(3, 3, 3, 7);
             txtFullname.Name = "txtFullname";
+            txtFullname.ReadOnly = true;
             txtFullname.Size = new Size(611, 25);
             txtFullname.TabIndex = 1;
             // 
@@ -553,5 +568,6 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private DataGridView dgvPatients;
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
+        private Syncfusion.WinForms.Controls.SfButton btnEdit;
     }
 }

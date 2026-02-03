@@ -50,6 +50,7 @@ namespace LabLink.UC
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
             dgvPatients.DataSource = await PatientService.GetPatients();
+            ClearFields();
         }
 
         private async void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -69,6 +70,10 @@ namespace LabLink.UC
 
                 if (patient != null)
                 {
+                    txtPhoneNumber.ReadOnly = true;
+                    txtFullname.ReadOnly = true;
+                    cbConsentSMS.Enabled = false;
+
                     txtFullname.Text = patient.FullName;
                     txtPhoneNumber.Text = patient.PhoneNumber;
                     cbConsentSMS.Checked = patient.ConsentToSMS;
@@ -83,6 +88,26 @@ namespace LabLink.UC
             {
                 MessageBox.Show("An error occurred while retrieving patient details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFullname.Text) && !string.IsNullOrEmpty(txtPhoneNumber.Text))
+            {
+                txtFullname.ReadOnly = false;
+                txtPhoneNumber.ReadOnly = false;
+                cbConsentSMS.Enabled = true;
+            }
+        }
+
+        private void ClearFields()
+        {
+            txtFullname.Clear();
+            txtPhoneNumber.Clear();
+            cbConsentSMS.Checked = false;
+            txtFullname.ReadOnly = true;
+            txtPhoneNumber.ReadOnly = true;
+            cbConsentSMS.Enabled = false;
         }
     }
 }

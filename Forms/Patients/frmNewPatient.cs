@@ -43,7 +43,7 @@ namespace LabLink.Forms.Patients
                 {
                     FullName = txtFullName.Text,
                     PhoneNumber = txtPhoneNumber.Text,
-                    ConsentToSMS = cbConsentToSMS.Checked
+                    ConsentToSMS = cbConsentToSMS.Checked,
                 };
 
                 var context = new ValidationContext(patient, null, null);
