@@ -28,14 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            checkBoxAdv1 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
+            gradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)textBoxExt1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             SuspendLayout();
             // 
             // gradientPanel1
@@ -96,10 +108,77 @@
             autoLabel1.TabIndex = 2;
             autoLabel1.Text = "Test Type Management";
             // 
+            // gradientPanel2
+            // 
+            gradientPanel2.BackColor = Color.FromArgb(249, 250, 251);
+            gradientPanel2.BorderColor = Color.FromArgb(218, 223, 231);
+            gradientPanel2.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel2.Controls.Add(textBoxExt1);
+            gradientPanel2.Controls.Add(checkBoxAdv1);
+            gradientPanel2.Dock = DockStyle.Top;
+            gradientPanel2.Location = new Point(15, 84);
+            gradientPanel2.Margin = new Padding(3, 3, 3, 15);
+            gradientPanel2.Name = "gradientPanel2";
+            gradientPanel2.Padding = new Padding(10);
+            gradientPanel2.Size = new Size(1222, 53);
+            gradientPanel2.TabIndex = 1;
+            // 
+            // textBoxExt1
+            // 
+            textBoxExt1.BackColor = Color.FromArgb(249, 250, 251);
+            bannerTextInfo2.Text = "Search test types...";
+            bannerTextInfo2.Visible = true;
+            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo2);
+            textBoxExt1.BeforeTouchSize = new Size(611, 25);
+            textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
+            textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
+            textBoxExt1.FocusBorderColor = Color.FromArgb(65, 0, 218);
+            textBoxExt1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            textBoxExt1.Location = new Point(13, 13);
+            textBoxExt1.Name = "textBoxExt1";
+            textBoxExt1.Size = new Size(295, 25);
+            textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            textBoxExt1.TabIndex = 1;
+            textBoxExt1.ThemeName = "Metro";
+            textBoxExt1.UseBorderColorOnFocus = true;
+            textBoxExt1.WordWrap = false;
+            // 
+            // checkBoxAdv1
+            // 
+            checkBoxAdv1.AccessibilityEnabled = true;
+            checkBoxAdv1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            checkBoxAdv1.AutoSize = true;
+            checkBoxAdv1.BeforeTouchSize = new Size(133, 21);
+            checkBoxAdv1.DrawFocusRectangle = false;
+            checkBoxAdv1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            checkBoxAdv1.ForeColor = SystemColors.ControlText;
+            checkBoxAdv1.ImageCheckBoxSize = new Size(20, 20);
+            checkBoxAdv1.Location = new Point(1074, 15);
+            checkBoxAdv1.MetroColor = Color.FromArgb(65, 0, 218);
+            checkBoxAdv1.Name = "checkBoxAdv1";
+            checkBoxAdv1.Size = new Size(133, 21);
+            checkBoxAdv1.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
+            checkBoxAdv1.TabIndex = 0;
+            checkBoxAdv1.Text = "Show inactive tests";
+            checkBoxAdv1.ThemeName = "Metro";
+            // 
+            // gradientPanel3
+            // 
+            gradientPanel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gradientPanel3.BackColor = Color.White;
+            gradientPanel3.BorderColor = Color.FromArgb(218, 223, 231);
+            gradientPanel3.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel3.Location = new Point(15, 155);
+            gradientPanel3.Name = "gradientPanel3";
+            gradientPanel3.Size = new Size(1222, 439);
+            gradientPanel3.TabIndex = 2;
+            // 
             // TestTypes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(gradientPanel3);
+            Controls.Add(gradientPanel2);
             Controls.Add(gradientPanel1);
             Name = "TestTypes";
             Padding = new Padding(15);
@@ -107,6 +186,12 @@
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).EndInit();
             gradientPanel1.ResumeLayout(false);
             gradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
+            gradientPanel2.ResumeLayout(false);
+            gradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)textBoxExt1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             ResumeLayout(false);
         }
 
@@ -117,5 +202,10 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel1;
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
         private Syncfusion.WinForms.Controls.SfButton btnAddTestType;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
+        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv checkBoxAdv1;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
     }
 }

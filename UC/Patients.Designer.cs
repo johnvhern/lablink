@@ -41,7 +41,6 @@
             gradientPanel4 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             dgvPatients = new DataGridView();
             gradientPanel9 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            gradientPanel10 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel8 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
@@ -73,8 +72,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvPatients).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel9).BeginInit();
             gradientPanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gradientPanel10).BeginInit();
-            gradientPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)textBoxExt1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
@@ -201,13 +198,13 @@
             dgvPatients.Dock = DockStyle.Fill;
             dgvPatients.EnableHeadersVisualStyles = false;
             dgvPatients.GridColor = Color.FromArgb(218, 223, 231);
-            dgvPatients.Location = new Point(0, 61);
+            dgvPatients.Location = new Point(0, 56);
             dgvPatients.MultiSelect = false;
             dgvPatients.Name = "dgvPatients";
             dgvPatients.ReadOnly = true;
             dgvPatients.ScrollBars = ScrollBars.Vertical;
             dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPatients.Size = new Size(563, 435);
+            dgvPatients.Size = new Size(563, 440);
             dgvPatients.TabIndex = 1;
             dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
             // 
@@ -216,25 +213,13 @@
             gradientPanel9.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel9.BorderSides = Border3DSide.Bottom;
             gradientPanel9.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel9.Controls.Add(gradientPanel10);
+            gradientPanel9.Controls.Add(textBoxExt1);
             gradientPanel9.Dock = DockStyle.Top;
             gradientPanel9.Location = new Point(0, 0);
             gradientPanel9.Name = "gradientPanel9";
             gradientPanel9.Padding = new Padding(10);
-            gradientPanel9.Size = new Size(563, 61);
+            gradientPanel9.Size = new Size(563, 56);
             gradientPanel9.TabIndex = 0;
-            // 
-            // gradientPanel10
-            // 
-            gradientPanel10.BackColor = Color.FromArgb(249, 250, 251);
-            gradientPanel10.BorderColor = Color.FromArgb(218, 223, 231);
-            gradientPanel10.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel10.Controls.Add(textBoxExt1);
-            gradientPanel10.Location = new Point(13, 13);
-            gradientPanel10.Name = "gradientPanel10";
-            gradientPanel10.Padding = new Padding(7, 7, 0, 0);
-            gradientPanel10.Size = new Size(535, 33);
-            gradientPanel10.TabIndex = 0;
             // 
             // textBoxExt1
             // 
@@ -243,14 +228,18 @@
             bannerTextInfo1.Visible = true;
             bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo1);
             textBoxExt1.BeforeTouchSize = new Size(611, 25);
-            textBoxExt1.BorderSides = Border3DSide.Left;
-            textBoxExt1.BorderStyle = BorderStyle.None;
-            textBoxExt1.Dock = DockStyle.Fill;
+            textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
+            textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
+            textBoxExt1.FocusBorderColor = Color.FromArgb(65, 0, 218);
             textBoxExt1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxExt1.Location = new Point(7, 7);
+            textBoxExt1.Location = new Point(13, 14);
             textBoxExt1.Name = "textBoxExt1";
-            textBoxExt1.Size = new Size(526, 18);
-            textBoxExt1.TabIndex = 0;
+            textBoxExt1.Size = new Size(535, 25);
+            textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            textBoxExt1.TabIndex = 2;
+            textBoxExt1.ThemeName = "Metro";
+            textBoxExt1.UseBorderColorOnFocus = true;
+            textBoxExt1.WordWrap = false;
             // 
             // gradientPanel3
             // 
@@ -507,9 +496,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvPatients).EndInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel9).EndInit();
             gradientPanel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gradientPanel10).EndInit();
-            gradientPanel10.ResumeLayout(false);
-            gradientPanel10.PerformLayout();
+            gradientPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)textBoxExt1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
@@ -552,8 +539,6 @@
         private Syncfusion.WinForms.Controls.SfButton btnSaveChanges;
         private Syncfusion.WinForms.Controls.SfButton btnAddPatient;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel9;
-        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel10;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel11;
@@ -569,5 +554,6 @@
         private DataGridView dgvPatients;
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
         private Syncfusion.WinForms.Controls.SfButton btnEdit;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
     }
 }
