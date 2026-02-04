@@ -28,15 +28,6 @@ namespace LabLink.Services
                     cmd.Parameters.AddWithValue("@ConsentToSMS", patients.ConsentToSMS);
 
                     return (int)cmd.ExecuteNonQuery();
-
-                    //if (rowsAffected > 0)
-                    //{
-                    //    MessageBox.Show("Patient added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Failed to add patient.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
                 }
             }
         }
@@ -62,7 +53,7 @@ namespace LabLink.Services
 
         public async static Task<ObservableCollection<PatientsModel>> GetPatients()
         {
-            string query = "SELECT PatientID, FullName, PhoneNumber FROM Patients";
+            string query = "SELECT PatientID, FullName, PhoneNumber, ConsentToSMS FROM Patients";
             var patients = new ObservableCollection<PatientsModel>();
 
             try
@@ -82,6 +73,7 @@ namespace LabLink.Services
                                     PatientID = reader.GetInt32(reader.GetOrdinal("PatientID")),
                                     FullName = reader.GetString(reader.GetOrdinal("FullName")),
                                     PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                                    ConsentToSMS = reader.GetBoolean(reader.GetOrdinal("ConsentToSMS")),
                                 });
                             }
                         }

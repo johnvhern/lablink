@@ -1,6 +1,10 @@
 ﻿using LabLink.Helper;
 using LabLink.Models;
 using LabLink.Services;
+using Syncfusion.WinForms.DataGrid;
+using Syncfusion.WinForms.DataGrid.Renderers;
+using Syncfusion.WinForms.DataGrid.Styles;
+using Syncfusion.WinForms.GridCommon.ScrollAxis;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +20,7 @@ namespace LabLink.UC
     public partial class Patients : UserControl
     {
         private ObservableCollection<PatientsModel> patientsCollection;
+        private string searchText = string.Empty;
         public Patients()
         {
             InitializeComponent();
@@ -23,33 +28,43 @@ namespace LabLink.UC
             ButtonStyles.SecondaryButton(btnRefresh);
             ButtonStyles.PrimaryButton(btnNewTest);
             ButtonStyles.TernaryButton(btnCancel);
+
+            dgvPatients.AutoGenerateColumns = false;
+
+            // Add other columns
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PatientID"});
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName" });
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber"});
+
+            dgvPatients.Columns.Add(new GridImageColumn
+            {
+                MappingName = "ConsentToSMS",
+                Width = 60,
+                ImageLayout = ImageLayout.None,
+                TextImageRelation = TextImageRelation.Overlay,
+            });
         }
 
         private async void btnAddPatient_Click(object sender, EventArgs e)
         {
             new Forms.Patients.frmNewPatient(patientsCollection).ShowDialog();
-
-            //if (result == DialogResult.OK)
-            //{
-            //    dgvPatients.DataSource = await Services.PatientService.GetPatients();
-            //}
         }
 
         private async Task LoadData()
         {
-            //dgvPatients.DataSource = await Services.PatientService.GetPatients();
-            //dgvPatients.Columns["PatientID"].Visible = false;
-            ////dgvPatients.RowHeadersVisible = false;
-            ////dgvPatients.ColumnHeadersVisible = false;
-            ///
-
             try
             {
                 patientsCollection = await PatientService.GetPatients();
                 dgvPatients.DataSource = patientsCollection;
 
                 dgvPatients.Columns["PatientID"].Visible = false;
-                dgvPatients.Columns["ConsentToSMS"].Visible = false;
+                //dgvPatients.Columns["ConsentToSMS"].Visible = false;
+                dgvPatients.Columns["FullName"].CellStyle.Font.Bold = true;
+
+                if (dgvPatients.View != null)
+                {
+                    dgvPatients.View.Filter = FilterRecords;
+                }
             }
             catch (Exception ex)
             {
@@ -153,7 +168,6 @@ namespace LabLink.UC
                 {
                     int patientId = patient.PatientID;
                     await PopulatePatientInfo(patientId);
-                    MessageBox.Show(patientId.ToString());
                 }
             }
         }
@@ -161,6 +175,54 @@ namespace LabLink.UC
         private void btnCancel_Click(object sender, EventArgs e)
         {
             ClearFields();
+        }
+
+        private void searchTimer_Tick(object sender, EventArgs e)
+        {
+            searchTimer.Stop();
+
+            searchText = txtSearchBox.Text.Trim().ToLower();
+
+            if (dgvPatients.View != null)
+            {
+                dgvPatients.View.RefreshFilter();
+            }
+        }
+
+        private void txtSearchBox_TextChanged(object sender, EventArgs e)
+        {
+            searchTimer.Stop();
+            searchTimer.Start();
+        }
+
+        private bool FilterRecords(object obj)
+        {
+            if (string.IsNullOrEmpty(searchText))
+                return true;
+
+            if (obj is PatientsModel patient)
+            {
+                return (patient.FullName?.ToLower().Contains(searchText) ?? false) ||
+                       (patient.PhoneNumber?.ToLower().Contains(searchText) ?? false);
+            }
+
+            return false;
+        }
+
+        private void dgvPatients_QueryImageCellStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryImageCellStyleEventArgs e)
+        {
+            if (e.Column.MappingName == "ConsentToSMS" && e.Record is PatientsModel patient)
+            {
+                e.DisplayText = string.Empty;
+                if (patient.ConsentToSMS)
+                {
+                    e.Image = Properties.Resources.checkbox_checked; // Replace with your actual image resource
+                }
+                else
+                {
+                    e.Image = Properties.Resources.checkbox_unchecked; // Replace with your actual image resource
+                }
+            }
         }
     }
 }

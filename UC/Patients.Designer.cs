@@ -15,6 +15,7 @@
         {
             if (disposing && (components != null))
             {
+                searchTimer?.Dispose();
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -42,7 +43,7 @@
             gradientPanel4 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             dgvPatients = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             gradientPanel9 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            txtSearchBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel8 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel13 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
@@ -63,6 +64,7 @@
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
+            searchTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -72,7 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvPatients).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel9).BeginInit();
             gradientPanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtSearchBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel8).BeginInit();
@@ -160,7 +162,7 @@
             gradientPanel2.Location = new Point(15, 84);
             gradientPanel2.Name = "gradientPanel2";
             gradientPanel2.Padding = new Padding(0, 0, 0, 15);
-            gradientPanel2.Size = new Size(565, 513);
+            gradientPanel2.Size = new Size(606, 513);
             gradientPanel2.TabIndex = 1;
             // 
             // gradientPanel4
@@ -173,7 +175,7 @@
             gradientPanel4.Dock = DockStyle.Fill;
             gradientPanel4.Location = new Point(0, 0);
             gradientPanel4.Name = "gradientPanel4";
-            gradientPanel4.Size = new Size(565, 498);
+            gradientPanel4.Size = new Size(606, 498);
             gradientPanel4.TabIndex = 0;
             // 
             // dgvPatients
@@ -189,7 +191,7 @@
             dgvPatients.Name = "dgvPatients";
             dgvPatients.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
             dgvPatients.RowHeight = 50;
-            dgvPatients.Size = new Size(563, 440);
+            dgvPatients.Size = new Size(604, 440);
             dgvPatients.Style.BorderColor = Color.FromArgb(100, 100, 100);
             dgvPatients.Style.BorderStyle = BorderStyle.None;
             gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
@@ -199,7 +201,7 @@
             dgvPatients.Style.CellStyle.Borders = gridBordersInfo1;
             dgvPatients.Style.CellStyle.Font.Size = 10F;
             dgvPatients.Style.CellStyle.HorizontalAlignment = HorizontalAlignment.Left;
-            dgvPatients.Style.CellStyle.TextMargins = new Padding(10, 0, 5, 0);
+            dgvPatients.Style.CellStyle.TextMargins = new Padding(15, 0, 10, 0);
             dgvPatients.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
             dgvPatients.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
             gridBordersInfo2.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
@@ -209,39 +211,41 @@
             dgvPatients.Style.HeaderStyle.Borders = gridBordersInfo2;
             dgvPatients.TabIndex = 1;
             dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
+            dgvPatients.QueryImageCellStyle += dgvPatients_QueryImageCellStyle;
             // 
             // gradientPanel9
             // 
             gradientPanel9.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel9.BorderSides = Border3DSide.Bottom;
             gradientPanel9.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel9.Controls.Add(textBoxExt1);
+            gradientPanel9.Controls.Add(txtSearchBox);
             gradientPanel9.Dock = DockStyle.Top;
             gradientPanel9.Location = new Point(0, 0);
             gradientPanel9.Name = "gradientPanel9";
             gradientPanel9.Padding = new Padding(10);
-            gradientPanel9.Size = new Size(563, 56);
+            gradientPanel9.Size = new Size(604, 56);
             gradientPanel9.TabIndex = 0;
             // 
-            // textBoxExt1
+            // txtSearchBox
             // 
-            textBoxExt1.BackColor = Color.FromArgb(249, 250, 251);
+            txtSearchBox.BackColor = Color.FromArgb(249, 250, 251);
             bannerTextInfo1.Text = "Search patients...";
             bannerTextInfo1.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo1);
-            textBoxExt1.BeforeTouchSize = new Size(611, 25);
-            textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
-            textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
-            textBoxExt1.FocusBorderColor = Color.FromArgb(65, 0, 218);
-            textBoxExt1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxExt1.Location = new Point(13, 14);
-            textBoxExt1.Name = "textBoxExt1";
-            textBoxExt1.Size = new Size(535, 25);
-            textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            textBoxExt1.TabIndex = 2;
-            textBoxExt1.ThemeName = "Metro";
-            textBoxExt1.UseBorderColorOnFocus = true;
-            textBoxExt1.WordWrap = false;
+            bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
+            txtSearchBox.BeforeTouchSize = new Size(576, 25);
+            txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
+            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
+            txtSearchBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearchBox.Location = new Point(13, 14);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.Size = new Size(576, 25);
+            txtSearchBox.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            txtSearchBox.TabIndex = 2;
+            txtSearchBox.ThemeName = "Metro";
+            txtSearchBox.UseBorderColorOnFocus = true;
+            txtSearchBox.WordWrap = false;
+            txtSearchBox.TextChanged += txtSearchBox_TextChanged;
             // 
             // gradientPanel3
             // 
@@ -251,10 +255,10 @@
             gradientPanel3.Controls.Add(gradientPanel6);
             gradientPanel3.Controls.Add(gradientPanel5);
             gradientPanel3.Dock = DockStyle.Fill;
-            gradientPanel3.Location = new Point(580, 84);
+            gradientPanel3.Location = new Point(621, 84);
             gradientPanel3.Name = "gradientPanel3";
             gradientPanel3.Padding = new Padding(15, 0, 0, 15);
-            gradientPanel3.Size = new Size(657, 513);
+            gradientPanel3.Size = new Size(616, 513);
             gradientPanel3.TabIndex = 2;
             // 
             // gradientPanel8
@@ -266,7 +270,7 @@
             gradientPanel8.Dock = DockStyle.Fill;
             gradientPanel8.Location = new Point(15, 279);
             gradientPanel8.Name = "gradientPanel8";
-            gradientPanel8.Size = new Size(642, 162);
+            gradientPanel8.Size = new Size(601, 162);
             gradientPanel8.TabIndex = 3;
             // 
             // gradientPanel13
@@ -279,7 +283,7 @@
             gradientPanel13.Location = new Point(0, 0);
             gradientPanel13.Name = "gradientPanel13";
             gradientPanel13.Padding = new Padding(10);
-            gradientPanel13.Size = new Size(640, 61);
+            gradientPanel13.Size = new Size(599, 61);
             gradientPanel13.TabIndex = 0;
             // 
             // autoLabel7
@@ -299,7 +303,7 @@
             gradientPanel7.Dock = DockStyle.Bottom;
             gradientPanel7.Location = new Point(15, 441);
             gradientPanel7.Name = "gradientPanel7";
-            gradientPanel7.Size = new Size(642, 57);
+            gradientPanel7.Size = new Size(601, 57);
             gradientPanel7.TabIndex = 2;
             // 
             // btnCancel
@@ -330,7 +334,7 @@
             gradientPanel6.Dock = DockStyle.Top;
             gradientPanel6.Location = new Point(15, 260);
             gradientPanel6.Name = "gradientPanel6";
-            gradientPanel6.Size = new Size(642, 19);
+            gradientPanel6.Size = new Size(601, 19);
             gradientPanel6.TabIndex = 1;
             // 
             // gradientPanel5
@@ -345,7 +349,7 @@
             gradientPanel5.Location = new Point(15, 0);
             gradientPanel5.Name = "gradientPanel5";
             gradientPanel5.Padding = new Padding(10);
-            gradientPanel5.Size = new Size(642, 260);
+            gradientPanel5.Size = new Size(601, 260);
             gradientPanel5.TabIndex = 0;
             // 
             // btnEdit
@@ -353,7 +357,7 @@
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnEdit.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEdit.ImageSize = new Size(16, 16);
-            btnEdit.Location = new Point(571, 15);
+            btnEdit.Location = new Point(530, 15);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(56, 25);
             btnEdit.TabIndex = 4;
@@ -371,7 +375,7 @@
             gradientPanel11.Controls.Add(autoLabel4);
             gradientPanel11.Location = new Point(13, 60);
             gradientPanel11.Name = "gradientPanel11";
-            gradientPanel11.Size = new Size(614, 185);
+            gradientPanel11.Size = new Size(573, 185);
             gradientPanel11.TabIndex = 4;
             // 
             // gradientPanel12
@@ -384,7 +388,7 @@
             gradientPanel12.Location = new Point(5, 122);
             gradientPanel12.Name = "gradientPanel12";
             gradientPanel12.Padding = new Padding(10);
-            gradientPanel12.Size = new Size(609, 63);
+            gradientPanel12.Size = new Size(568, 63);
             gradientPanel12.TabIndex = 4;
             // 
             // autoLabel6
@@ -411,14 +415,14 @@
             // txtPhoneNumber
             // 
             txtPhoneNumber.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtPhoneNumber.BeforeTouchSize = new Size(611, 25);
+            txtPhoneNumber.BeforeTouchSize = new Size(576, 25);
             txtPhoneNumber.FocusBorderColor = Color.FromArgb(5, 142, 223);
             txtPhoneNumber.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPhoneNumber.Location = new Point(3, 87);
             txtPhoneNumber.Margin = new Padding(3, 3, 3, 7);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.ReadOnly = true;
-            txtPhoneNumber.Size = new Size(611, 25);
+            txtPhoneNumber.Size = new Size(570, 25);
             txtPhoneNumber.TabIndex = 3;
             // 
             // autoLabel5
@@ -435,14 +439,14 @@
             // txtFullname
             // 
             txtFullname.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtFullname.BeforeTouchSize = new Size(611, 25);
+            txtFullname.BeforeTouchSize = new Size(576, 25);
             txtFullname.FocusBorderColor = Color.FromArgb(5, 142, 223);
             txtFullname.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtFullname.Location = new Point(3, 27);
             txtFullname.Margin = new Padding(3, 3, 3, 7);
             txtFullname.Name = "txtFullname";
             txtFullname.ReadOnly = true;
-            txtFullname.Size = new Size(611, 25);
+            txtFullname.Size = new Size(570, 25);
             txtFullname.TabIndex = 1;
             // 
             // autoLabel4
@@ -464,6 +468,11 @@
             autoLabel3.Size = new Size(127, 17);
             autoLabel3.TabIndex = 3;
             autoLabel3.Text = "Patient Information";
+            // 
+            // searchTimer
+            // 
+            searchTimer.Interval = 300;
+            searchTimer.Tick += searchTimer_Tick;
             // 
             // Patients
             // 
@@ -487,7 +496,7 @@
             ((System.ComponentModel.ISupportInitialize)gradientPanel9).EndInit();
             gradientPanel9.ResumeLayout(false);
             gradientPanel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtSearchBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel8).EndInit();
@@ -542,7 +551,8 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
         private Syncfusion.WinForms.Controls.SfButton btnEdit;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSearchBox;
         private Syncfusion.WinForms.DataGrid.SfDataGrid dgvPatients;
+        private System.Windows.Forms.Timer searchTimer;
     }
 }
