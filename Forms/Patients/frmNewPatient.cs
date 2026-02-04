@@ -2,10 +2,12 @@
 using LabLink.Helper;
 using LabLink.Models;
 using LabLink.Services;
+using LabLink.UC;
 using Microsoft.Data.SqlClient;
 using Syncfusion.Windows.Forms;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -18,9 +20,13 @@ namespace LabLink.Forms.Patients
 {
     public partial class frmNewPatient : MetroForm
     {
-        public frmNewPatient()
+        private ObservableCollection<PatientsModel> _patientsCollection;
+        public frmNewPatient(ObservableCollection<PatientsModel> patientCollection)
         {
             InitializeComponent();
+
+            _patientsCollection = patientCollection;
+
             ButtonStyles.PrimaryButton(btnAddPatient);
             ButtonStyles.SecondaryButton(btnCancel);
 
@@ -64,12 +70,17 @@ namespace LabLink.Forms.Patients
                 }
                 else
                 {
-                    bool isSuccess = PatientService.AddPatient(patient.FullName, patient.PhoneNumber, patient.ConsentToSMS);
-
-                    if (isSuccess)
+                    try
                     {
-                        this.DialogResult = DialogResult.OK;
+                        int newID = PatientService.AddPatient(patient);
+                        patient.PatientID = newID;
+                        _patientsCollection.Add(patient);
+                        MessageBox.Show("Patient added successfully");
                         this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Failed to add patient");
                     }
                 }
             }

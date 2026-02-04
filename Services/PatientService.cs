@@ -4,6 +4,7 @@ using LabLink.UC;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
@@ -12,49 +13,38 @@ namespace LabLink.Services
 {
     public static class PatientService
     {
-        public static bool AddPatient(string fullName, string phoneNumber, bool consentToSMS)
+        public static int AddPatient(PatientsModel patients)
         {
             string query = "INSERT INTO Patients (FullName, PhoneNumber, ConsentToSMS) " +
                            "VALUES (@FullName, @PhoneNumber, @ConsentToSMS)";
 
-            try
+            using (var conn = DBConnection.GetConnection())
             {
-                using (var conn = DBConnection.GetConnection())
+                conn.Open();
+                using (var cmd = new SqlCommand(query, conn))
                 {
-                    conn.Open();
+                    cmd.Parameters.AddWithValue("@FullName", patients.FullName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", patients.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@ConsentToSMS", patients.ConsentToSMS);
 
-                    using (var cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@FullName", fullName);
-                        cmd.Parameters.AddWithValue("@PhoneNumber", phoneNumber);
-                        cmd.Parameters.AddWithValue("@ConsentToSMS", consentToSMS);
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                    return (int)cmd.ExecuteNonQuery();
 
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Patient added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return true;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to add patient.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
-                        }
-                    }
+                    //if (rowsAffected > 0)
+                    //{
+                    //    MessageBox.Show("Patient added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Failed to add patient.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while adding the patient: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
             }
         }
 
-        public async static Task<DataTable> GetPatients()
+        public async static Task<ObservableCollection<PatientsModel>> GetPatients()
         {
             string query = "SELECT PatientID, FullName, PhoneNumber FROM Patients";
-
-            var dataTable = new DataTable();
+            var patients = new ObservableCollection<PatientsModel>();
 
             try
             {
@@ -66,7 +56,15 @@ namespace LabLink.Services
                     {
                         using (var reader = await cmd.ExecuteReaderAsync())
                         {
-                            dataTable.Load(reader);
+                            while (await reader.ReadAsync())
+                            {
+                                patients.Add(new PatientsModel
+                                {
+                                    PatientID = reader.GetInt32(reader.GetOrdinal("PatientID")),
+                                    FullName = reader.GetString(reader.GetOrdinal("FullName")),
+                                    PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
+                                });
+                            }
                         }
                     }
                 }
@@ -76,7 +74,7 @@ namespace LabLink.Services
                 MessageBox.Show("An error occurred while retrieving patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return dataTable;
+            return patients;
         }
 
         public async static Task<PatientsModel?> GetPatientById(int patientId)

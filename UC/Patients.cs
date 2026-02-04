@@ -3,6 +3,7 @@ using LabLink.Models;
 using LabLink.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -14,6 +15,7 @@ namespace LabLink.UC
 {
     public partial class Patients : UserControl
     {
+        private ObservableCollection<PatientsModel> patientsCollection;
         public Patients()
         {
             InitializeComponent();
@@ -26,25 +28,39 @@ namespace LabLink.UC
 
         private async void btnAddPatient_Click(object sender, EventArgs e)
         {
-            DialogResult result = new Forms.Patients.frmNewPatient().ShowDialog();
+            new Forms.Patients.frmNewPatient(patientsCollection).ShowDialog();
 
-            if (result == DialogResult.OK)
-            {
-                dgvPatients.DataSource = await Services.PatientService.GetPatients();
-            }
+            //if (result == DialogResult.OK)
+            //{
+            //    dgvPatients.DataSource = await Services.PatientService.GetPatients();
+            //}
         }
 
-        private async void LoadData()
+        private async Task LoadData()
         {
-            dgvPatients.DataSource = await Services.PatientService.GetPatients();
-            dgvPatients.Columns["PatientID"].Visible = false;
-            dgvPatients.RowHeadersVisible = false;
-            dgvPatients.ColumnHeadersVisible = false;
+            //dgvPatients.DataSource = await Services.PatientService.GetPatients();
+            //dgvPatients.Columns["PatientID"].Visible = false;
+            ////dgvPatients.RowHeadersVisible = false;
+            ////dgvPatients.ColumnHeadersVisible = false;
+            ///
+
+            try
+            {
+                patientsCollection = await PatientService.GetPatients();
+                dgvPatients.DataSource = patientsCollection;
+
+                dgvPatients.Columns["PatientID"].Visible = false;
+                dgvPatients.Columns["ConsentToSMS"].Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while loading patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private async void Patients_Load(object sender, EventArgs e)
         {
-            LoadData();
+            await LoadData();
         }
 
         private async void btnRefresh_Click(object sender, EventArgs e)
@@ -53,20 +69,11 @@ namespace LabLink.UC
             ClearFields();
         }
 
-        private async void dgvPatients_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                int patientId = Convert.ToInt32(dgvPatients.Rows[e.RowIndex].Cells["PatientID"].Value);
-                await PopulatePatientInfo(patientId);
-            }
-        }
-
         private async Task PopulatePatientInfo(int patientId)
         {
             try
             {
-                PatientsModel patient = await PatientService.GetPatientById(patientId);
+                PatientsModel? patient = await PatientService.GetPatientById(patientId);
 
                 if (patient != null)
                 {
@@ -108,6 +115,23 @@ namespace LabLink.UC
             txtFullname.ReadOnly = true;
             txtPhoneNumber.ReadOnly = true;
             cbConsentSMS.Enabled = false;
+        }
+
+        private async void dgvPatients_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            if (e.DataRow.Index >= 0)
+            {
+                if (e.DataRow.RowData is PatientsModel patient)
+                {
+                    int patientId = patient.PatientID;
+                    await PopulatePatientInfo(patientId);
+                }
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }

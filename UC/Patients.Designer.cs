@@ -30,7 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patients));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
@@ -39,7 +40,7 @@
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel4 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            dgvPatients = new DataGridView();
+            dgvPatients = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             gradientPanel9 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
@@ -178,33 +179,35 @@
             // 
             // dgvPatients
             // 
-            dgvPatients.AllowUserToAddRows = false;
-            dgvPatients.AllowUserToDeleteRows = false;
-            dgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvPatients.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
-            dgvPatients.BackgroundColor = Color.White;
-            dgvPatients.BorderStyle = BorderStyle.None;
-            dgvPatients.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dgvPatients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.Padding = new Padding(10);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(235, 242, 255);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvPatients.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvPatients.AccessibleName = "Table";
+            dgvPatients.AllowEditing = false;
+            dgvPatients.AllowGrouping = false;
+            dgvPatients.AllowTriStateSorting = true;
+            dgvPatients.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             dgvPatients.Dock = DockStyle.Fill;
-            dgvPatients.EnableHeadersVisualStyles = false;
-            dgvPatients.GridColor = Color.FromArgb(218, 223, 231);
+            dgvPatients.HeaderRowHeight = 0;
             dgvPatients.Location = new Point(0, 56);
-            dgvPatients.MultiSelect = false;
             dgvPatients.Name = "dgvPatients";
-            dgvPatients.ReadOnly = true;
-            dgvPatients.ScrollBars = ScrollBars.Vertical;
-            dgvPatients.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPatients.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
+            dgvPatients.RowHeight = 50;
             dgvPatients.Size = new Size(563, 440);
+            dgvPatients.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            dgvPatients.Style.BorderStyle = BorderStyle.None;
+            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvPatients.Style.CellStyle.Borders = gridBordersInfo1;
+            dgvPatients.Style.CellStyle.Font.Size = 10F;
+            dgvPatients.Style.CellStyle.HorizontalAlignment = HorizontalAlignment.Left;
+            dgvPatients.Style.CellStyle.TextMargins = new Padding(10, 0, 5, 0);
+            dgvPatients.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
+            dgvPatients.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
+            gridBordersInfo2.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvPatients.Style.HeaderStyle.Borders = gridBordersInfo2;
             dgvPatients.TabIndex = 1;
             dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
             // 
@@ -309,6 +312,7 @@
             btnCancel.Size = new Size(90, 40);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnNewTest
             // 
@@ -551,9 +555,9 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel6;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel13;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
-        private DataGridView dgvPatients;
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
         private Syncfusion.WinForms.Controls.SfButton btnEdit;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid dgvPatients;
     }
 }
