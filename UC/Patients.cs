@@ -20,9 +20,8 @@ namespace LabLink.UC
         {
             InitializeComponent();
             ButtonStyles.PrimaryButton(btnAddPatient);
-            ButtonStyles.PrimaryButton(btnSaveChanges);
             ButtonStyles.SecondaryButton(btnRefresh);
-            ButtonStyles.SecondaryButton(btnNewTest);
+            ButtonStyles.PrimaryButton(btnNewTest);
             ButtonStyles.TernaryButton(btnCancel);
         }
 
@@ -65,7 +64,7 @@ namespace LabLink.UC
 
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            dgvPatients.DataSource = await PatientService.GetPatients();
+            await LoadData();
             ClearFields();
         }
 
@@ -101,9 +100,36 @@ namespace LabLink.UC
         {
             if (!string.IsNullOrEmpty(txtFullname.Text) && !string.IsNullOrEmpty(txtPhoneNumber.Text))
             {
-                txtFullname.ReadOnly = false;
-                txtPhoneNumber.ReadOnly = false;
-                cbConsentSMS.Enabled = true;
+                if (btnEdit.Text == "Edit")
+                {
+                    btnEdit.Text = "Save";
+                    ButtonStyles.PrimaryButton(btnEdit);
+                    txtFullname.ReadOnly = false;
+                    txtPhoneNumber.ReadOnly = false;
+                    cbConsentSMS.Enabled = true;
+                }
+                else if (btnEdit.Text == "Save")
+                {
+                    try
+                    {
+                        if (dgvPatients.SelectedItem is PatientsModel selectedPatient)
+                        {
+                            selectedPatient.FullName = txtFullname.Text;
+                            selectedPatient.PhoneNumber = txtPhoneNumber.Text;
+                            selectedPatient.ConsentToSMS = cbConsentSMS.Checked;
+
+                            PatientService.UpdatePatient(selectedPatient);
+
+                            MessageBox.Show("Patient details updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            ClearFields();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred while updating patient details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
@@ -115,6 +141,8 @@ namespace LabLink.UC
             txtFullname.ReadOnly = true;
             txtPhoneNumber.ReadOnly = true;
             cbConsentSMS.Enabled = false;
+            btnEdit.Text = "Edit";
+            ButtonStyles.SecondaryButton(btnEdit);
         }
 
         private async void dgvPatients_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
@@ -125,6 +153,7 @@ namespace LabLink.UC
                 {
                     int patientId = patient.PatientID;
                     await PopulatePatientInfo(patientId);
+                    MessageBox.Show(patientId.ToString());
                 }
             }
         }

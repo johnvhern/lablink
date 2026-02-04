@@ -50,7 +50,6 @@
             gradientPanel7 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnCancel = new Syncfusion.WinForms.Controls.SfButton();
             btnNewTest = new Syncfusion.WinForms.Controls.SfButton();
-            btnSaveChanges = new Syncfusion.WinForms.Controls.SfButton();
             gradientPanel6 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel5 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnEdit = new Syncfusion.WinForms.Controls.SfButton();
@@ -297,7 +296,6 @@
             gradientPanel7.BorderStyle = BorderStyle.None;
             gradientPanel7.Controls.Add(btnCancel);
             gradientPanel7.Controls.Add(btnNewTest);
-            gradientPanel7.Controls.Add(btnSaveChanges);
             gradientPanel7.Dock = DockStyle.Bottom;
             gradientPanel7.Location = new Point(15, 441);
             gradientPanel7.Name = "gradientPanel7";
@@ -307,7 +305,7 @@
             // btnCancel
             // 
             btnCancel.Font = new Font("Segoe UI Semibold", 9F);
-            btnCancel.Location = new Point(270, 17);
+            btnCancel.Location = new Point(129, 17);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(90, 40);
             btnCancel.TabIndex = 2;
@@ -318,25 +316,13 @@
             // 
             btnNewTest.Font = new Font("Segoe UI Semibold", 9F);
             btnNewTest.ImageSize = new Size(16, 16);
-            btnNewTest.Location = new Point(141, 17);
+            btnNewTest.Location = new Point(0, 17);
             btnNewTest.Name = "btnNewTest";
             btnNewTest.Size = new Size(123, 40);
             btnNewTest.Style.Image = (Image)resources.GetObject("resource.Image2");
             btnNewTest.TabIndex = 1;
             btnNewTest.Text = "New Lab Test";
             btnNewTest.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // btnSaveChanges
-            // 
-            btnSaveChanges.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSaveChanges.ImageSize = new Size(16, 16);
-            btnSaveChanges.Location = new Point(0, 17);
-            btnSaveChanges.Name = "btnSaveChanges";
-            btnSaveChanges.Size = new Size(135, 40);
-            btnSaveChanges.Style.Image = (Image)resources.GetObject("resource.Image3");
-            btnSaveChanges.TabIndex = 0;
-            btnSaveChanges.Text = "Save Changes";
-            btnSaveChanges.TextAlign = ContentAlignment.MiddleRight;
             // 
             // gradientPanel6
             // 
@@ -540,7 +526,6 @@
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel7;
         private Syncfusion.WinForms.Controls.SfButton btnCancel;
         private Syncfusion.WinForms.Controls.SfButton btnNewTest;
-        private Syncfusion.WinForms.Controls.SfButton btnSaveChanges;
         private Syncfusion.WinForms.Controls.SfButton btnAddPatient;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel9;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;

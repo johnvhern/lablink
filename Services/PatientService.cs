@@ -41,6 +41,25 @@ namespace LabLink.Services
             }
         }
 
+        public static void UpdatePatient(PatientsModel patient)
+        {
+            string query = "UPDATE Patients SET FullName = @FullName, PhoneNumber = @PhoneNumber, ConsentToSMS = @ConsentToSMS WHERE PatientID = @PatientID";
+
+            using (var conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@PatientID", patient.PatientID);
+                    cmd.Parameters.AddWithValue("@FullName", patient.FullName);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", patient.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@ConsentToSMS", patient.ConsentToSMS);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public async static Task<ObservableCollection<PatientsModel>> GetPatients()
         {
             string query = "SELECT PatientID, FullName, PhoneNumber FROM Patients";
