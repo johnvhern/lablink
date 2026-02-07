@@ -40,6 +40,7 @@
             textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             checkBoxAdv1 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            dgvTestTypes = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
@@ -48,6 +49,8 @@
             ((System.ComponentModel.ISupportInitialize)textBoxExt1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
+            gradientPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvTestTypes).BeginInit();
             SuspendLayout();
             // 
             // gradientPanel1
@@ -169,10 +172,24 @@
             gradientPanel3.BackColor = Color.White;
             gradientPanel3.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel3.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel3.Controls.Add(dgvTestTypes);
             gradientPanel3.Location = new Point(15, 155);
             gradientPanel3.Name = "gradientPanel3";
             gradientPanel3.Size = new Size(1222, 439);
             gradientPanel3.TabIndex = 2;
+            // 
+            // dgvTestTypes
+            // 
+            dgvTestTypes.AccessibleName = "Table";
+            dgvTestTypes.Dock = DockStyle.Fill;
+            dgvTestTypes.Location = new Point(0, 0);
+            dgvTestTypes.Name = "dgvTestTypes";
+            dgvTestTypes.Size = new Size(1220, 437);
+            dgvTestTypes.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            dgvTestTypes.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
+            dgvTestTypes.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
+            dgvTestTypes.TabIndex = 0;
+            dgvTestTypes.Text = "sfDataGrid1";
             // 
             // TestTypes
             // 
@@ -184,6 +201,7 @@
             Name = "TestTypes";
             Padding = new Padding(15);
             Size = new Size(1252, 612);
+            Load += TestTypes_Load;
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).EndInit();
             gradientPanel1.ResumeLayout(false);
             gradientPanel1.PerformLayout();
@@ -193,6 +211,8 @@
             ((System.ComponentModel.ISupportInitialize)textBoxExt1).EndInit();
             ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).EndInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
+            gradientPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvTestTypes).EndInit();
             ResumeLayout(false);
         }
 
@@ -208,5 +228,6 @@
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid dgvTestTypes;
     }
 }

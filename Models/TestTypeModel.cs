@@ -11,6 +11,7 @@ namespace LabLink.Models
         public int _TestTypeID;
         public string _TestTypeName;
         public int _CategoryID;
+        public int _TurnAroundTime;
         public bool _isActive;
 
         public int TestTypeID
@@ -43,6 +44,17 @@ namespace LabLink.Models
             {
                 _CategoryID = value;
                 OnPropertyChanged(nameof(CategoryID));
+            }
+        }
+
+        [Required(ErrorMessage = "Turnaround time cannot be 0.")]
+        public int TurnAroundTime
+        {
+            get => _TurnAroundTime;
+            set
+            {
+                _TurnAroundTime = value;
+                OnPropertyChanged(nameof(_TurnAroundTime));
             }
         }
 

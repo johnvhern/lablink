@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewTest));
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnCancel = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
@@ -98,6 +98,7 @@
             btnAddTestType.TabIndex = 3;
             btnAddTestType.Text = "Add Test Type";
             btnAddTestType.TextAlign = ContentAlignment.MiddleRight;
+            btnAddTestType.Click += btnAddTestType_Click;
             // 
             // gradientPanel2
             // 
@@ -268,10 +269,10 @@
             // txtTestTypeName
             // 
             txtTestTypeName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            bannerTextInfo2.Text = "e.g., Complete Blood Count (CBC)";
-            bannerTextInfo2.Visible = true;
-            bannerTextProvider1.SetBannerText(txtTestTypeName, bannerTextInfo2);
-            txtTestTypeName.BeforeTouchSize = new Size(399, 25);
+            bannerTextInfo1.Text = "e.g., Complete Blood Count (CBC)";
+            bannerTextInfo1.Visible = true;
+            bannerTextProvider1.SetBannerText(txtTestTypeName, bannerTextInfo1);
+            txtTestTypeName.BeforeTouchSize = new Size(360, 25);
             txtTestTypeName.BorderColor = Color.FromArgb(209, 211, 212);
             txtTestTypeName.BorderStyle = BorderStyle.FixedSingle;
             txtTestTypeName.FocusBorderColor = Color.FromArgb(30, 72, 207);
@@ -316,6 +317,7 @@
             ShowMinimizeBox = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add New Test Type";
+            Load += frmNewTest_Load;
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).EndInit();
             gradientPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
