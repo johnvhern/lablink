@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
             Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
@@ -181,13 +183,36 @@
             // dgvTestTypes
             // 
             dgvTestTypes.AccessibleName = "Table";
+            dgvTestTypes.AllowEditing = false;
+            dgvTestTypes.AllowGrouping = false;
+            dgvTestTypes.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             dgvTestTypes.Dock = DockStyle.Fill;
             dgvTestTypes.Location = new Point(0, 0);
             dgvTestTypes.Name = "dgvTestTypes";
+            dgvTestTypes.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
+            dgvTestTypes.RowHeight = 40;
             dgvTestTypes.Size = new Size(1220, 437);
             dgvTestTypes.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            dgvTestTypes.Style.BorderStyle = BorderStyle.None;
+            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvTestTypes.Style.CellStyle.Borders = gridBordersInfo1;
+            dgvTestTypes.Style.CellStyle.Font.Size = 10F;
+            dgvTestTypes.Style.CellStyle.TextMargins = new Padding(15, 0, 15, 0);
             dgvTestTypes.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
             dgvTestTypes.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
+            dgvTestTypes.Style.HeaderStyle.BackColor = Color.FromArgb(243, 244, 246);
+            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvTestTypes.Style.HeaderStyle.Borders = gridBordersInfo2;
+            dgvTestTypes.Style.HeaderStyle.Font.Bold = true;
+            dgvTestTypes.Style.HeaderStyle.Font.Size = 9F;
+            dgvTestTypes.Style.HeaderStyle.HorizontalAlignment = HorizontalAlignment.Left;
+            dgvTestTypes.Style.HeaderStyle.HoverBackColor = Color.FromArgb(243, 244, 246);
+            dgvTestTypes.Style.HeaderStyle.HoverTextColor = Color.FromArgb(107, 112, 129);
+            dgvTestTypes.Style.HeaderStyle.PressedTextColor = Color.FromArgb(107, 112, 129);
+            dgvTestTypes.Style.HeaderStyle.TextColor = Color.FromArgb(107, 112, 129);
+            dgvTestTypes.Style.HeaderStyle.TextMargins = new Padding(13, 0, 13, 0);
             dgvTestTypes.TabIndex = 0;
             dgvTestTypes.Text = "sfDataGrid1";
             // 

@@ -66,6 +66,7 @@ namespace LabLink.Forms.TestTypes
                 {
                     TestTypeName = txtTestTypeName.Text,
                     CategoryID = (int)cmbCategory.SelectedValue,
+                    CategoryName = cmbCategory.Text,
                     TurnAroundTime = (int)txtTurnaroundTime.Value,
                     isActive = cbIsActive.Checked
                 };

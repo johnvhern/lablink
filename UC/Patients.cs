@@ -31,7 +31,6 @@ namespace LabLink.UC
 
             dgvPatients.AutoGenerateColumns = false;
 
-            // Add other columns
             dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PatientID"});
             dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName" });
             dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber"});
@@ -58,7 +57,6 @@ namespace LabLink.UC
                 dgvPatients.DataSource = patientsCollection;
 
                 dgvPatients.Columns["PatientID"].Visible = false;
-                //dgvPatients.Columns["ConsentToSMS"].Visible = false;
                 dgvPatients.Columns["FullName"].CellStyle.Font.Bold = true;
 
                 if (dgvPatients.View != null)

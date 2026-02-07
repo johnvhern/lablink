@@ -14,7 +14,7 @@ namespace LabLink.Services
     {
         public async static Task<ObservableCollection<TestTypeModel>> GetTestTypes()
         {
-            string query = "SELECT TestID, TestTypeName, Category, TurnAroundTime, IsActive FROM TestTypes";
+            string query = "SELECT TestID, TestTypeName, Category, CategoryName, TurnAroundTime, IsActive FROM TestTypes INNER JOIN TestCategory ON TestTypes.Category = TestCategory.CategoryID";
             var testTypes = new ObservableCollection<TestTypeModel>();
 
             try
@@ -33,6 +33,8 @@ namespace LabLink.Services
                                 {
                                     TestTypeID = reader.GetInt32(reader.GetOrdinal("TestID")),
                                     TestTypeName = reader.GetString(reader.GetOrdinal("TestTypeName")),
+                                    CategoryID = reader.GetInt32(reader.GetOrdinal("Category")),
+                                    CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
                                     TurnAroundTime = reader.GetInt32(reader.GetOrdinal("TurnAroundTime")),
                                     isActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
                                 });
