@@ -68,7 +68,7 @@ namespace LabLink.Forms.TestTypes
                     CategoryID = (int)cmbCategory.SelectedValue,
                     CategoryName = cmbCategory.Text,
                     TurnAroundTime = (int)txtTurnaroundTime.Value,
-                    isActive = cbIsActive.Checked
+                    IsActive = cbIsActive.Checked
                 };
 
                 var context = new ValidationContext(testType, null, null);

@@ -13,7 +13,7 @@ namespace LabLink.Models
         public int _CategoryID;
         public string _CategoryName;
         public int _TurnAroundTime;
-        public bool _isActive;
+        public bool _IsActive;
 
         public int TestTypeID
         {
@@ -69,13 +69,13 @@ namespace LabLink.Models
             }
         }
 
-        public bool isActive
+        public bool IsActive
         {
-            get => _isActive;
+            get => _IsActive;
             set
             {
-                _isActive = value;
-                OnPropertyChanged(nameof(isActive));
+                _IsActive = value;
+                OnPropertyChanged(nameof(IsActive));
             }
         }
 

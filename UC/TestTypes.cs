@@ -24,21 +24,16 @@ namespace LabLink.UC
 
             dgvTestTypes.AutoGenerateColumns = false;
 
-            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TestTypeName" });
-            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "CategoryName" });
-            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TurnAroundTime" });
-            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "IsActive", Width = 100});
+            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TestTypeName", HeaderText = "TEST TYPE" });
+            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "CategoryName", HeaderText = "CATEGORY" });
+            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TurnAroundTime", HeaderText = "TURNAROUND (HRS)" });
+            dgvTestTypes.Columns.Add(new GridCheckBoxColumn { MappingName = "IsActive", Width = 150, HeaderText = "STATUS" });
         }
 
         private async Task LoadData()
         {
             try
             {
-                dgvTestTypes.Columns["TestTypeName"].HeaderText = "TEST TYPE";
-                dgvTestTypes.Columns["CategoryName"].HeaderText = "CATEGORY";
-                dgvTestTypes.Columns["TurnAroundTime"].HeaderText = "TURNAROUND (HRS)";
-                dgvTestTypes.Columns["IsActive"].HeaderText = "STATUS";
-
                 testTypeCollection = await TestTypeService.GetTestTypes();
                 dgvTestTypes.DataSource = testTypeCollection;
             }

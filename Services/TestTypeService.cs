@@ -36,7 +36,7 @@ namespace LabLink.Services
                                     CategoryID = reader.GetInt32(reader.GetOrdinal("Category")),
                                     CategoryName = reader.GetString(reader.GetOrdinal("CategoryName")),
                                     TurnAroundTime = reader.GetInt32(reader.GetOrdinal("TurnAroundTime")),
-                                    isActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
                                 });
                             }
                         }
@@ -83,7 +83,7 @@ namespace LabLink.Services
                     cmd.Parameters.AddWithValue("@TestTypeName", testType.TestTypeName);
                     cmd.Parameters.AddWithValue("@Category", testType.CategoryID);
                     cmd.Parameters.AddWithValue("@TurnAroundTime", testType.TurnAroundTime);
-                    cmd.Parameters.AddWithValue("@IsActive", testType.isActive);
+                    cmd.Parameters.AddWithValue("@IsActive", testType.IsActive);
 
                     return (int)cmd.ExecuteNonQuery();
                 }
