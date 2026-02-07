@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
@@ -88,6 +88,7 @@
             btnAddTestType.TabIndex = 4;
             btnAddTestType.Text = "Add New Test Type";
             btnAddTestType.TextAlign = ContentAlignment.MiddleRight;
+            btnAddTestType.Click += btnAddTestType_Click;
             // 
             // autoLabel2
             // 
@@ -126,10 +127,10 @@
             // textBoxExt1
             // 
             textBoxExt1.BackColor = Color.FromArgb(249, 250, 251);
-            bannerTextInfo2.Text = "Search test types...";
-            bannerTextInfo2.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo2);
-            textBoxExt1.BeforeTouchSize = new Size(611, 25);
+            bannerTextInfo1.Text = "Search test types...";
+            bannerTextInfo1.Visible = true;
+            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo1);
+            textBoxExt1.BeforeTouchSize = new Size(295, 25);
             textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
             textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
             textBoxExt1.FocusBorderColor = Color.FromArgb(65, 0, 218);

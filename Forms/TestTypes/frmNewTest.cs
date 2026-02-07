@@ -1,4 +1,5 @@
 ﻿using LabLink.Helper;
+using Syncfusion.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,20 +8,15 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LabLink.UC
+namespace LabLink.Forms.TestTypes
 {
-    public partial class TestTypes : UserControl
+    public partial class frmNewTest : MetroForm
     {
-        public TestTypes()
+        public frmNewTest()
         {
             InitializeComponent();
             ButtonStyles.PrimaryButton(btnAddTestType);
-            ButtonStyles.SecondaryButton(btnRefresh);
-        }
-
-        private void btnAddTestType_Click(object sender, EventArgs e)
-        {
-            new Forms.TestTypes.frmNewTest().ShowDialog();
+            ButtonStyles.SecondaryButton(btnCancel);
         }
     }
 }
