@@ -215,6 +215,7 @@
             dgvTestTypes.Style.HeaderStyle.TextMargins = new Padding(13, 0, 13, 0);
             dgvTestTypes.TabIndex = 0;
             dgvTestTypes.Text = "sfDataGrid1";
+            dgvTestTypes.QueryCellStyle += dgvTestTypes_QueryCellStyle;
             // 
             // TestTypes
             // 

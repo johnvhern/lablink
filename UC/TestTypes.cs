@@ -1,7 +1,11 @@
 ﻿using LabLink.Helper;
 using LabLink.Models;
 using LabLink.Services;
+using Syncfusion.Windows.Forms.Enums;
+using Syncfusion.Windows.Forms.Grid;
+using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.DataGrid;
+using Syncfusion.WinForms.DataGrid.Styles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,8 +30,8 @@ namespace LabLink.UC
 
             dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TestTypeName", HeaderText = "TEST TYPE" });
             dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "CategoryName", HeaderText = "CATEGORY" });
-            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TurnAroundTime", HeaderText = "TURNAROUND (HRS)" });
-            dgvTestTypes.Columns.Add(new GridCheckBoxColumn { MappingName = "IsActive", Width = 150, HeaderText = "STATUS" });
+            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "TurnAroundTime", HeaderText = "TURNAROUND (HRS)", Format = "{0}h" });
+            dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "IsActive", Width = 150, HeaderText = "STATUS" });
         }
 
         private async Task LoadData()
@@ -51,6 +55,30 @@ namespace LabLink.UC
         private async void TestTypes_Load(object sender, EventArgs e)
         {
             await LoadData();
+        }
+
+        private void dgvTestTypes_QueryCellStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryCellStyleEventArgs e)
+        {
+            if (e.Column.MappingName == "IsActive")
+            {
+                if (e.DisplayText == "True")
+                {
+                    e.Style.TextColor = Color.Green;
+                    e.DisplayText = "Active";
+                    e.Style.Font.Bold = true;
+                }
+                else if (e.DisplayText == "False")
+                {
+                    e.Style.TextColor = Color.Red;
+                    e.DisplayText = "Inactive";
+                    e.Style.Font.Bold = true;
+                }
+            }
+
+            if (e.Column.MappingName == "TestTypeName")
+            {
+                e.Style.Font.Bold = true;
+            }
         }
     }
 }
