@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace LabLink.UC
 {
-    public partial class Patients : UserControl
+    public partial class Patients : UserControl, IAsyncLoadable
     {
         private ObservableCollection<PatientsModel> patientsCollection;
         private string searchText = string.Empty;
@@ -59,10 +59,10 @@ namespace LabLink.UC
                 frm.ShowDialog();
             }
 
-            await LoadData();
+            await LoadDataAsync();
         }
 
-        private async Task LoadData()
+        public async Task LoadDataAsync()
         {
             try
             {
@@ -109,12 +109,12 @@ namespace LabLink.UC
         private async void Patients_Load(object sender, EventArgs e)
         {
             currentPage = 1;
-            await LoadData();
+            await LoadDataAsync();
         }
 
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            await LoadData();
+            await LoadDataAsync();
             ClearFields();
         }
 
@@ -204,7 +204,7 @@ namespace LabLink.UC
         {
             searchTimer.Stop();
             currentPage = 1;
-            await LoadData();
+            await LoadDataAsync();
         }
 
         private void txtSearchBox_TextChanged(object sender, EventArgs e)
@@ -232,7 +232,7 @@ namespace LabLink.UC
         private async void btnNextPage_Click(object sender, EventArgs e)
         {
             currentPage++;
-            await LoadData();
+            await LoadDataAsync();
         }
 
         private async void btnPrevPage_Click(object sender, EventArgs e)
@@ -240,20 +240,20 @@ namespace LabLink.UC
             if (currentPage > 1)
             {
                 currentPage--;
-                await LoadData();
+                await LoadDataAsync();
             }
         }
 
         private async void btnLastPage_Click(object sender, EventArgs e)
         {
             currentPage = (int)Math.Ceiling((double)totalRecords / pageSize);
-            await LoadData();
+            await LoadDataAsync();
         }
 
         private async void btnFirstPage_Click(object sender, EventArgs e)
         {
             currentPage = 1;
-            await LoadData();
+            await LoadDataAsync();
         }
 
         private void ClearFields()

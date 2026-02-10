@@ -8,36 +8,59 @@ namespace LabLink.Services
     public class NavigationService : INavigationService
     {
         private readonly Panel _mainPanel;
+        private readonly Panel _loadingPanel;
         private readonly Dictionary<Type, UserControl> _cache = new Dictionary<Type, UserControl>();
 
-        public NavigationService(Panel mainPanel)
+        public NavigationService(Panel mainPanel, Panel loadingPanel)
         {
             _mainPanel = mainPanel;
+            _loadingPanel = loadingPanel;
         }
-        public void NavigateTo<T>() where T : UserControl
+        public async Task NavigateTo<T>() where T : UserControl
         {
             Type type = typeof(T);
 
-            if (!_cache.ContainsKey(type))
+            _loadingPanel.BringToFront();
+            _loadingPanel.Visible = true;
+            Application.DoEvents(); // Force UI to draw the loader
+
+            try
             {
-                _cache[type] = (T)Activator.CreateInstance(typeof(T));
+                // 2. Get or Create Control
+                if (!_cache.ContainsKey(type))
+                {
+                    _cache[type] = (T)Activator.CreateInstance(typeof(T));
+                }
+
+                UserControl control = _cache[type];
+
+                // 3. Ensure it's in the panel
+                if (!_mainPanel.Controls.Contains(control))
+                {
+                    control.Dock = DockStyle.Fill;
+                    _mainPanel.Controls.Add(control);
+                }
+
+                // 4. The Key Step: Load Data while hidden
+                if (control is IAsyncLoadable asyncControl)
+                {
+                    await asyncControl.LoadDataAsync();
+                }
+
+                // 5. Bring the populated control to front
+                control.BringToFront();
             }
-
-            UserControl control = _cache[type];
-
-            if (!_mainPanel.Controls.Contains(control))
+            finally
             {
-                _mainPanel.Controls.Clear();
-                control.Dock = DockStyle.Fill;
-                _mainPanel.Controls.Add(control);
+                // 6. Hide Loader
+                _loadingPanel.Visible = false;
+                _loadingPanel.SendToBack();
             }
-
-            control.BringToFront();
         }
 
-        public void NavigateTo<T>(object parameter) where T : UserControl
+        public Task NavigateTo<T>(object parameter) where T : UserControl
         {
-            // Implementation for passing data (e.g., Patient ID) to the next screen
+            return Task.CompletedTask;
         }
     }
 }

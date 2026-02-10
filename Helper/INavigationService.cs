@@ -6,7 +6,7 @@ namespace LabLink.Helper
 {
     public interface INavigationService
     {
-        void NavigateTo<T>() where T : UserControl;
-        void NavigateTo<T>(object parameter) where T : UserControl;
+        Task NavigateTo<T>() where T : UserControl;
+        Task NavigateTo<T>(object parameter) where T : UserControl;
     }
 }

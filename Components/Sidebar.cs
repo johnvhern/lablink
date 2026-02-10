@@ -50,47 +50,47 @@ namespace LabLink.Components
             activeButton.Style.HoverImageForeColor = Color.FromArgb(30, 72, 207);
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private async void btnDashboard_Click(object sender, EventArgs e)
         {
-            _navigationService.NavigateTo<Dashboard>();
+            await _navigationService.NavigateTo<Dashboard>();
             ColorActiveButton(btnDashboard);
         }
 
-        private void btnPendingTests_Click(object sender, EventArgs e)
+        private async void btnPendingTests_Click(object sender, EventArgs e)
         {
-            _navigationService.NavigateTo<PendingTests>();
+            await _navigationService.NavigateTo<PendingTests>();
             ColorActiveButton(btnPendingTests);
         }
 
-        private void btnCompletedTest_Click(object sender, EventArgs e)
+        private async void btnCompletedTest_Click(object sender, EventArgs e)
         {
-            _navigationService.NavigateTo<CompletedTests>();
+            await _navigationService.NavigateTo<CompletedTests>();
             ColorActiveButton(btnCompletedTest);
         }
 
-        private void btnSmsHistory_Click(object sender, EventArgs e)
+        private async void btnSmsHistory_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnPatients_Click(object sender, EventArgs e)
+        private async void btnPatients_Click(object sender, EventArgs e)
         {
-            _navigationService.NavigateTo<Patients>();
+            await _navigationService.NavigateTo<Patients>();
             ColorActiveButton(btnPatients);
         }
 
-        private void btnTestTypes_Click(object sender, EventArgs e)
+        private async void btnTestTypes_Click(object sender, EventArgs e)
         {
-            _navigationService.NavigateTo<TestTypes>();
+            await _navigationService.NavigateTo<TestTypes>();
             ColorActiveButton(btnTestTypes);
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
+        private async void btnSettings_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private async void btnLogout_Click(object sender, EventArgs e)
         {
 
         }
