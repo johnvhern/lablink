@@ -510,7 +510,6 @@
             dgvPatients.AllowEditing = false;
             dgvPatients.AllowGrouping = false;
             dgvPatients.AllowTriStateSorting = true;
-            dgvPatients.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             dgvPatients.Dock = DockStyle.Fill;
             dgvPatients.HeaderRowHeight = 0;
             dgvPatients.Location = new Point(0, 56);

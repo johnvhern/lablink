@@ -40,8 +40,8 @@ namespace LabLink.UC
             dgvPatients.AutoGenerateColumns = false;
 
             dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PatientID" });
-            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName" });
-            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber" });
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName", Width = 340 });
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber", Width = 200 });
 
             dgvPatients.Columns.Add(new GridImageColumn
             {
@@ -66,6 +66,8 @@ namespace LabLink.UC
         {
             try
             {
+                dgvPatients.ShowBusyIndicator = true;
+
                 string searchTerm = txtSearchBox.Text.Trim();
 
                 totalRecords = await PatientService.GetTotalPatientCount(searchTerm);
@@ -97,6 +99,10 @@ namespace LabLink.UC
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while loading patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dgvPatients.ShowBusyIndicator = false;
             }
         }
 
