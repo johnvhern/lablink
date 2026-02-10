@@ -24,6 +24,7 @@ namespace LabLink.UC
         public Patients()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             ButtonStyles.PrimaryButton(btnAddPatient);
             ButtonStyles.SecondaryButton(btnRefresh);
             ButtonStyles.PrimaryButton(btnNewTest);

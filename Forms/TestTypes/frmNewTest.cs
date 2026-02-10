@@ -58,6 +58,11 @@ namespace LabLink.Forms.TestTypes
             }
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnAddTestType_Click(object sender, EventArgs e)
         {
             try

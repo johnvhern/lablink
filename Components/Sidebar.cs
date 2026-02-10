@@ -17,23 +17,14 @@ namespace LabLink.Components
         private frmMain _main;
         private SfButton activeButton;
 
-        private Dashboard dashboard;
-        private PendingTests pendingTests;
-        private CompletedTests completedTests;
-        private Patients patients;
-        private TestTypes testTypes;
-        public Sidebar(frmMain main)
+        private readonly INavigationService _navigationService;
+        public Sidebar(INavigationService navigationService)
         {
             InitializeComponent();
             ButtonStyles.ApplyNavButtonStyle(this);
             ColorActiveButton(btnDashboard);
-            _main = main;
 
-            dashboard = new Dashboard();
-            pendingTests = new PendingTests();
-            completedTests = new CompletedTests();
-            patients = new Patients();
-            testTypes = new TestTypes();
+            _navigationService = navigationService;
         }
 
         private void ColorActiveButton(SfButton button)
@@ -61,19 +52,19 @@ namespace LabLink.Components
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            _main.OpenScreen(dashboard);
+            _navigationService.NavigateTo<Dashboard>();
             ColorActiveButton(btnDashboard);
         }
 
         private void btnPendingTests_Click(object sender, EventArgs e)
         {
-            _main.OpenScreen(pendingTests);
+            _navigationService.NavigateTo<PendingTests>();
             ColorActiveButton(btnPendingTests);
         }
 
         private void btnCompletedTest_Click(object sender, EventArgs e)
         {
-            _main.OpenScreen(completedTests);
+            _navigationService.NavigateTo<CompletedTests>();
             ColorActiveButton(btnCompletedTest);
         }
 
@@ -84,13 +75,13 @@ namespace LabLink.Components
 
         private void btnPatients_Click(object sender, EventArgs e)
         {
-            _main.OpenScreen(patients);
+            _navigationService.NavigateTo<Patients>();
             ColorActiveButton(btnPatients);
         }
 
         private void btnTestTypes_Click(object sender, EventArgs e)
         {
-            _main.OpenScreen(testTypes);
+            _navigationService.NavigateTo<TestTypes>();
             ColorActiveButton(btnTestTypes);
         }
 

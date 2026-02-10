@@ -13,6 +13,7 @@ namespace LabLink.UC
         public Dashboard()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
     }
 }

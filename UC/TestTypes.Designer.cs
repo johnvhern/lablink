@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
-            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
-            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo3 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo4 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
@@ -44,6 +44,10 @@
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             dgvTestTypes = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
+            sfButton1 = new Syncfusion.WinForms.Controls.SfButton();
+            sfButton2 = new Syncfusion.WinForms.Controls.SfButton();
+            sfButton3 = new Syncfusion.WinForms.Controls.SfButton();
+            sfButton4 = new Syncfusion.WinForms.Controls.SfButton();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -132,9 +136,9 @@
             // textBoxExt1
             // 
             textBoxExt1.BackColor = Color.FromArgb(249, 250, 251);
-            bannerTextInfo1.Text = "Search test types...";
-            bannerTextInfo1.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo1);
+            bannerTextInfo2.Text = "Search test types...";
+            bannerTextInfo2.Visible = true;
+            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo2);
             textBoxExt1.BeforeTouchSize = new Size(295, 25);
             textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
             textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
@@ -177,7 +181,7 @@
             gradientPanel3.Controls.Add(dgvTestTypes);
             gradientPanel3.Location = new Point(15, 155);
             gradientPanel3.Name = "gradientPanel3";
-            gradientPanel3.Size = new Size(1222, 439);
+            gradientPanel3.Size = new Size(1222, 393);
             gradientPanel3.TabIndex = 2;
             // 
             // dgvTestTypes
@@ -185,26 +189,32 @@
             dgvTestTypes.AccessibleName = "Table";
             dgvTestTypes.AllowEditing = false;
             dgvTestTypes.AllowGrouping = false;
+            dgvTestTypes.AllowTriStateSorting = true;
             dgvTestTypes.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
             dgvTestTypes.Dock = DockStyle.Fill;
+            dgvTestTypes.HeaderRowHeight = 40;
             dgvTestTypes.Location = new Point(0, 0);
             dgvTestTypes.Name = "dgvTestTypes";
             dgvTestTypes.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
             dgvTestTypes.RowHeight = 40;
-            dgvTestTypes.Size = new Size(1220, 437);
+            dgvTestTypes.Size = new Size(1220, 391);
             dgvTestTypes.Style.BorderColor = Color.FromArgb(100, 100, 100);
             dgvTestTypes.Style.BorderStyle = BorderStyle.None;
-            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvTestTypes.Style.CellStyle.Borders = gridBordersInfo1;
+            gridBordersInfo3.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo3.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo3.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo3.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvTestTypes.Style.CellStyle.Borders = gridBordersInfo3;
             dgvTestTypes.Style.CellStyle.Font.Size = 10F;
             dgvTestTypes.Style.CellStyle.TextMargins = new Padding(15, 0, 15, 0);
             dgvTestTypes.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
             dgvTestTypes.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
             dgvTestTypes.Style.HeaderStyle.BackColor = Color.FromArgb(243, 244, 246);
-            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvTestTypes.Style.HeaderStyle.Borders = gridBordersInfo2;
+            gridBordersInfo4.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo4.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo4.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo4.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvTestTypes.Style.HeaderStyle.Borders = gridBordersInfo4;
             dgvTestTypes.Style.HeaderStyle.Font.Bold = true;
             dgvTestTypes.Style.HeaderStyle.Font.Size = 9F;
             dgvTestTypes.Style.HeaderStyle.HorizontalAlignment = HorizontalAlignment.Left;
@@ -217,10 +227,54 @@
             dgvTestTypes.Text = "sfDataGrid1";
             dgvTestTypes.QueryCellStyle += dgvTestTypes_QueryCellStyle;
             // 
+            // sfButton1
+            // 
+            sfButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            sfButton1.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton1.Location = new Point(1188, 553);
+            sfButton1.Name = "sfButton1";
+            sfButton1.Size = new Size(49, 28);
+            sfButton1.TabIndex = 3;
+            sfButton1.Text = ">>";
+            // 
+            // sfButton2
+            // 
+            sfButton2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            sfButton2.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton2.Location = new Point(1133, 553);
+            sfButton2.Name = "sfButton2";
+            sfButton2.Size = new Size(49, 28);
+            sfButton2.TabIndex = 4;
+            sfButton2.Text = ">";
+            // 
+            // sfButton3
+            // 
+            sfButton3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            sfButton3.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton3.Location = new Point(1078, 554);
+            sfButton3.Name = "sfButton3";
+            sfButton3.Size = new Size(49, 28);
+            sfButton3.TabIndex = 5;
+            sfButton3.Text = "<";
+            // 
+            // sfButton4
+            // 
+            sfButton4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            sfButton4.Font = new Font("Segoe UI Semibold", 9F);
+            sfButton4.Location = new Point(1023, 554);
+            sfButton4.Name = "sfButton4";
+            sfButton4.Size = new Size(49, 28);
+            sfButton4.TabIndex = 5;
+            sfButton4.Text = "<<";
+            // 
             // TestTypes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(sfButton4);
+            Controls.Add(sfButton3);
+            Controls.Add(sfButton2);
+            Controls.Add(sfButton1);
             Controls.Add(gradientPanel3);
             Controls.Add(gradientPanel2);
             Controls.Add(gradientPanel1);
@@ -255,5 +309,9 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private Syncfusion.WinForms.DataGrid.SfDataGrid dgvTestTypes;
+        private Syncfusion.WinForms.Controls.SfButton sfButton1;
+        private Syncfusion.WinForms.Controls.SfButton sfButton2;
+        private Syncfusion.WinForms.Controls.SfButton sfButton3;
+        private Syncfusion.WinForms.Controls.SfButton sfButton4;
     }
 }

@@ -23,6 +23,7 @@ namespace LabLink.UC
         public TestTypes()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             ButtonStyles.PrimaryButton(btnAddTestType);
             ButtonStyles.SecondaryButton(btnRefresh);
 

@@ -14,12 +14,21 @@ namespace LabLink.Forms
 {
     public partial class frmMain : Form
     {
+        private readonly Services.NavigationService _navigationService;
         public frmMain()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
-            Sidebar sidebar = new Sidebar(this);
+            // Reduce Flickering
+            typeof(Panel).InvokeMember("DoubleBuffered",
+            System.Reflection.BindingFlags.SetProperty |
+            System.Reflection.BindingFlags.Instance |
+            System.Reflection.BindingFlags.NonPublic,
+            null, mainPanel, new object[] { true });
+
+            _navigationService = new Services.NavigationService(this.mainPanel);
+            Sidebar sidebar = new Sidebar(_navigationService);
             sidebar.Dock = DockStyle.Left;
             this.Controls.Add(sidebar);
 
@@ -75,18 +84,10 @@ namespace LabLink.Forms
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            OpenScreen(new UC.Dashboard());
+            _navigationService.NavigateTo<UC.Dashboard>();
+
             appVersion();
             status();
         }
-
-        public void OpenScreen(UserControl control)
-        {
-            mainPanel.Controls.Clear();
-            control.Dock = DockStyle.Fill;
-            mainPanel.Controls.Add(control);
-            control.Show();
-        }
-
     }
 }
