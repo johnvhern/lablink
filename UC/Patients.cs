@@ -60,10 +60,6 @@ namespace LabLink.UC
                 dgvPatients.Columns["PatientID"].Visible = false;
                 dgvPatients.Columns["FullName"].CellStyle.Font.Bold = true;
 
-                if (dgvPatients.View != null)
-                {
-                    dgvPatients.View.Filter = FilterRecords;
-                }
             }
             catch (Exception ex)
             {
@@ -176,15 +172,26 @@ namespace LabLink.UC
             ClearFields();
         }
 
-        private void searchTimer_Tick(object sender, EventArgs e)
+        private async void searchTimer_Tick(object sender, EventArgs e)
         {
             searchTimer.Stop();
+            searchText = txtSearchBox.Text.Trim();
 
-            searchText = txtSearchBox.Text.Trim().ToLower();
-
-            if (dgvPatients.View != null)
+            try
             {
-                dgvPatients.View.RefreshFilter();
+                if (string.IsNullOrWhiteSpace(searchText))
+                {
+                    await LoadData();
+                }
+                else
+                {
+                    patientsCollection = await PatientService.SearchPatients(searchText);
+                    dgvPatients.DataSource = patientsCollection;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while applying search filter: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -192,20 +199,6 @@ namespace LabLink.UC
         {
             searchTimer.Stop();
             searchTimer.Start();
-        }
-
-        private bool FilterRecords(object obj)
-        {
-            if (string.IsNullOrEmpty(searchText))
-                return true;
-
-            if (obj is PatientsModel patient)
-            {
-                return (patient.FullName?.ToLower().Contains(searchText) ?? false) ||
-                       (patient.PhoneNumber?.ToLower().Contains(searchText) ?? false);
-            }
-
-            return false;
         }
 
         private void dgvPatients_QueryImageCellStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryImageCellStyleEventArgs e)
