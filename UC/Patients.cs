@@ -21,20 +21,27 @@ namespace LabLink.UC
     {
         private ObservableCollection<PatientsModel> patientsCollection;
         private string searchText = string.Empty;
+        private int currentPage = 1;
+        private int pageSize = 100;
+        private int totalRecords = 0;
         public Patients()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
             ButtonStyles.PrimaryButton(btnAddPatient);
             ButtonStyles.SecondaryButton(btnRefresh);
+            ButtonStyles.SecondaryButton(btnFirstPage);
+            ButtonStyles.SecondaryButton(btnPrevPage);
+            ButtonStyles.SecondaryButton(btnNextPage);
+            ButtonStyles.SecondaryButton(btnLastPage);
             ButtonStyles.PrimaryButton(btnNewTest);
             ButtonStyles.TernaryButton(btnCancel);
 
             dgvPatients.AutoGenerateColumns = false;
 
-            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PatientID"});
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PatientID" });
             dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName" });
-            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber"});
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber" });
 
             dgvPatients.Columns.Add(new GridImageColumn
             {
@@ -47,15 +54,41 @@ namespace LabLink.UC
 
         private async void btnAddPatient_Click(object sender, EventArgs e)
         {
-            new Forms.Patients.frmNewPatient(patientsCollection).ShowDialog();
+            using (var frm = new Forms.Patients.frmNewPatient(patientsCollection))
+            {
+                frm.ShowDialog();
+            }
+
+            await LoadData();
         }
 
         private async Task LoadData()
         {
             try
             {
-                patientsCollection = await PatientService.GetPatients();
+                string searchTerm = txtSearchBox.Text.Trim();
+
+                totalRecords = await PatientService.GetTotalPatientCount(searchTerm);
+                patientsCollection = await PatientService.GetPatientsPaged(currentPage, pageSize, searchTerm);
                 dgvPatients.DataSource = patientsCollection;
+
+                int totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+                int startRecord = totalRecords == 0 ? 0 : (currentPage - 1) * pageSize + 1;
+                int endRecord = Math.Min(currentPage * pageSize, totalRecords);
+                lblPage.Text = $"Page {currentPage} ({startRecord}-{endRecord} of {totalRecords})";
+
+                if (currentPage > totalPages && totalPages > 0)
+                {
+                    currentPage = totalPages;
+                    patientsCollection = await PatientService.GetPatientsPaged(currentPage, pageSize, searchTerm);
+                    dgvPatients.DataSource = patientsCollection;
+                }
+
+                btnNextPage.Enabled = currentPage < totalPages;
+                btnLastPage.Enabled = currentPage < totalPages;
+                btnPrevPage.Enabled = currentPage > 1;
+                btnFirstPage.Enabled = currentPage > 1;
 
                 dgvPatients.Columns["PatientID"].Visible = false;
                 dgvPatients.Columns["FullName"].CellStyle.Font.Bold = true;
@@ -69,6 +102,7 @@ namespace LabLink.UC
 
         private async void Patients_Load(object sender, EventArgs e)
         {
+            currentPage = 1;
             await LoadData();
         }
 
@@ -143,18 +177,6 @@ namespace LabLink.UC
             }
         }
 
-        private void ClearFields()
-        {
-            txtFullname.Clear();
-            txtPhoneNumber.Clear();
-            cbConsentSMS.Checked = false;
-            txtFullname.ReadOnly = true;
-            txtPhoneNumber.ReadOnly = true;
-            cbConsentSMS.Enabled = false;
-            btnEdit.Text = "Edit";
-            ButtonStyles.SecondaryButton(btnEdit);
-        }
-
         private async void dgvPatients_CellDoubleClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
         {
             if (e.DataRow.Index >= 0)
@@ -175,24 +197,8 @@ namespace LabLink.UC
         private async void searchTimer_Tick(object sender, EventArgs e)
         {
             searchTimer.Stop();
-            searchText = txtSearchBox.Text.Trim();
-
-            try
-            {
-                if (string.IsNullOrWhiteSpace(searchText))
-                {
-                    await LoadData();
-                }
-                else
-                {
-                    patientsCollection = await PatientService.SearchPatients(searchText);
-                    dgvPatients.DataSource = patientsCollection;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while applying search filter: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            currentPage = 1;
+            await LoadData();
         }
 
         private void txtSearchBox_TextChanged(object sender, EventArgs e)
@@ -215,6 +221,45 @@ namespace LabLink.UC
                     e.Image = Properties.Resources.checkbox_unchecked; // Replace with your actual image resource
                 }
             }
+        }
+
+        private async void btnNextPage_Click(object sender, EventArgs e)
+        {
+            currentPage++;
+            await LoadData();
+        }
+
+        private async void btnPrevPage_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                await LoadData();
+            }
+        }
+
+        private async void btnLastPage_Click(object sender, EventArgs e)
+        {
+            currentPage = (int)Math.Ceiling((double)totalRecords / pageSize);
+            await LoadData();
+        }
+
+        private async void btnFirstPage_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            await LoadData();
+        }
+
+        private void ClearFields()
+        {
+            txtFullname.Clear();
+            txtPhoneNumber.Clear();
+            cbConsentSMS.Checked = false;
+            txtFullname.ReadOnly = true;
+            txtPhoneNumber.ReadOnly = true;
+            cbConsentSMS.Enabled = false;
+            btnEdit.Text = "Edit";
+            ButtonStyles.SecondaryButton(btnEdit);
         }
     }
 }

@@ -51,11 +51,11 @@ namespace LabLink.Services
             }
         }
 
-        public async static Task<ObservableCollection<PatientsModel>> SearchPatients(string searchTerm)
+        public async static Task<ObservableCollection<PatientsModel>> GetPatientsPaged(int pageNumber, int pageSize, string searchTerm)
         {
-            string query = "SELECT PatientID, FullName, PhoneNumber, ConsentToSMS FROM Patients WHERE FullName LIKE @Search OR PhoneNumber LIKE @Search";
-
             var patients = new ObservableCollection<PatientsModel>();
+
+            string query = @"SELECT PatientID, FullName, PhoneNumber, ConsentToSMS FROM Patients WHERE (@Search = '' OR FullName LIKE @SearchPattern OR PhoneNumber LIKE @SearchPattern) ORDER BY FullName OFFSET @Offset ROWS FETCH NEXT @Limit ROWS ONLY";
 
             try
             {
@@ -64,7 +64,10 @@ namespace LabLink.Services
                     await conn.OpenAsync();
                     using (var cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Search", $"%{searchTerm}%");
+                        cmd.Parameters.AddWithValue("@Search", searchTerm);
+                        cmd.Parameters.AddWithValue("@SearchPattern", $"%{searchTerm}%");
+                        cmd.Parameters.AddWithValue("@Offset", (pageNumber - 1) * pageSize);
+                        cmd.Parameters.AddWithValue("@Limit", pageSize);
 
                         using (var reader = await cmd.ExecuteReaderAsync())
                         {
@@ -87,6 +90,26 @@ namespace LabLink.Services
                 MessageBox.Show("An error occurred while searching for patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return patients;
+        }
+
+        public async static Task<int> GetTotalPatientCount(string searchTerm = "")
+        {
+            string query = "SELECT COUNT(*) FROM Patients WHERE (@Search = '' OR FullName LIKE @SearchPattern OR PhoneNumber LIKE @SearchPattern)";
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    await conn.OpenAsync();
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Search", searchTerm);
+                        cmd.Parameters.AddWithValue("@SearchPattern", $"%{searchTerm}%");
+                        return (int)await cmd.ExecuteScalarAsync();
+                    }
+                }
+            }
+            catch { return 0; }
         }
 
         public async static Task<ObservableCollection<PatientsModel>> GetPatients()

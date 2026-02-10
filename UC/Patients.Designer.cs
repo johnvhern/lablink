@@ -31,19 +31,20 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patients));
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddPatient = new Syncfusion.WinForms.Controls.SfButton();
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            gradientPanel4 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            dgvPatients = new Syncfusion.WinForms.DataGrid.SfDataGrid();
-            gradientPanel9 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            txtSearchBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
+            lblPage = new Syncfusion.Windows.Forms.Tools.AutoLabel();
+            btnFirstPage = new Syncfusion.WinForms.Controls.SfButton();
+            btnPrevPage = new Syncfusion.WinForms.Controls.SfButton();
+            btnNextPage = new Syncfusion.WinForms.Controls.SfButton();
+            btnLastPage = new Syncfusion.WinForms.Controls.SfButton();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel8 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             gradientPanel13 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
@@ -64,17 +65,15 @@
             autoLabel4 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel3 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
+            txtSearchBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             searchTimer = new System.Windows.Forms.Timer(components);
+            gradientPanel4 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            dgvPatients = new Syncfusion.WinForms.DataGrid.SfDataGrid();
+            gradientPanel9 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
             gradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)gradientPanel4).BeginInit();
-            gradientPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvPatients).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)gradientPanel9).BeginInit();
-            gradientPanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)txtSearchBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel8).BeginInit();
@@ -92,6 +91,12 @@
             gradientPanel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtFullname).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtSearchBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel4).BeginInit();
+            gradientPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPatients).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel9).BeginInit();
+            gradientPanel9.SuspendLayout();
             SuspendLayout();
             // 
             // gradientPanel1
@@ -157,7 +162,11 @@
             // gradientPanel2
             // 
             gradientPanel2.BorderStyle = BorderStyle.None;
-            gradientPanel2.Controls.Add(gradientPanel4);
+            gradientPanel2.Controls.Add(lblPage);
+            gradientPanel2.Controls.Add(btnFirstPage);
+            gradientPanel2.Controls.Add(btnPrevPage);
+            gradientPanel2.Controls.Add(btnNextPage);
+            gradientPanel2.Controls.Add(btnLastPage);
             gradientPanel2.Dock = DockStyle.Left;
             gradientPanel2.Location = new Point(15, 84);
             gradientPanel2.Name = "gradientPanel2";
@@ -165,87 +174,74 @@
             gradientPanel2.Size = new Size(606, 513);
             gradientPanel2.TabIndex = 1;
             // 
-            // gradientPanel4
+            // lblPage
             // 
-            gradientPanel4.BackColor = Color.White;
-            gradientPanel4.BorderColor = Color.FromArgb(218, 223, 231);
-            gradientPanel4.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel4.Controls.Add(dgvPatients);
-            gradientPanel4.Controls.Add(gradientPanel9);
-            gradientPanel4.Dock = DockStyle.Fill;
-            gradientPanel4.Location = new Point(0, 0);
-            gradientPanel4.Name = "gradientPanel4";
-            gradientPanel4.Size = new Size(606, 498);
-            gradientPanel4.TabIndex = 0;
+            lblPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblPage.Location = new Point(0, 477);
+            lblPage.Name = "lblPage";
+            lblPage.Size = new Size(65, 15);
+            lblPage.TabIndex = 4;
+            lblPage.Text = "autoLabel8";
             // 
-            // dgvPatients
+            // btnFirstPage
             // 
-            dgvPatients.AccessibleName = "Table";
-            dgvPatients.AllowEditing = false;
-            dgvPatients.AllowGrouping = false;
-            dgvPatients.AllowTriStateSorting = true;
-            dgvPatients.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
-            dgvPatients.Dock = DockStyle.Fill;
-            dgvPatients.HeaderRowHeight = 0;
-            dgvPatients.Location = new Point(0, 56);
-            dgvPatients.Name = "dgvPatients";
-            dgvPatients.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
-            dgvPatients.RowHeight = 50;
-            dgvPatients.Size = new Size(604, 440);
-            dgvPatients.Style.BorderColor = Color.FromArgb(100, 100, 100);
-            dgvPatients.Style.BorderStyle = BorderStyle.None;
-            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
-            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvPatients.Style.CellStyle.Borders = gridBordersInfo1;
-            dgvPatients.Style.CellStyle.Font.Size = 10F;
-            dgvPatients.Style.CellStyle.HorizontalAlignment = HorizontalAlignment.Left;
-            dgvPatients.Style.CellStyle.TextMargins = new Padding(15, 0, 10, 0);
-            dgvPatients.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
-            dgvPatients.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
-            gridBordersInfo2.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo2.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvPatients.Style.HeaderStyle.Borders = gridBordersInfo2;
-            dgvPatients.TabIndex = 1;
-            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
-            dgvPatients.QueryImageCellStyle += dgvPatients_QueryImageCellStyle;
+            btnFirstPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnFirstPage.BackColor = Color.White;
+            btnFirstPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnFirstPage.ImageSize = new Size(16, 16);
+            btnFirstPage.Location = new Point(432, 470);
+            btnFirstPage.Name = "btnFirstPage";
+            btnFirstPage.Size = new Size(39, 28);
+            btnFirstPage.Style.BackColor = Color.White;
+            btnFirstPage.Style.Image = (Image)resources.GetObject("resource.Image2");
+            btnFirstPage.TabIndex = 3;
+            btnFirstPage.UseVisualStyleBackColor = false;
+            btnFirstPage.Click += btnFirstPage_Click;
             // 
-            // gradientPanel9
+            // btnPrevPage
             // 
-            gradientPanel9.BorderColor = Color.FromArgb(218, 223, 231);
-            gradientPanel9.BorderSides = Border3DSide.Bottom;
-            gradientPanel9.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel9.Controls.Add(txtSearchBox);
-            gradientPanel9.Dock = DockStyle.Top;
-            gradientPanel9.Location = new Point(0, 0);
-            gradientPanel9.Name = "gradientPanel9";
-            gradientPanel9.Padding = new Padding(10);
-            gradientPanel9.Size = new Size(604, 56);
-            gradientPanel9.TabIndex = 0;
+            btnPrevPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnPrevPage.BackColor = Color.White;
+            btnPrevPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnPrevPage.ImageSize = new Size(16, 16);
+            btnPrevPage.Location = new Point(477, 470);
+            btnPrevPage.Name = "btnPrevPage";
+            btnPrevPage.Size = new Size(39, 28);
+            btnPrevPage.Style.BackColor = Color.White;
+            btnPrevPage.Style.Image = (Image)resources.GetObject("resource.Image3");
+            btnPrevPage.TabIndex = 3;
+            btnPrevPage.UseVisualStyleBackColor = false;
+            btnPrevPage.Click += btnPrevPage_Click;
             // 
-            // txtSearchBox
+            // btnNextPage
             // 
-            txtSearchBox.BackColor = Color.FromArgb(249, 250, 251);
-            bannerTextInfo1.Text = "Search patients...";
-            bannerTextInfo1.Visible = true;
-            bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
-            txtSearchBox.BeforeTouchSize = new Size(576, 25);
-            txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
-            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
-            txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
-            txtSearchBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSearchBox.Location = new Point(13, 14);
-            txtSearchBox.Name = "txtSearchBox";
-            txtSearchBox.Size = new Size(576, 25);
-            txtSearchBox.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            txtSearchBox.TabIndex = 2;
-            txtSearchBox.ThemeName = "Metro";
-            txtSearchBox.UseBorderColorOnFocus = true;
-            txtSearchBox.WordWrap = false;
-            txtSearchBox.TextChanged += txtSearchBox_TextChanged;
+            btnNextPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnNextPage.BackColor = Color.White;
+            btnNextPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnNextPage.ImageSize = new Size(16, 16);
+            btnNextPage.Location = new Point(522, 470);
+            btnNextPage.Name = "btnNextPage";
+            btnNextPage.Size = new Size(39, 28);
+            btnNextPage.Style.BackColor = Color.White;
+            btnNextPage.Style.Image = (Image)resources.GetObject("resource.Image4");
+            btnNextPage.TabIndex = 3;
+            btnNextPage.UseVisualStyleBackColor = false;
+            btnNextPage.Click += btnNextPage_Click;
+            // 
+            // btnLastPage
+            // 
+            btnLastPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnLastPage.BackColor = Color.White;
+            btnLastPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnLastPage.ImageSize = new Size(16, 16);
+            btnLastPage.Location = new Point(567, 470);
+            btnLastPage.Name = "btnLastPage";
+            btnLastPage.Size = new Size(39, 28);
+            btnLastPage.Style.BackColor = Color.White;
+            btnLastPage.Style.Image = (Image)resources.GetObject("resource.Image5");
+            btnLastPage.TabIndex = 0;
+            btnLastPage.UseVisualStyleBackColor = false;
+            btnLastPage.Click += btnLastPage_Click;
             // 
             // gradientPanel3
             // 
@@ -323,7 +319,7 @@
             btnNewTest.Location = new Point(0, 17);
             btnNewTest.Name = "btnNewTest";
             btnNewTest.Size = new Size(123, 40);
-            btnNewTest.Style.Image = (Image)resources.GetObject("resource.Image2");
+            btnNewTest.Style.Image = (Image)resources.GetObject("resource.Image6");
             btnNewTest.TabIndex = 1;
             btnNewTest.Text = "New Lab Test";
             btnNewTest.TextAlign = ContentAlignment.MiddleRight;
@@ -469,15 +465,98 @@
             autoLabel3.TabIndex = 3;
             autoLabel3.Text = "Patient Information";
             // 
+            // txtSearchBox
+            // 
+            txtSearchBox.BackColor = Color.FromArgb(249, 250, 251);
+            bannerTextInfo1.Text = "Search patients...";
+            bannerTextInfo1.Visible = true;
+            bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
+            txtSearchBox.BeforeTouchSize = new Size(576, 25);
+            txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
+            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
+            txtSearchBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearchBox.Location = new Point(13, 14);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.Size = new Size(576, 25);
+            txtSearchBox.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            txtSearchBox.TabIndex = 2;
+            txtSearchBox.ThemeName = "Metro";
+            txtSearchBox.UseBorderColorOnFocus = true;
+            txtSearchBox.WordWrap = false;
+            txtSearchBox.TextChanged += txtSearchBox_TextChanged;
+            // 
             // searchTimer
             // 
             searchTimer.Interval = 300;
             searchTimer.Tick += searchTimer_Tick;
             // 
+            // gradientPanel4
+            // 
+            gradientPanel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            gradientPanel4.BackColor = Color.White;
+            gradientPanel4.BorderColor = Color.FromArgb(218, 223, 231);
+            gradientPanel4.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel4.Controls.Add(dgvPatients);
+            gradientPanel4.Controls.Add(gradientPanel9);
+            gradientPanel4.Location = new Point(15, 84);
+            gradientPanel4.Name = "gradientPanel4";
+            gradientPanel4.Size = new Size(606, 464);
+            gradientPanel4.TabIndex = 1;
+            // 
+            // dgvPatients
+            // 
+            dgvPatients.AccessibleName = "Table";
+            dgvPatients.AllowEditing = false;
+            dgvPatients.AllowGrouping = false;
+            dgvPatients.AllowTriStateSorting = true;
+            dgvPatients.AutoSizeColumnsMode = Syncfusion.WinForms.DataGrid.Enums.AutoSizeColumnsMode.Fill;
+            dgvPatients.Dock = DockStyle.Fill;
+            dgvPatients.HeaderRowHeight = 0;
+            dgvPatients.Location = new Point(0, 56);
+            dgvPatients.Name = "dgvPatients";
+            dgvPatients.NavigationMode = Syncfusion.WinForms.DataGrid.Enums.NavigationMode.Row;
+            dgvPatients.RowHeight = 50;
+            dgvPatients.Size = new Size(604, 406);
+            dgvPatients.Style.BorderColor = Color.FromArgb(100, 100, 100);
+            dgvPatients.Style.BorderStyle = BorderStyle.None;
+            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvPatients.Style.CellStyle.Borders = gridBordersInfo1;
+            dgvPatients.Style.CellStyle.Font.Size = 10F;
+            dgvPatients.Style.CellStyle.HorizontalAlignment = HorizontalAlignment.Left;
+            dgvPatients.Style.CellStyle.TextMargins = new Padding(15, 0, 10, 0);
+            dgvPatients.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
+            dgvPatients.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
+            gridBordersInfo2.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvPatients.Style.HeaderStyle.Borders = gridBordersInfo2;
+            dgvPatients.TabIndex = 1;
+            dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
+            dgvPatients.QueryImageCellStyle += dgvPatients_QueryImageCellStyle;
+            // 
+            // gradientPanel9
+            // 
+            gradientPanel9.BorderColor = Color.FromArgb(218, 223, 231);
+            gradientPanel9.BorderSides = Border3DSide.Bottom;
+            gradientPanel9.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel9.Controls.Add(txtSearchBox);
+            gradientPanel9.Dock = DockStyle.Top;
+            gradientPanel9.Location = new Point(0, 0);
+            gradientPanel9.Name = "gradientPanel9";
+            gradientPanel9.Padding = new Padding(10);
+            gradientPanel9.Size = new Size(604, 56);
+            gradientPanel9.TabIndex = 0;
+            // 
             // Patients
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(gradientPanel4);
             Controls.Add(gradientPanel3);
             Controls.Add(gradientPanel2);
             Controls.Add(gradientPanel1);
@@ -490,13 +569,7 @@
             gradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
             gradientPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)gradientPanel4).EndInit();
-            gradientPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvPatients).EndInit();
-            ((System.ComponentModel.ISupportInitialize)gradientPanel9).EndInit();
-            gradientPanel9.ResumeLayout(false);
-            gradientPanel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)txtSearchBox).EndInit();
+            gradientPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel8).EndInit();
@@ -518,6 +591,13 @@
             gradientPanel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtPhoneNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)txtFullname).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtSearchBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel4).EndInit();
+            gradientPanel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPatients).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel9).EndInit();
+            gradientPanel9.ResumeLayout(false);
+            gradientPanel9.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -525,7 +605,6 @@
 
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
-        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel4;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel6;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel5;
@@ -536,7 +615,6 @@
         private Syncfusion.WinForms.Controls.SfButton btnCancel;
         private Syncfusion.WinForms.Controls.SfButton btnNewTest;
         private Syncfusion.WinForms.Controls.SfButton btnAddPatient;
-        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel9;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel3;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel11;
@@ -551,8 +629,15 @@
         private Syncfusion.Windows.Forms.Tools.AutoLabel autoLabel7;
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
         private Syncfusion.WinForms.Controls.SfButton btnEdit;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSearchBox;
-        private Syncfusion.WinForms.DataGrid.SfDataGrid dgvPatients;
         private System.Windows.Forms.Timer searchTimer;
+        private Syncfusion.WinForms.Controls.SfButton btnLastPage;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel4;
+        private Syncfusion.WinForms.DataGrid.SfDataGrid dgvPatients;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel9;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSearchBox;
+        private Syncfusion.WinForms.Controls.SfButton btnFirstPage;
+        private Syncfusion.WinForms.Controls.SfButton btnPrevPage;
+        private Syncfusion.WinForms.Controls.SfButton btnNextPage;
+        private Syncfusion.Windows.Forms.Tools.AutoLabel lblPage;
     }
 }
