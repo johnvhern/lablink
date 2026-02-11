@@ -31,9 +31,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patients));
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
-            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo3 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
-            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo4 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddPatient = new Syncfusion.WinForms.Controls.SfButton();
@@ -468,9 +468,9 @@
             // txtSearchBox
             // 
             txtSearchBox.BackColor = Color.FromArgb(249, 250, 251);
-            bannerTextInfo2.Text = "Search patients...";
-            bannerTextInfo2.Visible = true;
-            bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo2);
+            bannerTextInfo1.Text = "Search patients...";
+            bannerTextInfo1.Visible = true;
+            bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
             txtSearchBox.BeforeTouchSize = new Size(295, 25);
             txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
@@ -519,21 +519,21 @@
             dgvPatients.Size = new Size(604, 406);
             dgvPatients.Style.BorderColor = Color.FromArgb(100, 100, 100);
             dgvPatients.Style.BorderStyle = BorderStyle.None;
-            gridBordersInfo3.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
-            gridBordersInfo3.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo3.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo3.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvPatients.Style.CellStyle.Borders = gridBordersInfo3;
+            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvPatients.Style.CellStyle.Borders = gridBordersInfo1;
             dgvPatients.Style.CellStyle.Font.Size = 10F;
             dgvPatients.Style.CellStyle.HorizontalAlignment = HorizontalAlignment.Left;
             dgvPatients.Style.CellStyle.TextMargins = new Padding(15, 0, 10, 0);
             dgvPatients.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
             dgvPatients.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
-            gridBordersInfo4.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo4.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo4.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo4.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvPatients.Style.HeaderStyle.Borders = gridBordersInfo4;
+            gridBordersInfo2.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvPatients.Style.HeaderStyle.Borders = gridBordersInfo2;
             dgvPatients.TabIndex = 1;
             dgvPatients.CellDoubleClick += dgvPatients_CellDoubleClick;
             dgvPatients.QueryImageCellStyle += dgvPatients_QueryImageCellStyle;

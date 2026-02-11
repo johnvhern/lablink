@@ -112,42 +112,42 @@ namespace LabLink.Services
             catch { return 0; }
         }
 
-        public async static Task<ObservableCollection<PatientsModel>> GetPatients()
-        {
-            string query = "SELECT PatientID, FullName, PhoneNumber, ConsentToSMS FROM Patients";
-            var patients = new ObservableCollection<PatientsModel>();
+        //public async static Task<ObservableCollection<PatientsModel>> GetPatients()
+        //{
+        //    string query = "SELECT PatientID, FullName, PhoneNumber, ConsentToSMS FROM Patients";
+        //    var patients = new ObservableCollection<PatientsModel>();
 
-            try
-            {
-                using (var conn = DBConnection.GetConnection())
-                {
-                    await conn.OpenAsync();
+        //    try
+        //    {
+        //        using (var conn = DBConnection.GetConnection())
+        //        {
+        //            await conn.OpenAsync();
 
-                    using (var cmd = new SqlCommand(query, conn))
-                    {
-                        using (var reader = await cmd.ExecuteReaderAsync())
-                        {
-                            while (await reader.ReadAsync())
-                            {
-                                patients.Add(new PatientsModel
-                                {
-                                    PatientID = reader.GetInt32(reader.GetOrdinal("PatientID")),
-                                    FullName = reader.GetString(reader.GetOrdinal("FullName")),
-                                    PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
-                                    ConsentToSMS = reader.GetBoolean(reader.GetOrdinal("ConsentToSMS")),
-                                });
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while retrieving patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        //            using (var cmd = new SqlCommand(query, conn))
+        //            {
+        //                using (var reader = await cmd.ExecuteReaderAsync())
+        //                {
+        //                    while (await reader.ReadAsync())
+        //                    {
+        //                        patients.Add(new PatientsModel
+        //                        {
+        //                            PatientID = reader.GetInt32(reader.GetOrdinal("PatientID")),
+        //                            FullName = reader.GetString(reader.GetOrdinal("FullName")),
+        //                            PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber")),
+        //                            ConsentToSMS = reader.GetBoolean(reader.GetOrdinal("ConsentToSMS")),
+        //                        });
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("An error occurred while retrieving patients: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
 
-            return patients;
-        }
+        //    return patients;
+        //}
 
         public async static Task<PatientsModel?> GetPatientById(int patientId)
         {

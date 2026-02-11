@@ -39,8 +39,7 @@
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             autoLabel1 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
             gradientPanel2 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
-            textBoxExt1 = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
-            checkBoxAdv1 = new Syncfusion.Windows.Forms.Tools.CheckBoxAdv();
+            txtSearchBox = new Syncfusion.Windows.Forms.Tools.TextBoxExt();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             dgvTestTypes = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
@@ -49,12 +48,12 @@
             btnPrevPage = new Syncfusion.WinForms.Controls.SfButton();
             btnFirstPage = new Syncfusion.WinForms.Controls.SfButton();
             lblStatus = new Label();
+            timerSearch = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
             gradientPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)txtSearchBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTestTypes).BeginInit();
@@ -85,6 +84,7 @@
             btnRefresh.TabIndex = 5;
             btnRefresh.Text = "Refresh";
             btnRefresh.TextAlign = ContentAlignment.MiddleRight;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // btnAddTestType
             // 
@@ -124,8 +124,7 @@
             gradientPanel2.BackColor = Color.FromArgb(249, 250, 251);
             gradientPanel2.BorderColor = Color.FromArgb(218, 223, 231);
             gradientPanel2.BorderStyle = BorderStyle.FixedSingle;
-            gradientPanel2.Controls.Add(textBoxExt1);
-            gradientPanel2.Controls.Add(checkBoxAdv1);
+            gradientPanel2.Controls.Add(txtSearchBox);
             gradientPanel2.Dock = DockStyle.Top;
             gradientPanel2.Location = new Point(15, 84);
             gradientPanel2.Margin = new Padding(3, 3, 3, 15);
@@ -134,44 +133,26 @@
             gradientPanel2.Size = new Size(1222, 53);
             gradientPanel2.TabIndex = 1;
             // 
-            // textBoxExt1
+            // txtSearchBox
             // 
-            textBoxExt1.BackColor = Color.FromArgb(249, 250, 251);
+            txtSearchBox.BackColor = Color.FromArgb(249, 250, 251);
             bannerTextInfo1.Text = "Search test types...";
             bannerTextInfo1.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo1);
-            textBoxExt1.BeforeTouchSize = new Size(295, 25);
-            textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
-            textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
-            textBoxExt1.FocusBorderColor = Color.FromArgb(65, 0, 218);
-            textBoxExt1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBoxExt1.Location = new Point(13, 13);
-            textBoxExt1.Name = "textBoxExt1";
-            textBoxExt1.Size = new Size(295, 25);
-            textBoxExt1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
-            textBoxExt1.TabIndex = 1;
-            textBoxExt1.ThemeName = "Metro";
-            textBoxExt1.UseBorderColorOnFocus = true;
-            textBoxExt1.WordWrap = false;
-            // 
-            // checkBoxAdv1
-            // 
-            checkBoxAdv1.AccessibilityEnabled = true;
-            checkBoxAdv1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            checkBoxAdv1.AutoSize = true;
-            checkBoxAdv1.BeforeTouchSize = new Size(133, 21);
-            checkBoxAdv1.DrawFocusRectangle = false;
-            checkBoxAdv1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            checkBoxAdv1.ForeColor = SystemColors.ControlText;
-            checkBoxAdv1.ImageCheckBoxSize = new Size(20, 20);
-            checkBoxAdv1.Location = new Point(1074, 15);
-            checkBoxAdv1.MetroColor = Color.FromArgb(65, 0, 218);
-            checkBoxAdv1.Name = "checkBoxAdv1";
-            checkBoxAdv1.Size = new Size(133, 21);
-            checkBoxAdv1.Style = Syncfusion.Windows.Forms.Tools.CheckBoxAdvStyle.Metro;
-            checkBoxAdv1.TabIndex = 0;
-            checkBoxAdv1.Text = "Show inactive tests";
-            checkBoxAdv1.ThemeName = "Metro";
+            bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
+            txtSearchBox.BeforeTouchSize = new Size(576, 25);
+            txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
+            txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
+            txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
+            txtSearchBox.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearchBox.Location = new Point(13, 13);
+            txtSearchBox.Name = "txtSearchBox";
+            txtSearchBox.Size = new Size(295, 25);
+            txtSearchBox.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Metro;
+            txtSearchBox.TabIndex = 1;
+            txtSearchBox.ThemeName = "Metro";
+            txtSearchBox.UseBorderColorOnFocus = true;
+            txtSearchBox.WordWrap = false;
+            txtSearchBox.TextChanged += txtSearchBox_TextChanged;
             // 
             // gradientPanel3
             // 
@@ -238,6 +219,7 @@
             btnLastPage.Size = new Size(49, 28);
             btnLastPage.Style.Image = (Image)resources.GetObject("resource.Image2");
             btnLastPage.TabIndex = 3;
+            btnLastPage.Click += btnLastPage_Click;
             // 
             // btnNextPage
             // 
@@ -249,6 +231,7 @@
             btnNextPage.Size = new Size(49, 28);
             btnNextPage.Style.Image = (Image)resources.GetObject("resource.Image3");
             btnNextPage.TabIndex = 4;
+            btnNextPage.Click += btnNextPage_Click;
             // 
             // btnPrevPage
             // 
@@ -260,6 +243,7 @@
             btnPrevPage.Size = new Size(49, 28);
             btnPrevPage.Style.Image = (Image)resources.GetObject("resource.Image4");
             btnPrevPage.TabIndex = 5;
+            btnPrevPage.Click += btnPrevPage_Click;
             // 
             // btnFirstPage
             // 
@@ -271,6 +255,7 @@
             btnFirstPage.Size = new Size(49, 28);
             btnFirstPage.Style.Image = (Image)resources.GetObject("resource.Image5");
             btnFirstPage.TabIndex = 5;
+            btnFirstPage.Click += btnFirstPage_Click;
             // 
             // lblStatus
             // 
@@ -281,6 +266,10 @@
             lblStatus.Size = new Size(38, 15);
             lblStatus.TabIndex = 6;
             lblStatus.Text = "label1";
+            // 
+            // timerSearch
+            // 
+            timerSearch.Tick += timerSearch_Tick;
             // 
             // TestTypes
             // 
@@ -304,8 +293,7 @@
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).EndInit();
             gradientPanel2.ResumeLayout(false);
             gradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)textBoxExt1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)checkBoxAdv1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)txtSearchBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvTestTypes).EndInit();
@@ -321,9 +309,8 @@
         private Syncfusion.WinForms.Controls.SfButton btnRefresh;
         private Syncfusion.WinForms.Controls.SfButton btnAddTestType;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
-        private Syncfusion.Windows.Forms.Tools.CheckBoxAdv checkBoxAdv1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel3;
-        private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
+        private Syncfusion.Windows.Forms.Tools.TextBoxExt txtSearchBox;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private Syncfusion.WinForms.DataGrid.SfDataGrid dgvTestTypes;
         private Syncfusion.WinForms.Controls.SfButton btnLastPage;
@@ -331,5 +318,6 @@
         private Syncfusion.WinForms.Controls.SfButton btnPrevPage;
         private Syncfusion.WinForms.Controls.SfButton btnFirstPage;
         private Label lblStatus;
+        private System.Windows.Forms.Timer timerSearch;
     }
 }

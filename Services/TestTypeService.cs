@@ -12,9 +12,10 @@ namespace LabLink.Services
 {
     public static class TestTypeService
     {
-        public async static Task<ObservableCollection<TestTypeModel>> GetTestTypes()
+        public async static Task<ObservableCollection<TestTypeModel>> GetTestTypesPaged(int pageNumber, int pageSize, string searchTerm)
         {
-            string query = "SELECT TestID, TestTypeName, Category, CategoryName, TurnAroundTime, IsActive FROM TestTypes INNER JOIN TestCategory ON TestTypes.Category = TestCategory.CategoryID";
+            string query = @"SELECT TestID, TestTypeName, Category, CategoryName, TurnAroundTime, IsActive FROM TestTypes INNER JOIN TestCategory ON TestTypes.Category = TestCategory.CategoryID WHERE (@Search = '' OR TestTypeName LIKE @SearchPattern OR CategoryName LIKE @SearchPattern) ORDER BY TestTypeName OFFSET @Offset ROWS FETCH NEXT @Limit ROWS ONLY";
+
             var testTypes = new ObservableCollection<TestTypeModel>();
 
             try
@@ -25,6 +26,11 @@ namespace LabLink.Services
 
                     using (var cmd = new SqlCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@Search", searchTerm);
+                        cmd.Parameters.AddWithValue("@SearchPattern", $"%{searchTerm}%");
+                        cmd.Parameters.AddWithValue("@Offset", (pageNumber - 1) * pageSize);
+                        cmd.Parameters.AddWithValue("@Limit", pageSize);
+
                         using (var reader = await cmd.ExecuteReaderAsync())
                         {
                             while (await reader.ReadAsync())
@@ -49,6 +55,29 @@ namespace LabLink.Services
             }
 
             return testTypes;
+        }
+
+        public async static Task<int> GetTotalTestTypes(string searchTerm = "")
+        {
+            string query = "SELECT COUNT(*) FROM TestTypes INNER JOIN TestCategory ON TestTypes.Category = TestCategory.CategoryID WHERE (@Search = '' OR TestTypes.TestTypeName LIKE @SearchPattern OR TestCategory.CategoryName LIKE @SearchPattern)";
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    await conn.OpenAsync();
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Search", searchTerm);
+                        cmd.Parameters.AddWithValue("@SearchPattern", $"%{searchTerm}%");
+                        return (int)await cmd.ExecuteScalarAsync();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
         }
 
         public static DataTable GetCategory()
