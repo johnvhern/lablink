@@ -40,8 +40,8 @@ namespace LabLink.UC
             dgvPatients.AutoGenerateColumns = false;
 
             dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PatientID" });
-            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName", Width = 340 });
-            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber", Width = 200 });
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "FullName", Width = 300 });
+            dgvPatients.Columns.Add(new GridTextColumn { MappingName = "PhoneNumber", Width = 240 });
 
             dgvPatients.Columns.Add(new GridImageColumn
             {

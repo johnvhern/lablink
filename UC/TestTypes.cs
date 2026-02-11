@@ -29,6 +29,8 @@ namespace LabLink.UC
             InitializeComponent();
             this.DoubleBuffered = true;
             ButtonStyles.PrimaryButton(btnAddTestType);
+            ButtonStyles.SecondaryButton(btnEdit);
+            ButtonStyles.SecondaryButton(btnView);
             ButtonStyles.SecondaryButton(btnRefresh);
             ButtonStyles.SecondaryButton(btnFirstPage);
             ButtonStyles.SecondaryButton(btnPrevPage);

@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
             Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            btnEdit = new Syncfusion.WinForms.Controls.SfButton();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
             autoLabel2 = new Syncfusion.Windows.Forms.Tools.AutoLabel();
@@ -49,6 +50,7 @@
             btnFirstPage = new Syncfusion.WinForms.Controls.SfButton();
             lblStatus = new Label();
             timerSearch = new System.Windows.Forms.Timer(components);
+            btnView = new Syncfusion.WinForms.Controls.SfButton();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -62,6 +64,8 @@
             // gradientPanel1
             // 
             gradientPanel1.BorderStyle = BorderStyle.None;
+            gradientPanel1.Controls.Add(btnView);
+            gradientPanel1.Controls.Add(btnEdit);
             gradientPanel1.Controls.Add(btnRefresh);
             gradientPanel1.Controls.Add(btnAddTestType);
             gradientPanel1.Controls.Add(autoLabel2);
@@ -72,6 +76,19 @@
             gradientPanel1.Size = new Size(1222, 69);
             gradientPanel1.TabIndex = 0;
             // 
+            // btnEdit
+            // 
+            btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnEdit.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEdit.ImageSize = new Size(16, 16);
+            btnEdit.Location = new Point(925, 5);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(84, 40);
+            btnEdit.Style.Image = (Image)resources.GetObject("resource.Image1");
+            btnEdit.TabIndex = 6;
+            btnEdit.Text = "Edit";
+            btnEdit.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // btnRefresh
             // 
             btnRefresh.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -80,7 +97,7 @@
             btnRefresh.Location = new Point(1105, 5);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(117, 40);
-            btnRefresh.Style.Image = (Image)resources.GetObject("resource.Image");
+            btnRefresh.Style.Image = (Image)resources.GetObject("resource.Image2");
             btnRefresh.TabIndex = 5;
             btnRefresh.Text = "Refresh";
             btnRefresh.TextAlign = ContentAlignment.MiddleRight;
@@ -91,10 +108,10 @@
             btnAddTestType.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnAddTestType.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddTestType.ImageSize = new Size(16, 16);
-            btnAddTestType.Location = new Point(925, 5);
+            btnAddTestType.Location = new Point(745, 5);
             btnAddTestType.Name = "btnAddTestType";
             btnAddTestType.Size = new Size(174, 40);
-            btnAddTestType.Style.Image = (Image)resources.GetObject("resource.Image1");
+            btnAddTestType.Style.Image = (Image)resources.GetObject("resource.Image3");
             btnAddTestType.TabIndex = 4;
             btnAddTestType.Text = "Add New Test Type";
             btnAddTestType.TextAlign = ContentAlignment.MiddleRight;
@@ -139,7 +156,7 @@
             bannerTextInfo1.Text = "Search test types...";
             bannerTextInfo1.Visible = true;
             bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
-            txtSearchBox.BeforeTouchSize = new Size(295, 25);
+            txtSearchBox.BeforeTouchSize = new Size(576, 25);
             txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
@@ -217,7 +234,7 @@
             btnLastPage.Location = new Point(1198, 553);
             btnLastPage.Name = "btnLastPage";
             btnLastPage.Size = new Size(39, 28);
-            btnLastPage.Style.Image = (Image)resources.GetObject("resource.Image2");
+            btnLastPage.Style.Image = (Image)resources.GetObject("resource.Image4");
             btnLastPage.TabIndex = 3;
             btnLastPage.Click += btnLastPage_Click;
             // 
@@ -229,7 +246,7 @@
             btnNextPage.Location = new Point(1153, 553);
             btnNextPage.Name = "btnNextPage";
             btnNextPage.Size = new Size(39, 28);
-            btnNextPage.Style.Image = (Image)resources.GetObject("resource.Image3");
+            btnNextPage.Style.Image = (Image)resources.GetObject("resource.Image5");
             btnNextPage.TabIndex = 4;
             btnNextPage.Click += btnNextPage_Click;
             // 
@@ -241,7 +258,7 @@
             btnPrevPage.Location = new Point(1108, 554);
             btnPrevPage.Name = "btnPrevPage";
             btnPrevPage.Size = new Size(39, 28);
-            btnPrevPage.Style.Image = (Image)resources.GetObject("resource.Image4");
+            btnPrevPage.Style.Image = (Image)resources.GetObject("resource.Image6");
             btnPrevPage.TabIndex = 5;
             btnPrevPage.Click += btnPrevPage_Click;
             // 
@@ -253,7 +270,7 @@
             btnFirstPage.Location = new Point(1063, 553);
             btnFirstPage.Name = "btnFirstPage";
             btnFirstPage.Size = new Size(39, 28);
-            btnFirstPage.Style.Image = (Image)resources.GetObject("resource.Image5");
+            btnFirstPage.Style.Image = (Image)resources.GetObject("resource.Image7");
             btnFirstPage.TabIndex = 5;
             btnFirstPage.Click += btnFirstPage_Click;
             // 
@@ -270,6 +287,19 @@
             // timerSearch
             // 
             timerSearch.Tick += timerSearch_Tick;
+            // 
+            // btnView
+            // 
+            btnView.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnView.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnView.ImageSize = new Size(16, 16);
+            btnView.Location = new Point(1015, 5);
+            btnView.Name = "btnView";
+            btnView.Size = new Size(84, 40);
+            btnView.Style.Image = (Image)resources.GetObject("resource.Image");
+            btnView.TabIndex = 7;
+            btnView.Text = "View";
+            btnView.TextAlign = ContentAlignment.MiddleRight;
             // 
             // TestTypes
             // 
@@ -319,5 +349,7 @@
         private Syncfusion.WinForms.Controls.SfButton btnFirstPage;
         private Label lblStatus;
         private System.Windows.Forms.Timer timerSearch;
+        private Syncfusion.WinForms.Controls.SfButton btnEdit;
+        private Syncfusion.WinForms.Controls.SfButton btnView;
     }
 }

@@ -142,6 +142,7 @@
             Controls.Add(mainPanel);
             Controls.Add(gradientPanel2);
             DoubleBuffered = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmMain";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
