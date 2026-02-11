@@ -93,16 +93,13 @@
             // 
             // mainPanel
             // 
-            mainPanel.BackColor = Color.FromArgb(249, 250, 251);
-            mainPanel.BorderColor = Color.FromArgb(218, 223, 231);
-            mainPanel.BorderSides = Border3DSide.Bottom;
             mainPanel.BorderStyle = BorderStyle.None;
             mainPanel.Controls.Add(loadingPnl);
             mainPanel.Dock = DockStyle.Fill;
             mainPanel.Location = new Point(0, 0);
             mainPanel.Name = "mainPanel";
             mainPanel.Size = new Size(1350, 702);
-            mainPanel.TabIndex = 4;
+            mainPanel.TabIndex = 3;
             // 
             // loadingPnl
             // 
@@ -112,13 +109,13 @@
             loadingPnl.Location = new Point(0, 0);
             loadingPnl.Name = "loadingPnl";
             loadingPnl.Size = new Size(1350, 702);
-            loadingPnl.TabIndex = 0;
+            loadingPnl.TabIndex = 2;
             // 
             // progressBar1
             // 
             progressBar1.Anchor = AnchorStyles.None;
-            progressBar1.Location = new Point(619, 339);
-            progressBar1.MarqueeAnimationSpeed = 10;
+            progressBar1.Location = new Point(624, 326);
+            progressBar1.MarqueeAnimationSpeed = 30;
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(100, 23);
             progressBar1.Style = ProgressBarStyle.Marquee;
@@ -129,7 +126,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(641, 313);
+            label1.Location = new Point(644, 300);
             label1.Name = "label1";
             label1.Size = new Size(65, 17);
             label1.TabIndex = 0;
@@ -144,6 +141,7 @@
             ClientSize = new Size(1350, 729);
             Controls.Add(mainPanel);
             Controls.Add(gradientPanel2);
+            DoubleBuffered = true;
             Name = "frmMain";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
@@ -164,11 +162,11 @@
         private Components.Sidebar sidebar1;
         private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel2;
         private Syncfusion.Windows.Forms.Tools.StatusStripEx statusStripEx1;
-        private Syncfusion.Windows.Forms.Tools.GradientPanel mainPanel;
         private Syncfusion.Windows.Forms.Tools.StatusStripLabel statusStripLabel1;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private Syncfusion.Windows.Forms.Tools.GradientPanel mainPanel;
         private Panel loadingPnl;
-        private Label label1;
         private ProgressBar progressBar1;
+        private Label label1;
     }
 }

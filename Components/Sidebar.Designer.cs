@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sidebar));
+            gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnDashboard = new Syncfusion.WinForms.Controls.SfButton();
             btnPendingTests = new Syncfusion.WinForms.Controls.SfButton();
@@ -39,10 +40,25 @@
             btnSettings = new Syncfusion.WinForms.Controls.SfButton();
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnLogout = new Syncfusion.WinForms.Controls.SfButton();
+            ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
+            gradientPanel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).BeginInit();
             gradientPanel3.SuspendLayout();
             SuspendLayout();
+            // 
+            // gradientPanel1
+            // 
+            gradientPanel1.BorderColor = Color.FromArgb(218, 223, 231);
+            gradientPanel1.BorderSides = Border3DSide.Right;
+            gradientPanel1.BorderStyle = BorderStyle.FixedSingle;
+            gradientPanel1.Controls.Add(flowLayoutPanel1);
+            gradientPanel1.Controls.Add(gradientPanel3);
+            gradientPanel1.Dock = DockStyle.Fill;
+            gradientPanel1.Location = new Point(0, 0);
+            gradientPanel1.Name = "gradientPanel1";
+            gradientPanel1.Size = new Size(255, 756);
+            gradientPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
@@ -59,8 +75,8 @@
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(0, 10, 0, 10);
-            flowLayoutPanel1.Size = new Size(255, 689);
-            flowLayoutPanel1.TabIndex = 101;
+            flowLayoutPanel1.Size = new Size(253, 687);
+            flowLayoutPanel1.TabIndex = 103;
             flowLayoutPanel1.WrapContents = false;
             // 
             // btnDashboard
@@ -184,10 +200,10 @@
             gradientPanel3.BorderStyle = BorderStyle.FixedSingle;
             gradientPanel3.Controls.Add(btnLogout);
             gradientPanel3.Dock = DockStyle.Bottom;
-            gradientPanel3.Location = new Point(0, 689);
+            gradientPanel3.Location = new Point(0, 687);
             gradientPanel3.Name = "gradientPanel3";
-            gradientPanel3.Size = new Size(255, 67);
-            gradientPanel3.TabIndex = 102;
+            gradientPanel3.Size = new Size(253, 67);
+            gradientPanel3.TabIndex = 104;
             // 
             // btnLogout
             // 
@@ -211,10 +227,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            Controls.Add(flowLayoutPanel1);
-            Controls.Add(gradientPanel3);
+            Controls.Add(gradientPanel1);
             Name = "Sidebar";
             Size = new Size(255, 756);
+            ((System.ComponentModel.ISupportInitialize)gradientPanel1).EndInit();
+            gradientPanel1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gradientPanel3).EndInit();
             gradientPanel3.ResumeLayout(false);
@@ -223,6 +240,7 @@
 
         #endregion
 
+        private Syncfusion.Windows.Forms.Tools.GradientPanel gradientPanel1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Syncfusion.WinForms.Controls.SfButton btnDashboard;
         private Syncfusion.WinForms.Controls.SfButton btnPendingTests;

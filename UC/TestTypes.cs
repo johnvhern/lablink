@@ -17,7 +17,7 @@ using System.Windows.Forms;
 
 namespace LabLink.UC
 {
-    public partial class TestTypes : UserControl
+    public partial class TestTypes : UserControl, IAsyncLoadable
     {
         private ObservableCollection<TestTypeModel> testTypeCollection;
         public TestTypes()
@@ -35,7 +35,7 @@ namespace LabLink.UC
             dgvTestTypes.Columns.Add(new GridTextColumn { MappingName = "IsActive", Width = 150, HeaderText = "STATUS" });
         }
 
-        private async Task LoadData()
+        public async Task LoadDataAsync()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace LabLink.UC
 
         private async void TestTypes_Load(object sender, EventArgs e)
         {
-            await LoadData();
+            await LoadDataAsync();
         }
 
         private void dgvTestTypes_QueryCellStyle(object sender, Syncfusion.WinForms.DataGrid.Events.QueryCellStyleEventArgs e)

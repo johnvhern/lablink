@@ -96,6 +96,8 @@ namespace LabLink.Helper
             button.Style.FocusedBackColor = Color.White;
             button.Style.FocusedForeColor = Color.Black;
             button.Style.FocusedImageForeColor = Color.Black;
+
+            button.Style.DisabledImageForeColor = Color.FromArgb(107, 121, 148);
         }
 
         public static void TernaryButton(SfButton button)
