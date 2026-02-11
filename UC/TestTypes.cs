@@ -87,7 +87,7 @@ namespace LabLink.UC
         {
             using (var frm = new Forms.TestTypes.frmNewTest(testTypeCollection))
             {
-                frm.ShowDialog(); 
+                frm.ShowDialog();
             }
 
             await LoadDataAsync();

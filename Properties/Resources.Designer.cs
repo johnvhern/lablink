@@ -83,6 +83,16 @@ namespace LabLink.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap square_pen {
+            get {
+                object obj = ResourceManager.GetObject("square_pen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Untitled_design__11_ {
             get {
                 object obj = ResourceManager.GetObject("Untitled design (11)", resourceCulture);

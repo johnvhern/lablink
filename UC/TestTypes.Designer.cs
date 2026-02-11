@@ -139,7 +139,7 @@
             bannerTextInfo1.Text = "Search test types...";
             bannerTextInfo1.Visible = true;
             bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
-            txtSearchBox.BeforeTouchSize = new Size(576, 25);
+            txtSearchBox.BeforeTouchSize = new Size(295, 25);
             txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
@@ -214,9 +214,9 @@
             btnLastPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLastPage.Font = new Font("Segoe UI Semibold", 9F);
             btnLastPage.ImageSize = new Size(16, 16);
-            btnLastPage.Location = new Point(1188, 553);
+            btnLastPage.Location = new Point(1198, 553);
             btnLastPage.Name = "btnLastPage";
-            btnLastPage.Size = new Size(49, 28);
+            btnLastPage.Size = new Size(39, 28);
             btnLastPage.Style.Image = (Image)resources.GetObject("resource.Image2");
             btnLastPage.TabIndex = 3;
             btnLastPage.Click += btnLastPage_Click;
@@ -226,9 +226,9 @@
             btnNextPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnNextPage.Font = new Font("Segoe UI Semibold", 9F);
             btnNextPage.ImageSize = new Size(16, 16);
-            btnNextPage.Location = new Point(1133, 553);
+            btnNextPage.Location = new Point(1153, 553);
             btnNextPage.Name = "btnNextPage";
-            btnNextPage.Size = new Size(49, 28);
+            btnNextPage.Size = new Size(39, 28);
             btnNextPage.Style.Image = (Image)resources.GetObject("resource.Image3");
             btnNextPage.TabIndex = 4;
             btnNextPage.Click += btnNextPage_Click;
@@ -238,9 +238,9 @@
             btnPrevPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnPrevPage.Font = new Font("Segoe UI Semibold", 9F);
             btnPrevPage.ImageSize = new Size(16, 16);
-            btnPrevPage.Location = new Point(1078, 554);
+            btnPrevPage.Location = new Point(1108, 554);
             btnPrevPage.Name = "btnPrevPage";
-            btnPrevPage.Size = new Size(49, 28);
+            btnPrevPage.Size = new Size(39, 28);
             btnPrevPage.Style.Image = (Image)resources.GetObject("resource.Image4");
             btnPrevPage.TabIndex = 5;
             btnPrevPage.Click += btnPrevPage_Click;
@@ -250,9 +250,9 @@
             btnFirstPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnFirstPage.Font = new Font("Segoe UI Semibold", 9F);
             btnFirstPage.ImageSize = new Size(16, 16);
-            btnFirstPage.Location = new Point(1023, 554);
+            btnFirstPage.Location = new Point(1063, 553);
             btnFirstPage.Name = "btnFirstPage";
-            btnFirstPage.Size = new Size(49, 28);
+            btnFirstPage.Size = new Size(39, 28);
             btnFirstPage.Style.Image = (Image)resources.GetObject("resource.Image5");
             btnFirstPage.TabIndex = 5;
             btnFirstPage.Click += btnFirstPage_Click;
