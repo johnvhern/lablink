@@ -26,6 +26,10 @@ namespace LabLink.UC
             this.DoubleBuffered = true;
             ButtonStyles.PrimaryButton(btnAddTestType);
             ButtonStyles.SecondaryButton(btnRefresh);
+            ButtonStyles.SecondaryButton(btnFirstPage);
+            ButtonStyles.SecondaryButton(btnPrevPage);
+            ButtonStyles.SecondaryButton(btnNextPage);
+            ButtonStyles.SecondaryButton(btnLastPage);
 
             dgvTestTypes.AutoGenerateColumns = false;
 

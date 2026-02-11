@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
-            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo2 = new Syncfusion.Windows.Forms.BannerTextInfo();
-            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo3 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
-            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo4 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
+            Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
@@ -44,10 +44,11 @@
             gradientPanel3 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
             dgvTestTypes = new Syncfusion.WinForms.DataGrid.SfDataGrid();
             bannerTextProvider1 = new Syncfusion.Windows.Forms.BannerTextProvider(components);
-            sfButton1 = new Syncfusion.WinForms.Controls.SfButton();
-            sfButton2 = new Syncfusion.WinForms.Controls.SfButton();
-            sfButton3 = new Syncfusion.WinForms.Controls.SfButton();
-            sfButton4 = new Syncfusion.WinForms.Controls.SfButton();
+            btnLastPage = new Syncfusion.WinForms.Controls.SfButton();
+            btnNextPage = new Syncfusion.WinForms.Controls.SfButton();
+            btnPrevPage = new Syncfusion.WinForms.Controls.SfButton();
+            btnFirstPage = new Syncfusion.WinForms.Controls.SfButton();
+            lblStatus = new Label();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -136,9 +137,9 @@
             // textBoxExt1
             // 
             textBoxExt1.BackColor = Color.FromArgb(249, 250, 251);
-            bannerTextInfo2.Text = "Search test types...";
-            bannerTextInfo2.Visible = true;
-            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo2);
+            bannerTextInfo1.Text = "Search test types...";
+            bannerTextInfo1.Visible = true;
+            bannerTextProvider1.SetBannerText(textBoxExt1, bannerTextInfo1);
             textBoxExt1.BeforeTouchSize = new Size(295, 25);
             textBoxExt1.BorderColor = Color.FromArgb(209, 211, 212);
             textBoxExt1.BorderStyle = BorderStyle.FixedSingle;
@@ -200,21 +201,21 @@
             dgvTestTypes.Size = new Size(1220, 391);
             dgvTestTypes.Style.BorderColor = Color.FromArgb(100, 100, 100);
             dgvTestTypes.Style.BorderStyle = BorderStyle.None;
-            gridBordersInfo3.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
-            gridBordersInfo3.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo3.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo3.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvTestTypes.Style.CellStyle.Borders = gridBordersInfo3;
+            gridBordersInfo1.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo1.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo1.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvTestTypes.Style.CellStyle.Borders = gridBordersInfo1;
             dgvTestTypes.Style.CellStyle.Font.Size = 10F;
             dgvTestTypes.Style.CellStyle.TextMargins = new Padding(15, 0, 15, 0);
             dgvTestTypes.Style.DragPreviewRowStyle.Font = new Font("Segoe UI", 9F);
             dgvTestTypes.Style.DragPreviewRowStyle.RowCountIndicatorTextColor = Color.FromArgb(255, 255, 255);
             dgvTestTypes.Style.HeaderStyle.BackColor = Color.FromArgb(243, 244, 246);
-            gridBordersInfo4.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
-            gridBordersInfo4.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo4.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            gridBordersInfo4.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
-            dgvTestTypes.Style.HeaderStyle.Borders = gridBordersInfo4;
+            gridBordersInfo2.Bottom = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.Solid, Color.FromArgb(218, 223, 231));
+            gridBordersInfo2.Left = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Right = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            gridBordersInfo2.Top = new Syncfusion.WinForms.DataGrid.Styles.GridBorder(Syncfusion.WinForms.DataGrid.Styles.GridBorderStyle.None);
+            dgvTestTypes.Style.HeaderStyle.Borders = gridBordersInfo2;
             dgvTestTypes.Style.HeaderStyle.Font.Bold = true;
             dgvTestTypes.Style.HeaderStyle.Font.Size = 9F;
             dgvTestTypes.Style.HeaderStyle.HorizontalAlignment = HorizontalAlignment.Left;
@@ -227,54 +228,69 @@
             dgvTestTypes.Text = "sfDataGrid1";
             dgvTestTypes.QueryCellStyle += dgvTestTypes_QueryCellStyle;
             // 
-            // sfButton1
+            // btnLastPage
             // 
-            sfButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            sfButton1.Font = new Font("Segoe UI Semibold", 9F);
-            sfButton1.Location = new Point(1188, 553);
-            sfButton1.Name = "sfButton1";
-            sfButton1.Size = new Size(49, 28);
-            sfButton1.TabIndex = 3;
-            sfButton1.Text = ">>";
+            btnLastPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnLastPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnLastPage.ImageSize = new Size(16, 16);
+            btnLastPage.Location = new Point(1188, 553);
+            btnLastPage.Name = "btnLastPage";
+            btnLastPage.Size = new Size(49, 28);
+            btnLastPage.Style.Image = (Image)resources.GetObject("resource.Image2");
+            btnLastPage.TabIndex = 3;
             // 
-            // sfButton2
+            // btnNextPage
             // 
-            sfButton2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            sfButton2.Font = new Font("Segoe UI Semibold", 9F);
-            sfButton2.Location = new Point(1133, 553);
-            sfButton2.Name = "sfButton2";
-            sfButton2.Size = new Size(49, 28);
-            sfButton2.TabIndex = 4;
-            sfButton2.Text = ">";
+            btnNextPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnNextPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnNextPage.ImageSize = new Size(16, 16);
+            btnNextPage.Location = new Point(1133, 553);
+            btnNextPage.Name = "btnNextPage";
+            btnNextPage.Size = new Size(49, 28);
+            btnNextPage.Style.Image = (Image)resources.GetObject("resource.Image3");
+            btnNextPage.TabIndex = 4;
             // 
-            // sfButton3
+            // btnPrevPage
             // 
-            sfButton3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            sfButton3.Font = new Font("Segoe UI Semibold", 9F);
-            sfButton3.Location = new Point(1078, 554);
-            sfButton3.Name = "sfButton3";
-            sfButton3.Size = new Size(49, 28);
-            sfButton3.TabIndex = 5;
-            sfButton3.Text = "<";
+            btnPrevPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnPrevPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnPrevPage.ImageSize = new Size(16, 16);
+            btnPrevPage.Location = new Point(1078, 554);
+            btnPrevPage.Name = "btnPrevPage";
+            btnPrevPage.Size = new Size(49, 28);
+            btnPrevPage.Style.Image = (Image)resources.GetObject("resource.Image4");
+            btnPrevPage.TabIndex = 5;
             // 
-            // sfButton4
+            // btnFirstPage
             // 
-            sfButton4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            sfButton4.Font = new Font("Segoe UI Semibold", 9F);
-            sfButton4.Location = new Point(1023, 554);
-            sfButton4.Name = "sfButton4";
-            sfButton4.Size = new Size(49, 28);
-            sfButton4.TabIndex = 5;
-            sfButton4.Text = "<<";
+            btnFirstPage.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnFirstPage.Font = new Font("Segoe UI Semibold", 9F);
+            btnFirstPage.ImageSize = new Size(16, 16);
+            btnFirstPage.Location = new Point(1023, 554);
+            btnFirstPage.Name = "btnFirstPage";
+            btnFirstPage.Size = new Size(49, 28);
+            btnFirstPage.Style.Image = (Image)resources.GetObject("resource.Image5");
+            btnFirstPage.TabIndex = 5;
+            // 
+            // lblStatus
+            // 
+            lblStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblStatus.AutoSize = true;
+            lblStatus.Location = new Point(15, 561);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(38, 15);
+            lblStatus.TabIndex = 6;
+            lblStatus.Text = "label1";
             // 
             // TestTypes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(sfButton4);
-            Controls.Add(sfButton3);
-            Controls.Add(sfButton2);
-            Controls.Add(sfButton1);
+            Controls.Add(lblStatus);
+            Controls.Add(btnFirstPage);
+            Controls.Add(btnPrevPage);
+            Controls.Add(btnNextPage);
+            Controls.Add(btnLastPage);
             Controls.Add(gradientPanel3);
             Controls.Add(gradientPanel2);
             Controls.Add(gradientPanel1);
@@ -294,6 +310,7 @@
             gradientPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvTestTypes).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -309,9 +326,10 @@
         private Syncfusion.Windows.Forms.Tools.TextBoxExt textBoxExt1;
         private Syncfusion.Windows.Forms.BannerTextProvider bannerTextProvider1;
         private Syncfusion.WinForms.DataGrid.SfDataGrid dgvTestTypes;
-        private Syncfusion.WinForms.Controls.SfButton sfButton1;
-        private Syncfusion.WinForms.Controls.SfButton sfButton2;
-        private Syncfusion.WinForms.Controls.SfButton sfButton3;
-        private Syncfusion.WinForms.Controls.SfButton sfButton4;
+        private Syncfusion.WinForms.Controls.SfButton btnLastPage;
+        private Syncfusion.WinForms.Controls.SfButton btnNextPage;
+        private Syncfusion.WinForms.Controls.SfButton btnPrevPage;
+        private Syncfusion.WinForms.Controls.SfButton btnFirstPage;
+        private Label lblStatus;
     }
 }
