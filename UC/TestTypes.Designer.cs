@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
             Syncfusion.Windows.Forms.BannerTextInfo bannerTextInfo1 = new Syncfusion.Windows.Forms.BannerTextInfo();
             Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo1 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
             Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo gridBordersInfo2 = new Syncfusion.WinForms.DataGrid.Styles.GridBordersInfo();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestTypes));
             gradientPanel1 = new Syncfusion.Windows.Forms.Tools.GradientPanel();
+            btnView = new Syncfusion.WinForms.Controls.SfButton();
             btnEdit = new Syncfusion.WinForms.Controls.SfButton();
             btnRefresh = new Syncfusion.WinForms.Controls.SfButton();
             btnAddTestType = new Syncfusion.WinForms.Controls.SfButton();
@@ -50,7 +51,6 @@
             btnFirstPage = new Syncfusion.WinForms.Controls.SfButton();
             lblStatus = new Label();
             timerSearch = new System.Windows.Forms.Timer(components);
-            btnView = new Syncfusion.WinForms.Controls.SfButton();
             ((System.ComponentModel.ISupportInitialize)gradientPanel1).BeginInit();
             gradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gradientPanel2).BeginInit();
@@ -76,6 +76,19 @@
             gradientPanel1.Size = new Size(1222, 69);
             gradientPanel1.TabIndex = 0;
             // 
+            // btnView
+            // 
+            btnView.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnView.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnView.ImageSize = new Size(16, 16);
+            btnView.Location = new Point(1015, 5);
+            btnView.Name = "btnView";
+            btnView.Size = new Size(84, 40);
+            btnView.Style.Image = (Image)resources.GetObject("resource.Image");
+            btnView.TabIndex = 7;
+            btnView.Text = "View";
+            btnView.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // btnEdit
             // 
             btnEdit.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -88,6 +101,7 @@
             btnEdit.TabIndex = 6;
             btnEdit.Text = "Edit";
             btnEdit.TextAlign = ContentAlignment.MiddleRight;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnRefresh
             // 
@@ -156,7 +170,7 @@
             bannerTextInfo1.Text = "Search test types...";
             bannerTextInfo1.Visible = true;
             bannerTextProvider1.SetBannerText(txtSearchBox, bannerTextInfo1);
-            txtSearchBox.BeforeTouchSize = new Size(576, 25);
+            txtSearchBox.BeforeTouchSize = new Size(295, 25);
             txtSearchBox.BorderColor = Color.FromArgb(209, 211, 212);
             txtSearchBox.BorderStyle = BorderStyle.FixedSingle;
             txtSearchBox.FocusBorderColor = Color.FromArgb(65, 0, 218);
@@ -225,6 +239,7 @@
             dgvTestTypes.TabIndex = 0;
             dgvTestTypes.Text = "sfDataGrid1";
             dgvTestTypes.QueryCellStyle += dgvTestTypes_QueryCellStyle;
+            dgvTestTypes.CellClick += dgvTestTypes_CellClick;
             // 
             // btnLastPage
             // 
@@ -287,19 +302,6 @@
             // timerSearch
             // 
             timerSearch.Tick += timerSearch_Tick;
-            // 
-            // btnView
-            // 
-            btnView.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnView.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnView.ImageSize = new Size(16, 16);
-            btnView.Location = new Point(1015, 5);
-            btnView.Name = "btnView";
-            btnView.Size = new Size(84, 40);
-            btnView.Style.Image = (Image)resources.GetObject("resource.Image");
-            btnView.TabIndex = 7;
-            btnView.Text = "View";
-            btnView.TextAlign = ContentAlignment.MiddleRight;
             // 
             // TestTypes
             // 

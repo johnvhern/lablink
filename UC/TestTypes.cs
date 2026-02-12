@@ -1,4 +1,5 @@
-﻿using LabLink.Helper;
+﻿using LabLink.Forms.TestTypes;
+using LabLink.Helper;
 using LabLink.Models;
 using LabLink.Services;
 using Syncfusion.Windows.Forms.Enums;
@@ -24,6 +25,9 @@ namespace LabLink.UC
         private int currentPage = 1;
         private int pageSize = 100;
         private int totalRecords = 0;
+
+        private int testTypeID;
+
         public TestTypes()
         {
             InitializeComponent();
@@ -168,6 +172,41 @@ namespace LabLink.UC
         {
             currentPage = (int)Math.Ceiling((double)totalRecords / pageSize);
             await LoadDataAsync();
+        }
+
+        private async void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (testTypeID != 0)
+            {
+                using (var frm = new frmEditTestType(testTypeCollection, testTypeID))
+                {
+                    frm.ShowDialog();
+                }
+
+                await LoadDataAsync();
+                testTypeID = 0;
+            }
+            else
+            {
+                MessageBox.Show("Please select a test type to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void dgvTestTypes_CellClick(object sender, Syncfusion.WinForms.DataGrid.Events.CellClickEventArgs e)
+        {
+            if (e.DataRow.Index <= 0)
+            {
+                return; 
+            }
+            else
+            {
+                var rowData = e.DataRow.RowData as TestTypeModel;
+
+                if (rowData != null)
+                {
+                    testTypeID = rowData.TestTypeID;
+                }
+            }
         }
     }
 }

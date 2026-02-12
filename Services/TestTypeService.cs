@@ -12,6 +12,46 @@ namespace LabLink.Services
 {
     public static class TestTypeService
     {
+        public async static Task<TestTypeModel?> GetTestTypeID(int patientID)
+        {
+            string query = "SELECT TestID, TestTypeName, Category, TurnAroundTime, IsActive FROM TestTypes WHERE TestID = @TestTypeID";
+
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    await conn.OpenAsync();
+
+                    using (var cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TestTypeID", patientID);
+
+                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                return new TestTypeModel
+                                {
+                                    TestTypeID = reader.GetInt32(reader.GetOrdinal("TestID")),
+                                    TestTypeName = reader.GetString(reader.GetOrdinal("TestTypeName")),
+                                    CategoryID = reader.GetInt32(reader.GetOrdinal("Category")),
+                                    TurnAroundTime = reader.GetInt32(reader.GetOrdinal("TurnAroundTime")),
+                                    IsActive = reader.GetBoolean(reader.GetOrdinal("IsActive"))
+                                };
+                            }
+                            return null;
+                        }
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occured while loading test type: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         public async static Task<ObservableCollection<TestTypeModel>> GetTestTypesPaged(int pageNumber, int pageSize, string searchTerm)
         {
             string query = @"SELECT TestID, TestTypeName, Category, CategoryName, TurnAroundTime, IsActive FROM TestTypes INNER JOIN TestCategory ON TestTypes.Category = TestCategory.CategoryID WHERE (@Search = '' OR TestTypeName LIKE @SearchPattern OR CategoryName LIKE @SearchPattern) ORDER BY TestTypeName OFFSET @Offset ROWS FETCH NEXT @Limit ROWS ONLY";
