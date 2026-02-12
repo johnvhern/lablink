@@ -85,6 +85,7 @@
             btnCancel.Size = new Size(76, 35);
             btnCancel.TabIndex = 6;
             btnCancel.Text = "Cancel";
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSaveChanges
             // 
@@ -99,6 +100,7 @@
             btnSaveChanges.TabIndex = 5;
             btnSaveChanges.Text = "Save Changes";
             btnSaveChanges.TextAlign = ContentAlignment.MiddleRight;
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
             // gradientPanel2
             // 

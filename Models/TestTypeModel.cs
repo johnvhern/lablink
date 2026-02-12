@@ -13,6 +13,7 @@ namespace LabLink.Models
         public int _CategoryID;
         public string _CategoryName;
         public int _TurnAroundTime;
+        public string _Remarks;
         public bool _IsActive;
 
         public int TestTypeID
@@ -66,6 +67,17 @@ namespace LabLink.Models
             {
                 _TurnAroundTime = value;
                 OnPropertyChanged(nameof(_TurnAroundTime));
+            }
+        }
+
+        [Required(ErrorMessage = "Remarks field is required.")]
+        public string Remarks
+        {
+            get => _Remarks;
+            set
+            {
+                _Remarks = value;
+                OnPropertyChanged(nameof(Remarks));
             }
         }
 

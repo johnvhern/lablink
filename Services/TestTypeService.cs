@@ -158,5 +158,23 @@ namespace LabLink.Services
                 }
             }
         }
+
+        public static int UpdateTestType(TestTypeModel testType)
+        {
+            string query = "UPDATE TestTypes SET TestTypeName = @TestTypeName, Category = @Category, TurnAroundTime = @TurnAroundTime, IsActive = @IsActive WHERE TestID = @TestTypeID";
+            using (var conn = DBConnection.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@TestTypeID", testType.TestTypeID);
+                    cmd.Parameters.AddWithValue("@TestTypeName", testType.TestTypeName);
+                    cmd.Parameters.AddWithValue("@Category", testType.CategoryID);
+                    cmd.Parameters.AddWithValue("@TurnAroundTime", testType.TurnAroundTime);
+                    cmd.Parameters.AddWithValue("@IsActive", testType.IsActive);
+                    return (int)cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
