@@ -161,11 +161,12 @@ namespace LabLink.Services
 
         public static int UpdateTestType(TestTypeModel testType)
         {
-            string query = "UPDATE TestTypes SET TestTypeName = @TestTypeName, Category = @Category, TurnAroundTime = @TurnAroundTime, IsActive = @IsActive WHERE TestID = @TestTypeID";
+            string updateQuery = "UPDATE TestTypes SET TestTypeName = @TestTypeName, Category = @Category, TurnAroundTime = @TurnAroundTime, IsActive = @IsActive WHERE TestID = @TestTypeID";
+
             using (var conn = DBConnection.GetConnection())
             {
                 conn.Open();
-                using (var cmd = new SqlCommand(query, conn))
+                using (var cmd = new SqlCommand(updateQuery, conn))
                 {
                     cmd.Parameters.AddWithValue("@TestTypeID", testType.TestTypeID);
                     cmd.Parameters.AddWithValue("@TestTypeName", testType.TestTypeName);
