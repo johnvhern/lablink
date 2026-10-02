@@ -1,0 +1,27 @@
+{
+  "name": "lablink.app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./Styles/app.css -o ./wwwroot/css/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnvhern/lablink.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/johnvhern/lablink/issues"
+  },
+  "homepage": "https://github.com/johnvhern/lablink#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/forms": "^0.5.11",
+    "preline": "^4.2.0",
+    "tailwindcss": "^4.3.3"
+  }
+}

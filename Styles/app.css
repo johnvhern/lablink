@@ -1,2 +1,84 @@
-﻿body {
+﻿@import "tailwindcss";
+
+@import "../node_modules/preline/variants.css";
+@source "../node_modules/preline/dist/*.js";
+
+/* Optional Preline UI Datepicker Plugin */
+@import "../node_modules/preline/src/plugins/datepicker/styles-utility.css";
+
+/* Plugins */
+@plugin "@tailwindcss/forms";
+    
+/* Preline Themes */
+@import "../node_modules/preline/css/themes/theme.css";
+
+/* Optional Preline UI Datatable Plugin: DataTables.net renders its own
+  search/length/paging controls alongside Preline's own; hide the native
+  ones since they can't be disabled through DataTables options alone. */
+
+.dt-layout-row:has(.dt-search),
+.dt-layout-row:has(.dt-length),
+.dt-layout-row:has(.dt-paging) {
+    display: none !important;
+}
+
+/* Adds pointer cursor to buttons */
+@layer base {
+    button:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+/* Defaults hover styles on all devices */
+@custom-variant hover (&:hover);
+
+/* Inter */
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter-SemiBold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* Tailwind default font */
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+
+/* Global font */
+html {
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+label.required:after {
+    content: " *";
+    color: #ef4444; /* Tailwind's text-red-500 */
+    font-weight: bold;
+    display: inline;
 }
