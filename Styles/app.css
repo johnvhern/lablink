@@ -82,3 +82,7 @@ label.required:after {
     font-weight: bold;
     display: inline;
 }
+
+@utility container {
+    margin-inline: auto;
+}
