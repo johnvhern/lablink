@@ -15,6 +15,13 @@
       "files": [
         "dist/htmx.min.js"
       ]
+    },
+    {
+      "library": "toastify-js@latest",
+      "destination": "wwwroot/lib/toastify-js/",
+      "files": [
+        "src/toastify.js"
+      ]
     }
   ]
 }

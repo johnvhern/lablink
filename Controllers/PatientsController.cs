@@ -39,7 +39,17 @@ namespace lablink.app.Controllers
             _context.Patients.Add(patient);
             await _context.SaveChangesAsync();
 
-            return PartialView("_PatientCreated");
+            Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                patientCreated = new { },
+                showToast = new
+                {
+                    message = "Patient added successfully!",
+                    type = "success"
+                }
+            });
+
+            return NoContent();
         }
     }
 }
