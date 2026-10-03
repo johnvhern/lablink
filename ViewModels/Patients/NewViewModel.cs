@@ -1,15 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace lablink.app.Models
+namespace lablink.app.ViewModels.Patients
 {
-    public class Patients
+    public class NewViewModel
     {
-        public int Id { get; set; }
+        [Required]
         [StringLength(150)]
+        [Display(Name = "name")]
         public string Name { get; set; } = null!;
+
+        [Required]
         [StringLength(15)]
+        [Display(Name = "phone number")]
         public string PhoneNumber { get; set; } = null!;
+
         public bool SmsConsent { get; set; }
-        public DateTime? ConsentDate { get; set; }
     }
 }
