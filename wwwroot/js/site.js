@@ -68,7 +68,7 @@ document.addEventListener("showToast", function (event)
     showToast(event.detail.message, event.detail.type);
 });
 
-document.addEventListener("patientCreated", function ()
+document.addEventListener("dataCreated", function ()
 {
-    window.HSOverlay.close("#patientModal");
+    window.HSOverlay.close("#crudModal");
 });

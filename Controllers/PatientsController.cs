@@ -41,7 +41,7 @@ namespace lablink.app.Controllers
 
             Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
             {
-                patientCreated = new { },
+                dataCreated = new { },
                 showToast = new
                 {
                     message = "Patient added successfully!",

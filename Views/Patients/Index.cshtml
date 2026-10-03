@@ -11,12 +11,7 @@
             <div class="sm:flex sm:gap-x-2">
                 <div class="w-full mb-3 sm:mb-0">
                     <!-- SearchBox -->
-                    <div class="relative" data-hs-combo-box='{
-                        "groupingType" : "default" ,
-                        "preventSelection" : true,
-                        "isOpenOnFocus" : true,
-                        "groupingTitleTemplate" : "<div class=\" block text-xs text-gray-500 dark:text-neutral-400 m-3 mb-1\"></div>"
-                        }'>
+                    <div>
                         <div class="relative">
                             <div class="absolute inset-y-0 inset-s-0 flex items-center pointer-events-none z-20 ps-3.5">
                                 <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -24,70 +19,12 @@
                                     <path d="m21 21-4.3-4.3"></path>
                                 </svg>
                             </div>
-                            <input class="py-2.5 sm:py-3 ps-10 pe-4 block w-full bg-white dark:bg-neutral-800 border-gray-200 dark:border-neutral-700 rounded-lg sm:text-sm text-gray-800 dark:text-neutral-200 placeholder:text-gray-500 dark:placeholder:text-neutral-400 focus:border-blue-700 dark:focus:border-blue-600 focus:ring-blue-700 dark:focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" type="text" role="combobox" aria-expanded="false" placeholder="Search patient" value="" data-hs-combo-box-input="">
+                            <input class="py-2.5 sm:py-3 ps-10 pe-4 block w-full bg-white dark:bg-neutral-800 border-gray-200 dark:border-neutral-700 rounded-lg sm:text-sm text-gray-800 dark:text-neutral-200 placeholder:text-gray-500 dark:placeholder:text-neutral-400 focus:border-blue-700 dark:focus:border-blue-600 focus:ring-blue-700 dark:focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" type="text" role="combobox" aria-expanded="false" placeholder="Search patient">
                         </div>
-
-                        <!-- SearchBox Dropdown -->
-                        <div class="absolute z-50 w-full bg-white dark:bg-neutral-900 border border-transparent rounded-xl shadow-xl" style="display: none;" data-hs-combo-box-output="">
-                            <div class="max-h-125 p-2 overflow-y-auto overflow-hidden [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-none [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500" data-hs-combo-box-output-items-wrapper="">
-                                <div data-hs-combo-box-output-item='{"group": {"name": "recent", "title": "Recent"}}' tabindex="0" class="rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800">
-                                    <a class="py-2 px-3 flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800" href="/">
-                                        <svg class="shrink-0 size-4 text-gray-600 dark:text-neutral-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                        </svg>
-                                        <span class="text-sm text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="Compose an email" data-hs-combo-box-value="">Compose an email</span>
-                                        <span class="ms-auto text-xs text-gray-400 dark:text-neutral-500" data-hs-combo-box-search-text="Gmail" data-hs-combo-box-value="">Gmail</span>
-                                    </a>
-                                </div>
-                                <div data-hs-combo-box-output-item='{"group": {"name": "recent", "title": "Recent"}}' tabindex="1" class="rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800">
-                                    <a class="py-2 px-3 flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800" href="/">
-                                        <svg class="shrink-0 size-4 text-gray-600 dark:text-neutral-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"></path>
-                                            <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path>
-                                        </svg>
-                                        <span class="text-sm text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="Start a conversation" data-hs-combo-box-value="">Start a conversation</span>
-                                        <span class="ms-auto text-xs text-gray-400 dark:text-neutral-500" data-hs-combo-box-search-text="Slack" data-hs-combo-box-value="">Slack</span>
-                                    </a>
-                                </div>
-                                <div data-hs-combo-box-output-item='{"group": {"name": "recent", "title": "Recent"}}' tabindex="2" class="rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800">
-                                    <a class="py-2 px-3 flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800" href="/">
-                                        <svg class="shrink-0 size-4 text-gray-600 dark:text-neutral-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M5 12h14"></path>
-                                            <path d="M12 5v14"></path>
-                                        </svg>
-                                        <span class="text-sm text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="Create a project" data-hs-combo-box-value="">Create a project</span>
-                                        <span class="ms-auto text-xs text-gray-400 dark:text-neutral-500" data-hs-combo-box-search-text="Notion" data-hs-combo-box-value="">Notion</span>
-                                    </a>
-                                </div>
-                                <div data-hs-combo-box-output-item='{"group": {"name": "people", "title": "People"}}' tabindex="5" class="rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800">
-                                    <a class="py-2 px-2.5 flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800" href="/">
-                                        <img class="shrink-0 size-5 rounded-full" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80" alt="Avatar">
-                                        <span class="text-sm text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="Kim Ya Sung" data-hs-combo-box-value="">Kim Ya Sung</span>
-                                        <span class="ms-auto text-xs text-teal-600" data-hs-combo-box-search-text="Online" data-hs-combo-box-value="">Online</span>
-                                    </a>
-                                </div>
-                                <div data-hs-combo-box-output-item='{"group": {"name": "people", "title": "People"}}' tabindex="6" class="rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800">
-                                    <a class="py-2 px-2.5 flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800" href="/">
-                                        <img class="shrink-0 size-5 rounded-full" src="https://images.unsplash.com/photo-1610186593977-82a3e3696e7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80" alt="Avatar">
-                                        <span class="text-sm text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="Chris Peti" data-hs-combo-box-value="">Chris Peti</span>
-                                        <span class="ms-auto text-xs text-gray-400 dark:text-neutral-500" data-hs-combo-box-search-text="Offline" data-hs-combo-box-value="">Offline</span>
-                                    </a>
-                                </div>
-                                <div data-hs-combo-box-output-item='{"group": {"name": "people", "title": "People"}}' tabindex="7" class="rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800">
-                                    <a class="py-2 px-2.5 flex items-center gap-x-3 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-lg focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-800" href="/">
-                                        <img class="shrink-0 size-5 rounded-full" src="https://images.unsplash.com/photo-1568048689711-5e0325cea8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80" alt="Avatar">
-                                        <span class="text-sm text-gray-800 dark:text-neutral-200" data-hs-combo-box-search-text="Martin Azara" data-hs-combo-box-value="">Martin Azara</span>
-                                        <span class="ms-auto text-xs text-gray-400 dark:text-neutral-500" data-hs-combo-box-search-text="Offline" data-hs-combo-box-value="">Offline</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End SearchBox Dropdown -->
                     </div>
                     <!-- End SearchBox -->
                 </div>
-                <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-600 dark:bg-blue-500 border border-transparent text-white hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-hidden focus:bg-blue-700 dark:focus:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none w-full sm:w-43" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#patientModal" hx-get="@Url.Action("Create", "Patients")" hx-target="#patientModalContent" hx-swap="innerHTML" hx-disabled-elt="this">
+                <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-600 dark:bg-blue-500 border border-transparent text-white hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-hidden focus:bg-blue-700 dark:focus:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none w-full sm:w-43" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#crudModal" hx-get="@Url.Action("Create", "Patients")" hx-target="#crudModalContent" hx-swap="innerHTML" hx-disabled-elt="this">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus preview-icon shrink-0 size-4"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
                     Add Patient
                 </button>
@@ -98,9 +35,9 @@
 <!-- End Card -->
 
 <!-- Modal -->
-<div id="patientModal" class="hs-overlay [--overlay-backdrop:static] hidden size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-vertically-centered-modal-label">
+<div id="crudModal" class="hs-overlay [--overlay-backdrop:static] hidden size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-vertically-centered-modal-label">
     <div class="hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-56px)] flex items-center">
-        <div id="patientModalContent" class="w-full flex flex-col bg-white dark:bg-neutral-800 border border-transparent shadow-2xs rounded-xl pointer-events-auto">
+        <div id="crudModalContent" class="w-full flex flex-col bg-white dark:bg-neutral-800 border border-transparent shadow-2xs rounded-xl pointer-events-auto">
             <!-- Modal Content -->
         </div>
     </div>
