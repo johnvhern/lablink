@@ -8,6 +8,13 @@
       "files": [
         "dist/preline.js"
       ]
+    },
+    {
+      "library": "htmx.org@latest",
+      "destination": "wwwroot/lib/htmx.org/",
+      "files": [
+        "dist/htmx.min.js"
+      ]
     }
   ]
 }

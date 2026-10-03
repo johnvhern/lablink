@@ -15,6 +15,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - lablink.app</title>
     <script type="importmap"></script>
+    <script src="~/lib/htmx.org/dist/htmx.min.js" defer></script>
+    <script src="~/lib/preline/dist/preline.js" asp-append-version="true" defer></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
     <!-- Add to <head> -->
     <link rel="stylesheet" href="~/css/tailwind.css" asp-append-version="true" />
 </head>
@@ -135,10 +138,10 @@
             </div>
         </div>
         <!-- End Breadcrumb -->
-    </div>
+    </div>  
 
     <!-- Sidebar -->
-    <div id="hs-application-sidebar" class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-65 h-full hidden fixed inset-y-0 inset-s-0 z-60 bg-white dark:bg-neutral-800 border-e border-gray-200 dark:border-neutral-700 lg:block lg:translate-x-0 lg:inset-e-auto lg:bottom-0" role="dialog" tabindex="-1" aria-label="Sidebar">
+    <div id="hs-application-sidebar" class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-65 h-full hidden fixed inset-y-0 inset-s-0 z-60 bg-white dark:bg-neutral-800 border-e border-gray-200 dark:border-neutral-700 lg:block lg:translate-x-0 lg:inset-e-auto lg:bottom-0" role="dialog" tabindex="-1" aria-label="Sidebar" hx-boost="true" hx-history="false">
         <div class="relative flex flex-col h-full max-h-full">
             <div class="px-6 pt-4 flex items-center">
                 <!-- Logo -->
@@ -210,16 +213,6 @@
     </div>
     <!-- End Content -->
     <!-- ========== END MAIN CONTENT ========== -->
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <!-- Add before </body> -->
-    <script src="~/lib/preline/dist/preline.js" asp-append-version="true"></script>
-    <script>
-            window.HSStaticMethods.autoInit();
-    </script>
 </body>
 </html>
-
-@section Scripts {
-
-}
