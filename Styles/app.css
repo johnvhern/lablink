@@ -22,6 +22,19 @@
     display: none !important;
 }
 
+.dt-scroll-body thead {
+    display: none !important;
+}
+
+/* DataTables empty-state cell */
+td.dt-empty {
+    @apply py-12 px-4 text-center text-sm text-gray-600;
+
+    @variant dark {
+        @apply text-neutral-400;
+    }
+}
+
 /* Adds pointer cursor to buttons */
 @layer base {
     button:not(:disabled),

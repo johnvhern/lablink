@@ -10,8 +10,9 @@ namespace lablink.app.ViewModels.Patients
         public string Name { get; set; } = null!;
 
         [Required]
-        [StringLength(15)]
+        [MaxLength(15)]
         [Display(Name = "phone number")]
+        [RegularExpression(@"^(\+63|0)9\d{9}$", ErrorMessage = "Invalid Philippine mobile number format.")]
         public string PhoneNumber { get; set; } = null!;
 
         public bool SmsConsent { get; set; }

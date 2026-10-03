@@ -3,24 +3,39 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "preline@latest",
+      "library": "preline@5.0.0",
       "destination": "wwwroot/lib/preline/",
       "files": [
         "dist/preline.js"
       ]
     },
     {
-      "library": "htmx.org@latest",
+      "library": "htmx.org@2.0.11",
       "destination": "wwwroot/lib/htmx.org/",
       "files": [
         "dist/htmx.min.js"
       ]
     },
     {
-      "library": "toastify-js@latest",
+      "library": "toastify-js@1.12.0",
       "destination": "wwwroot/lib/toastify-js/",
       "files": [
         "src/toastify.js"
+      ]
+    },
+    {
+      "library": "jquery@4.0.0",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "dist/jquery.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "datatables.net@3.1.3",
+      "destination": "wwwroot/lib/datatables.net/",
+      "files": [
+        "js/dataTables.min.js"
       ]
     }
   ]

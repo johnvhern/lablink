@@ -1,38 +1,124 @@
-﻿@{
+@{
     ViewData["Title"] = "Patients";
 }
 
 <h5 class="text-stone-800 dark:text-neutral-200 text-xl font-semibold mb-3">Patients</h5>
 
-<!-- Card -->
-<div class="flex flex-col bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 shadow-2xs rounded-xl">
-    <div class="p-4">
-        <p class="mt-1 text-gray-500 dark:text-neutral-400">
-            <div class="sm:flex sm:gap-x-2">
-                <div class="w-full mb-3 sm:mb-0">
-                    <!-- SearchBox -->
-                    <div>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 inset-s-0 flex items-center pointer-events-none z-20 ps-3.5">
-                                <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.3-4.3"></path>
-                                </svg>
+<div id="patientsDatatable" class="--prevent-on-load-init" data-patients-url="@Url.Action("Data", "Patients")" data-hs-datatable='{
+"pageLength": 15,
+"scrollY": "470px",
+"pagingOptions": {
+"pageBtnClasses": "min-w-10 flex justify-center items-center text-gray-800 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-700 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none"
+},
+    "language" : {"zeroRecords" : "<div class=\" py-10 px-5 flex flex-col justify-center items-center text-center\"><svg class=\"shrink-0 size-6 text-gray-500 dark:text-neutral-400\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" /></svg><div class=\"max-w-sm mx-auto\"><p class=\"mt-2 text-sm text-gray-600 dark:text-neutral-300\">No search results</p></div></div>"
+    }
+}'>
+    <!-- Card -->
+    <div class="flex flex-col bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 shadow-2xs rounded-xl">
+        <div class="p-4">
+            <p class="mt-1 text-gray-500 dark:text-neutral-400">
+                <div class="sm:flex sm:gap-x-2">
+                    <div class="w-full mb-3 sm:mb-0">
+                        <!-- SearchBox -->
+                        <div>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 inset-s-0 flex items-center pointer-events-none z-20 ps-3.5">
+                                    <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="m21 21-4.3-4.3"></path>
+                                    </svg>
+                                </div>
+                                <input id="patientSearch" class="py-2.5 sm:py-3 ps-10 pe-4 block w-full bg-white dark:bg-neutral-800 border-gray-200 dark:border-neutral-700 rounded-lg sm:text-sm text-gray-800 dark:text-neutral-200 placeholder:text-gray-500 dark:placeholder:text-neutral-400 focus:border-blue-700 dark:focus:border-blue-600 focus:ring-blue-700 dark:focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" type="text" role="combobox" aria-expanded="false" aria-label="Search patients" placeholder="Search patient">
                             </div>
-                            <input class="py-2.5 sm:py-3 ps-10 pe-4 block w-full bg-white dark:bg-neutral-800 border-gray-200 dark:border-neutral-700 rounded-lg sm:text-sm text-gray-800 dark:text-neutral-200 placeholder:text-gray-500 dark:placeholder:text-neutral-400 focus:border-blue-700 dark:focus:border-blue-600 focus:ring-blue-700 dark:focus:ring-blue-600 disabled:opacity-50 disabled:pointer-events-none" type="text" role="combobox" aria-expanded="false" placeholder="Search patient">
                         </div>
+                        <!-- End SearchBox -->
                     </div>
-                    <!-- End SearchBox -->
+                    <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-600 dark:bg-blue-500 border border-transparent text-white hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-hidden focus:bg-blue-700 dark:focus:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none w-full sm:w-43" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#crudModal" hx-get="@Url.Action("Create", "Patients")" hx-target="#crudModalContent" hx-swap="innerHTML" hx-disabled-elt="this">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus preview-icon shrink-0 size-4"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
+                        Add Patient
+                    </button>
                 </div>
-                <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-600 dark:bg-blue-500 border border-transparent text-white hover:bg-blue-700 dark:hover:bg-blue-600 focus:outline-hidden focus:bg-blue-700 dark:focus:bg-blue-600 disabled:opacity-50 disabled:pointer-events-none w-full sm:w-43" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-vertically-centered-modal" data-hs-overlay="#crudModal" hx-get="@Url.Action("Create", "Patients")" hx-target="#crudModalContent" hx-swap="innerHTML" hx-disabled-elt="this">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus preview-icon shrink-0 size-4"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
-                    Add Patient
-                </button>
-            </div>
-        </p>
+            </p>
+        </div>
     </div>
+    <!-- End Card -->
+    <!-- Card -->
+    <div class="flex flex-col bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 shadow-2xs rounded-xl mt-4">
+        <div class="p-4">
+            <!-- Table -->
+            <div class="flex flex-col">
+                <div class="min-h-130 overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-none [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+                    <table id="patientsTable" class="min-w-full">
+                        <thead class="border-b border-gray-200 dark:border-neutral-700">
+                            <tr>
+                                <th scope="col" class="py-1 px-0 group text-start font-normal focus:outline-hidden">
+                                    <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 dark:text-neutral-400 rounded-md hover:border-gray-200 dark:hover:border-neutral-700">
+                                        Name
+                                        <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500" d="m7 15 5 5 5-5"></path><path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500" d="m7 9 5-5 5 5"></path></svg>
+                                    </div>
+                                </th>
+
+                                <th scope="col" class="py-1 px-0 group text-start font-normal focus:outline-hidden">
+                                    <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 dark:text-neutral-400 rounded-md hover:border-gray-200 dark:hover:border-neutral-700">
+                                        Mobile Number
+                                        <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500" d="m7 15 5 5 5-5"></path><path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500" d="m7 9 5-5 5 5"></path></svg>
+                                    </div>
+                                </th>
+
+                                <th scope="col" class="py-1 px-0 group text-start font-normal focus:outline-hidden">
+                                    <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 dark:text-neutral-400 rounded-md hover:border-gray-200 dark:hover:border-neutral-700">
+                                        SMS Consent
+                                        <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500" d="m7 15 5 5 5-5"></path><path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500" d="m7 9 5-5 5 5"></path></svg>
+                                    </div>
+                                </th>
+
+                                <th scope="col" class="py-1 px-0 group text-start font-normal focus:outline-hidden">
+                                    <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 dark:text-neutral-400 rounded-md hover:border-gray-200 dark:hover:border-neutral-700">
+                                        Consent Date
+                                        <svg class="size-3.5 ms-1 -me-0.5 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="hs-datatable-ordering-desc:text-blue-600 dark:hs-datatable-ordering-desc:text-blue-500" d="m7 15 5 5 5-5"></path><path class="hs-datatable-ordering-asc:text-blue-600 dark:hs-datatable-ordering-asc:text-blue-500" d="m7 9 5-5 5 5"></path></svg>
+                                    </div>
+                                </th>
+
+                                <th scope="col" class="py-2 px-3 text-end font-normal text-sm text-gray-500 dark:text-neutral-400 --exclude-from-ordering">Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer -->
+                <div class="flex flex-wrap justify-between items-center pt-4 border-t border-gray-200 dark:border-neutral-700">
+                    <div class="whitespace-nowrap text-sm text-gray-500 dark:text-neutral-400" data-hs-datatable-info>
+                        Showing
+                        <span data-hs-datatable-info-from></span>
+                        to
+                        <span data-hs-datatable-info-to></span>
+                        of
+                        <span data-hs-datatable-info-length></span>
+                        patients
+                    </div>
+                    <div class="flex items-center space-x-1 hidden" data-hs-datatable-paging>
+                        <button type="button" class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none" data-hs-datatable-paging-prev>
+                            <span aria-hidden="true">«</span>
+                            <span class="sr-only">Previous</span>
+                        </button>
+                        <div class="flex items-center space-x-1 [&>.active]:bg-gray-100 dark:[&>.active]:bg-neutral-700" data-patient-paging-pages></div>
+                        <button type="button" class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none" data-hs-datatable-paging-next>
+                            <span class="sr-only">Next</span>
+                            <span aria-hidden="true">»</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- End Footer -->
+            </div>
+            <!-- End Table -->
+        </div>
+    </div>
+    <!-- End Card -->
 </div>
-<!-- End Card -->
 
 <!-- Modal -->
 <div id="crudModal" class="hs-overlay [--overlay-backdrop:static] hidden size-full fixed top-0 inset-s-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-vertically-centered-modal-label">
@@ -43,3 +129,5 @@
     </div>
 </div>
 <!-- End of Modal -->
+
+
