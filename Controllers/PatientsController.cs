@@ -137,14 +137,24 @@ namespace lablink.app.Controllers
                 return PartialView("_NewPatient", model);
             }
 
+            if (await DupPatient(null, model.FirstName, model.LastName, model.DOB))
+            {
+                ModelState.AddModelError(string.Empty, "Patient with this details already exists.");
+                return PartialView("_NewPatient", model);
+            }
+
+            var fName = model.FirstName.Trim().Replace(" ", "").ToUpper();
+            var mName = model.MiddleName?.Trim().Replace(" ", "").ToUpper();
+            var lName = model.LastName.Trim().Replace(" ", "").ToUpper();
+
             var patient = new Patients
             {
                 FirstName = model.FirstName,
                 MiddleName = model.MiddleName,
                 LastName = model.LastName,
-                NormalizeFName = model.FirstName.Trim().ToUpper(),
-                NormalizeMName = model.MiddleName?.Trim().ToUpper(),
-                NormalizeLName = model.LastName.Trim().ToUpper(),
+                NormalizeFName = fName,
+                NormalizeMName = mName,
+                NormalizeLName = lName,
                 FullName = model.FirstName + " " + model.MiddleName + " " + model.LastName,
                 DOB = model.DOB,
                 PhoneNumber = phoneNumber,
@@ -175,5 +185,15 @@ namespace lablink.app.Controllers
 
             return NoContent();
         }
+
+        #region -- Dup Patient Checker --
+        public async Task<bool> DupPatient(int? id, string fName, string lName, DateOnly dob)
+        {
+            string formattedFName = fName.Trim().Replace(" ", "").ToUpper();
+            string formattedLName = lName.Trim().Replace(" ", "").ToUpper();
+
+            return await _context.Patients.AnyAsync(p => p.Id != id && p.NormalizeFName == formattedFName && p.NormalizeLName == formattedLName && p.DOB == dob);
+        }
+        #endregion
     }
 }
