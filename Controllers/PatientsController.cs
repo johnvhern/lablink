@@ -175,10 +175,94 @@ namespace lablink.app.Controllers
 
             Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
             {
-                dataCreated = new { },
+                dataUpdated = new { },
                 showToast = new
                 {
                     message = "Patient added successfully!",
+                    type = "success"
+                }
+            });
+
+            return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null) return NotFound();
+
+            var patientDetails = new EditViewModel
+            {
+                Id = patient.Id,
+                FirstName = patient.FirstName,
+                MiddleName = patient.MiddleName,
+                LastName = patient.LastName,
+                DOB = patient.DOB,
+                PhoneNumber = patient.PhoneNumber,
+                SmsConsent = patient.SmsConsent
+            };
+
+            return PartialView("_EditPatient", patientDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, EditViewModel model)
+        {
+            if (id != model.Id) return NotFound();
+            if (!ModelState.IsValid) return PartialView("_EditPatient", model);
+
+            var patient = await _context.Patients.FindAsync(id);
+
+            if (patient == null) return NotFound();
+
+            var phoneNumber = PhoneNumberConverter.FormatNumber(model.PhoneNumber);
+
+            if (!PhoneNumberConverter.IsValidMobileNumber(phoneNumber))
+            {
+                ModelState.AddModelError(nameof(model.PhoneNumber), "Invalid mobile number format. Please check and try again");
+                return PartialView("_EditPatient", model);
+            }
+
+            if (await DupPatient(null, model.FirstName, model.LastName, model.DOB))
+            {
+                ModelState.AddModelError(string.Empty, "Patient with this details already exists.");
+                return PartialView("_EditPatient", model);
+            }
+
+            var fName = model.FirstName.Trim().Replace(" ", "").ToUpper();
+            var mName = model.MiddleName?.Trim().Replace(" ", "").ToUpper();
+            var lName = model.LastName.Trim().Replace(" ", "").ToUpper();
+
+            patient.FirstName = model.FirstName;
+            patient.MiddleName = model.MiddleName;
+            patient.LastName = model.LastName;
+            patient.NormalizeFName = fName;
+            patient.NormalizeMName = mName;
+            patient.NormalizeLName = lName;
+            patient.FullName = model.FirstName + " " + model.MiddleName + " " + model.LastName;
+            patient.DOB = model.DOB;
+            patient.PhoneNumber = phoneNumber;
+            patient.SmsConsent = model.SmsConsent;
+            patient.ConsentDate = model.SmsConsent ? DateTime.UtcNow : null;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex) when (ex.InnerException is SqlException sqlEx && sqlEx.Number == 547)
+            {
+                ModelState.AddModelError(nameof(model.DOB), "Please check your date of birth and try again.");
+                return PartialView("_EditPatient", model);
+            }
+
+            Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                dataUpdated = new { },
+                showToast = new
+                {
+                    message = "Patient updated successfully!",
                     type = "success"
                 }
             });

@@ -78,7 +78,7 @@ document.addEventListener("showToast", function (event)
     showToast(event.detail.message, event.detail.type);
 });
 
-document.addEventListener("dataCreated", function ()
+document.addEventListener("dataUpdated", function ()
 {
     window.HSOverlay.close("#crudModal");
 });
