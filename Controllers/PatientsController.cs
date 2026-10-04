@@ -225,7 +225,7 @@ namespace lablink.app.Controllers
                 return PartialView("_EditPatient", model);
             }
 
-            if (await DupPatient(null, model.FirstName, model.LastName, model.DOB))
+            if (await DupPatient(model.Id, model.FirstName, model.LastName, model.DOB))
             {
                 ModelState.AddModelError(string.Empty, "Patient with this details already exists.");
                 return PartialView("_EditPatient", model);
@@ -263,6 +263,45 @@ namespace lablink.app.Controllers
                 showToast = new
                 {
                     message = "Patient updated successfully!",
+                    type = "success"
+                }
+            });
+
+            return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null) return NotFound();
+
+            var patientDetails = new DeleteViewModel
+            {
+                Id = patient.Id,
+                FullName = patient.FullName
+            };
+
+            return PartialView("_DeletePatient", patientDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id, DeleteViewModel model)
+        {
+            if (id != model.Id) return NotFound();
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null) return NotFound();
+
+            _context.Patients.Remove(patient);
+            await _context.SaveChangesAsync();
+
+            Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                dataUpdated = new { },
+                showToast = new
+                {
+                    message = "Patient deleted successfully!",
                     type = "success"
                 }
             });

@@ -6,7 +6,7 @@
 
 <div id="patientsDatatable" class="--prevent-on-load-init flex flex-col" data-patients-url="@Url.Action("Data", "Patients")" data-hs-datatable='{
 "pageLength": 15,
-"scrollY" : "calc(100vh - 380px)" ,
+"scrollY" : "calc(100vh - 400px)" ,
 "pagingOptions": {
 "pageBtnClasses": "min-w-10 flex justify-center items-center text-gray-800 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-700 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none"
 },
@@ -47,7 +47,15 @@
         <div class="p-4">
             <!-- Table -->
             <div>
-                <div class="min-h-170 overflow-x-auto [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-thumb]:rounded-none [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+                <div class="min-h-140 overflow-x-auto
+                    [&::-webkit-scrollbar]:h-2
+                    [&::-webkit-scrollbar-track]:bg-transparent
+                    [&::-webkit-scrollbar-thumb]:rounded-full
+                    [&::-webkit-scrollbar-thumb]:bg-gray-300
+                    [&::-webkit-scrollbar-thumb:hover]:bg-gray-400
+                    [&::-webkit-scrollbar-button]:hidden
+                    dark:[&::-webkit-scrollbar-thumb]:bg-neutral-600
+                    dark:[&::-webkit-scrollbar-thumb:hover]:bg-neutral-500">
                     <table id="patientsTable" class="min-w-full">
                         <thead class="border-b border-gray-200 dark:border-neutral-700">
                             <tr>
