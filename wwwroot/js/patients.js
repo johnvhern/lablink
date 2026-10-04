@@ -27,6 +27,10 @@
                 render: DataTable.render.text()
             },
             {
+                data: "dob",
+                render: DataTable.render.text()
+            },
+            {
                 data: "phoneNumber",
                 render: DataTable.render.text()
             },
@@ -70,7 +74,7 @@
                 className: "p-3 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
             },
             {
-                targets: 4,
+                targets: 5,
                 className: "text-end"
             }
         ]

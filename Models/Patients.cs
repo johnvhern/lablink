@@ -22,6 +22,8 @@ namespace lablink.app.Models
         [StringLength(150)]
         public string FullName { get; set; } = null!;
 
+        public DateOnly DOB { get; set; }
+
         [StringLength(15)]
         public string PhoneNumber { get; set; } = null!;
         public bool SmsConsent { get; set; }

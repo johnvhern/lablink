@@ -19,6 +19,10 @@ namespace lablink.app.ViewModels.Patients
         public string LastName { get; set; } = null!;
 
         [Required]
+        [Display(Name = "date of birth")]
+        public DateOnly DOB { get; set; }
+
+        [Required]
         [MaxLength(15)]
         [Display(Name = "phone number")]
         [RegularExpression(@"^(\+63|0)9\d{9}$", ErrorMessage = "Invalid Philippine mobile number format.")]

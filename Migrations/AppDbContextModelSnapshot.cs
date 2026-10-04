@@ -249,6 +249,9 @@ namespace lablink.app.Migrations
                     b.Property<DateTime?>("ConsentDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateOnly>("DOB")
+                        .HasColumnType("date");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -289,7 +292,10 @@ namespace lablink.app.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Patients", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_BirthDate_MinDate", "[DOB] >= '1900-01-01'");
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

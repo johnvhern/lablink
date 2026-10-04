@@ -3,6 +3,7 @@ using lablink.app.Helpers;
 using lablink.app.Models;
 using lablink.app.ViewModels.Patients;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace lablink.app.Controllers
@@ -71,12 +72,14 @@ namespace lablink.app.Controllers
             // Only these explicitly allowed columns can be sorted.
             var ordered = (sortColumn, descending) switch
             {
-                (1, false) => query.OrderBy(p => p.PhoneNumber),
-                (1, true) => query.OrderByDescending(p => p.PhoneNumber),
-                (2, false) => query.OrderBy(p => p.SmsConsent),
-                (2, true) => query.OrderByDescending(p => p.SmsConsent),
-                (3, false) => query.OrderBy(p => p.ConsentDate),
-                (3, true) => query.OrderByDescending(p => p.ConsentDate),
+                (1, false) => query.OrderBy(p => p.DOB),
+                (1, true) => query.OrderByDescending(p => p.DOB),
+                (2, false) => query.OrderBy(p => p.PhoneNumber),
+                (2, true) => query.OrderByDescending(p => p.PhoneNumber),
+                (3, false) => query.OrderBy(p => p.SmsConsent),
+                (3, true) => query.OrderByDescending(p => p.SmsConsent),
+                (4, false) => query.OrderBy(p => p.ConsentDate),
+                (4, true) => query.OrderByDescending(p => p.ConsentDate),
                 (0, true) => query.OrderByDescending(p => p.FullName),
                 _ => query.OrderBy(p => p.FullName)
             };
@@ -89,6 +92,7 @@ namespace lablink.app.Controllers
                 {
                     p.Id,
                     p.FullName,
+                    p.DOB,
                     p.PhoneNumber,
                     p.SmsConsent,
                     p.ConsentDate
@@ -104,6 +108,7 @@ namespace lablink.app.Controllers
                 {
                     id = p.Id,
                     name = p.FullName,
+                    dob = p.DOB,
                     phoneNumber = p.PhoneNumber,
                     smsConsent = p.SmsConsent,
                     consentDate = p.ConsentDate?.ToString(
@@ -129,6 +134,7 @@ namespace lablink.app.Controllers
             if (!PhoneNumberConverter.IsValidMobileNumber(phoneNumber))
             {
                 ModelState.AddModelError(nameof(model.PhoneNumber), "Invalid mobile number format. Please check and try again");
+                return PartialView("_NewPatient", model);
             }
 
             var patient = new Patients
@@ -140,13 +146,22 @@ namespace lablink.app.Controllers
                 NormalizeMName = model.MiddleName?.Trim().ToUpper(),
                 NormalizeLName = model.LastName.Trim().ToUpper(),
                 FullName = model.FirstName + " " + model.MiddleName + " " + model.LastName,
+                DOB = model.DOB,
                 PhoneNumber = phoneNumber,
                 SmsConsent = model.SmsConsent,
                 ConsentDate = model.SmsConsent ? DateTime.UtcNow : null
             };
 
             _context.Patients.Add(patient);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            } catch (DbUpdateException ex) when (ex.InnerException is SqlException sqlEx && sqlEx.Number == 547)
+            {
+                ModelState.AddModelError(nameof(model.DOB), "Please check your date of birth and try again.");
+                return PartialView("_NewPatient", model);
+            }
 
             Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
             {

@@ -60,7 +60,14 @@ namespace lablink.app.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MiddleName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    NormalizeFName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NormalizeMName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NormalizeLName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    DOB = table.Column<DateOnly>(type: "date", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
                     SmsConsent = table.Column<bool>(type: "bit", nullable: false),
                     ConsentDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -68,6 +75,7 @@ namespace lablink.app.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Patients", x => x.Id);
+                    table.CheckConstraint("CK_BirthDate_MinDate", "[DOB] >= '1900-01-01'");
                 });
 
             migrationBuilder.CreateTable(
