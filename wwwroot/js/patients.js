@@ -10,6 +10,7 @@
 
     if (!wrapper || !searchInput || activeTable?.wrapper === wrapper) return;
     const instance = new HSDataTable(wrapper, {
+        autoWidth: true,
         processing: true,
         serverSide: true,
         orderMulti: false,
@@ -37,8 +38,8 @@
                     if (type !== "display") return value ? "Yes" : "No"; // keeps sorting/filtering on plain text
 
                     return value
-                        ? ' <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400">Yes</span>'
-                        : '<span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-400">No</span>';
+                        ? ' <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400">Has Consent</span>'
+                        : '<span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-400">No Consent</span>';
                 }
             },
             {
@@ -51,7 +52,15 @@
                 data: null,
                 orderable: false,
                 searchable: false,
-                defaultContent: "—"
+                render: (data, type, row) =>
+                {
+                    if (type !== "display") return "";
+
+                    return `
+            <div class="inline-flex gap-x-2">
+                <button type="button" data-action="edit" data-id="${row.id}" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-100 border border-transparent text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-500/20 dark:focus:bg-blue-500/20">Edit</button>
+                <button type="button" data-action="delete" data-id="${row.id}" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-red-100 border border-transparent text-red-800 hover:bg-red-200 focus:outline-hidden focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-500/20 dark:focus:bg-red-500/20">Delete</button></div>`;
+                }
             }
         ],
 

@@ -1,4 +1,5 @@
 ﻿using lablink.app.Data;
+using lablink.app.Helpers;
 using lablink.app.Models;
 using lablink.app.ViewModels.Patients;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,7 @@ namespace lablink.app.Controllers
             return View();
         }
 
+        #region -- DataTable --
         [HttpGet]
         [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
         public async Task<IActionResult> Data(
@@ -110,6 +112,7 @@ namespace lablink.app.Controllers
                 })
             });
         }
+        #endregion
 
         public IActionResult Create()
         {
@@ -121,10 +124,17 @@ namespace lablink.app.Controllers
         {
             if (!ModelState.IsValid) return PartialView("_NewPatient", model);
 
+            var phoneNumber = PhoneNumberConverter.FormatNumber(model.PhoneNumber);
+
+            if (!PhoneNumberConverter.IsValidMobileNumber(phoneNumber))
+            {
+                ModelState.AddModelError(nameof(model.PhoneNumber), "Invalid mobile number format. Please check and try again");
+            }
+
             var patient = new Patients
             {
                 Name = model.Name,
-                PhoneNumber = model.PhoneNumber,
+                PhoneNumber = phoneNumber,
                 SmsConsent = model.SmsConsent,
                 ConsentDate = model.SmsConsent ? DateTime.UtcNow : null
             };
