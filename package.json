@@ -19,9 +19,12 @@
   },
   "homepage": "https://github.com/johnvhern/lablink#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/cli": "^4.3.0",
     "@tailwindcss/forms": "^0.5.11",
-    "preline": "^4.2.0",
+    "preline": "^5.0.0",
     "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.5.1": true
   }
 }

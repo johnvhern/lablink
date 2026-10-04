@@ -10,7 +10,7 @@
 @plugin "@tailwindcss/forms";
     
 /* Preline Themes */
-@import "../node_modules/preline/css/themes/theme.css";
+@import "../node_modules/preline/theme.css";
 
 /* Optional Preline UI Datatable Plugin: DataTables.net renders its own
   search/length/paging controls alongside Preline's own; hide the native

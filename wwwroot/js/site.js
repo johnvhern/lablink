@@ -1,7 +1,17 @@
 ﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 // for details on configuring this project to bundle and minify static web assets.
 
-// Write your JavaScript code.
+// Preline's calendar styles require a .dark ancestor, while Tailwind's
+// dark utilities follow the system preference by default. Keep them in sync.
+const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+function syncSystemTheme()
+{
+    document.documentElement.classList.toggle("dark", systemTheme.matches);
+}
+
+syncSystemTheme();
+systemTheme.addEventListener("change", syncSystemTheme);
 
 htmx.onLoad(function ()
 {

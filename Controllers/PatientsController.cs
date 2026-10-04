@@ -58,7 +58,7 @@ namespace lablink.app.Controllers
             if (!string.IsNullOrEmpty(search))
             {
                 query = query.Where(p =>
-                    p.Name.Contains(search) ||
+                    p.FullName.Contains(search) ||
                     p.PhoneNumber.Contains(search));
             }
 
@@ -77,8 +77,8 @@ namespace lablink.app.Controllers
                 (2, true) => query.OrderByDescending(p => p.SmsConsent),
                 (3, false) => query.OrderBy(p => p.ConsentDate),
                 (3, true) => query.OrderByDescending(p => p.ConsentDate),
-                (0, true) => query.OrderByDescending(p => p.Name),
-                _ => query.OrderBy(p => p.Name)
+                (0, true) => query.OrderByDescending(p => p.FullName),
+                _ => query.OrderBy(p => p.FullName)
             };
 
             var patients = await ordered
@@ -88,7 +88,7 @@ namespace lablink.app.Controllers
                 .Select(p => new
                 {
                     p.Id,
-                    p.Name,
+                    p.FullName,
                     p.PhoneNumber,
                     p.SmsConsent,
                     p.ConsentDate
@@ -103,7 +103,7 @@ namespace lablink.app.Controllers
                 data = patients.Select(p => new
                 {
                     id = p.Id,
-                    name = p.Name,
+                    name = p.FullName,
                     phoneNumber = p.PhoneNumber,
                     smsConsent = p.SmsConsent,
                     consentDate = p.ConsentDate?.ToString(
@@ -133,7 +133,13 @@ namespace lablink.app.Controllers
 
             var patient = new Patients
             {
-                Name = model.Name,
+                FirstName = model.FirstName,
+                MiddleName = model.MiddleName,
+                LastName = model.LastName,
+                NormalizeFName = model.FirstName.Trim().ToUpper(),
+                NormalizeMName = model.MiddleName?.Trim().ToUpper(),
+                NormalizeLName = model.LastName.Trim().ToUpper(),
+                FullName = model.FirstName + " " + model.MiddleName + " " + model.LastName,
                 PhoneNumber = phoneNumber,
                 SmsConsent = model.SmsConsent,
                 ConsentDate = model.SmsConsent ? DateTime.UtcNow : null
