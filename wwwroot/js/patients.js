@@ -32,7 +32,14 @@
             {
                 data: "smsConsent",
                 searchable: false,
-                render: value => value ? "Yes" : "No"
+                render: (value, type) =>
+                {
+                    if (type !== "display") return value ? "Yes" : "No"; // keeps sorting/filtering on plain text
+
+                    return value
+                        ? ' <span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400">Yes</span>'
+                        : '<span class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-400">No</span>';
+                }
             },
             {
                 data: "consentDate",
