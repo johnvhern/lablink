@@ -16,6 +16,20 @@
   search/length/paging controls alongside Preline's own; hide the native
   ones since they can't be disabled through DataTables options alone. */
 
+.vc[data-vc-type="default"] {
+    width: 320px;
+    min-width: 320px;
+}
+
+/* Allow the hidden popup to be measured before it opens. */
+.vc[data-vc-input][data-vc-calendar-hidden] {
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+}
+
 .dt-layout-row:has(.dt-search),
 .dt-layout-row:has(.dt-length),
 .dt-layout-row:has(.dt-paging) {

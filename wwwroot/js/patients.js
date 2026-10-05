@@ -145,6 +145,14 @@
     });
         patientsTable.on("draw", () =>
         {
+            // A deletion can remove the current server-side page entirely.
+            const { page, pages } = patientsTable.page.info();
+            const lastPage = Math.max(0, pages - 1);
+            if (page > lastPage) {
+                patientsTable.page(lastPage).draw("page");
+                return;
+            }
+
             renderPagination();
             htmx.process(wrapper);
             window.HSOverlay.autoInit();

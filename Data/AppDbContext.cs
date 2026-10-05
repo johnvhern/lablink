@@ -9,6 +9,7 @@ namespace lablink.app.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
         public DbSet<Patients> Patients => Set<Patients>();
+        public DbSet<Models.Results> Results => Set<Models.Results>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -19,6 +20,10 @@ namespace lablink.app.Data
                    "CK_BirthDate_MinDate",
                    "[DOB] >= '1900-01-01'"
                    ));
+
+            builder.Entity<Models.Results>()
+                .HasIndex(r => r.ReferenceNo)
+                .IsUnique();
         }
     }
 }
