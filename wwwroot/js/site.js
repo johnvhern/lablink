@@ -18,6 +18,16 @@ htmx.onLoad(function ()
     window.HSStaticMethods.autoInit();
 });
 
+// Fetch the requested form before opening the shared modal.
+document.addEventListener("htmx:afterSwap", function (event)
+{
+    const { target, requestConfig } = event.detail;
+    if (target?.id !== "crudModalContent" || requestConfig?.verb !== "get") return;
+
+    window.HSOverlay.autoInit();
+    window.HSOverlay.open("#crudModal");
+});
+
 function showToast(message, type = "success")
 {
     const content = document.createElement("div");
