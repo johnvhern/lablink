@@ -18,5 +18,6 @@ namespace lablink.app.Models
         public DateTime? ReadyAt { get; set; }
         public DateTime? ClaimedAt { get; set; }
 
+
     }
 }

@@ -334,7 +334,7 @@ namespace lablink.app.Migrations
                     b.HasIndex("ReferenceNo")
                         .IsUnique();
 
-                    b.ToTable("Results");
+                    b.ToTable("Results", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -28,5 +28,7 @@ namespace lablink.app.Models
         public string PhoneNumber { get; set; } = null!;
         public bool SmsConsent { get; set; }
         public DateTime? ConsentDate { get; set; }
+
+        public ICollection<Models.Results> Results { get; set; } = new List<Models.Results>();
     }
 }
