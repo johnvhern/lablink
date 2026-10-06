@@ -11,6 +11,10 @@
     "pagingOptions" : {
     "pageBtnClasses" : "min-w-10 flex justify-center items-center text-gray-800 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-700 focus:outline-hidden focus:bg-gray-100 dark:focus:bg-neutral-700 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none"
     },
+    "selecting" : true,
+    "rowSelectingOptions" : {
+    "selectAllSelector" : "#hs-table-checkbox-all"
+    },
     "language" : {"zeroRecords" : "<div class=\" py-10 px-5 flex flex-col justify-center items-center text-center\"><svg class=\"shrink-0 size-6 text-gray-500 dark:text-neutral-400\" xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"11\" r=\"8\" /><path d=\"m21 21-4.3-4.3\" /></svg><div class=\"max-w-sm mx-auto\"><p class=\"mt-2 text-sm text-gray-600 dark:text-neutral-300\">No search results</p></div></div>"
     }
     }'>
@@ -123,6 +127,13 @@
                     <table id="resultsTable" class="min-w-full" style="width: 100%">
                         <thead class="border-b border-gray-200 dark:border-neutral-700">
                             <tr>
+                                <th scope="col" class="py-1 ps-3 --exclude-from-ordering">
+                                    <div class="flex items-center h-5">
+                                        <input id="hs-table-checkbox-all" type="checkbox" class="shrink-0 size-4 bg-transparent border-gray-300 dark:border-neutral-600 rounded-sm shadow-2xs text-blue-600 dark:text-blue-500 focus:ring-0 focus:ring-offset-0 checked:bg-blue-600 dark:checked:bg-blue-500 checked:border-blue-600 dark:checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                                        <label for="hs-table-checkbox-all" class="sr-only">Checkbox</label>
+                                    </div>
+                                </th>
+
                                 <th scope="col" class="py-1 px-0 group text-start font-normal focus:outline-hidden">
                                     <div class="py-1 px-2.5 inline-flex items-center border border-transparent text-sm text-gray-500 dark:text-neutral-400 rounded-md hover:border-gray-200 dark:hover:border-neutral-700">
                                         Reference No
@@ -203,4 +214,26 @@
         </div>
     </div>
     <!-- End Card -->
+</div>
+
+<!-- OFF CANVAS -->
+
+<div id="hs-offcanvas-example" class="hs-overlay hs-overlay-open:translate-x-0 hidden translate-x-full fixed top-0 inset-e-0 transition-all duration-300 transform h-full max-w-sm w-full z-80 bg-white dark:bg-neutral-800 border-e border-transparent" role="dialog" tabindex="-1" aria-labelledby="hs-offcanvas-example-label">
+    <div class="flex justify-between items-center py-3 px-4 border-b border-gray-200 dark:border-neutral-700">
+        <h3 id="hs-offcanvas-example-label" class="font-semibold text-gray-800 dark:text-neutral-200">
+            Result Details
+        </h3>
+        <button type="button" class="size-8 inline-flex justify-center items-center gap-x-2 rounded-full bg-gray-100 dark:bg-neutral-700 border border-transparent text-gray-800 dark:text-neutral-200 hover:bg-gray-200 dark:hover:bg-neutral-600 focus:outline-hidden focus:bg-gray-200 dark:focus:bg-neutral-600 disabled:opacity-50 disabled:pointer-events-none" aria-label="Close" data-hs-overlay="#hs-offcanvas-example">
+            <span class="sr-only">Close</span>
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+            </svg>
+        </button>
+    </div>
+    <div class="p-4">
+        <p class="text-gray-800 dark:text-neutral-200">
+            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+        </p>
+    </div>
 </div>

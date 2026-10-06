@@ -43,6 +43,17 @@
 
             columns: [
                 {
+                    data: null,
+                    searchable: false,
+                    orderable: false,
+                    render: (data, type) =>
+                    {
+                        if (type !== "display") return "";
+
+                        return `<input type="checkbox"data-hs-datatable-row-selecting-individual aria-label="Select result" class="shrink-0 size-4 bg-transparent border-gray-300 dark:border-neutral-600 rounded-sm shadow-2xs text-blue-600 dark:text-blue-500 focus:ring-0 focus:ring-offset-0 checked:bg-blue-600 dark:checked:bg-blue-500 checked:border-blue-600 dark:checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none">`;
+                    }
+                },
+                {
                     data: "refNo",
                     render: DataTable.render.text()
                 },
@@ -109,7 +120,7 @@
 
                         return `
             <div class="inline-flex gap-x-2">
-                <button type="button" hx-sync="#crudModalContent:replace" hx-get="/Results/Edit/${row.id}" hx-target="#crudModalContent" hx-swap="innerHTML" hx-disabled-elt="this" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-100 border border-transparent text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-500/20 dark:focus:bg-blue-500/20">View</button>`;
+                <button type="button" data-hs-overlay="#hs-offcanvas-example" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-100 border border-transparent text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-500/20 dark:focus:bg-blue-500/20">View</button>`;
                     }
                 }
             ],
@@ -120,11 +131,11 @@
                     className: "p-2.5 sm: text-sm text-gray-800 dark:text-neutral-200"
                 },
                 {
-                    targets: 1,
+                    targets: 2,
                     className: "font-medium"
                 },
                 {
-                    targets: 6,
+                    targets: 7,
                     className: "text-end"
                 }
             ]
