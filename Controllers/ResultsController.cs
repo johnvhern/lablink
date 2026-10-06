@@ -74,6 +74,16 @@ namespace lablink.app.Controllers
                 query = query.Where(r => r.ClaimedAt >= startDate);
             }
 
+            if (fromDate.HasValue && toDate.HasValue && fromDate.Value > toDate.Value)
+            {
+                return BadRequest();
+            }
+
+            if (toDate == DateOnly.MaxValue)
+            {
+                return BadRequest();
+            }
+
             if (toDate.HasValue)
             {
                 var endDate = toDate.Value

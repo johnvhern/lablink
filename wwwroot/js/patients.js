@@ -76,7 +76,7 @@
         columnDefs: [
             {
                 targets: "_all",
-                className: "p-3 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200"
+                className: "p-2.5 text-sm text-gray-800 dark:text-neutral-200"
             },
             {
                 targets: 5,

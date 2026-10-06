@@ -50,6 +50,13 @@
       "files": [
         "lodash.min.js"
       ]
+    },
+    {
+      "library": "datatables.net-responsive@4.1.1",
+      "destination": "wwwroot/lib/datatables.net-responsive/",
+      "files": [
+        "js/dataTables.responsive.min.js"
+      ]
     }
   ]
 }

@@ -37,7 +37,19 @@
 }
 
 .dt-scroll-body thead {
-    display: none !important;
+    border-bottom: 0 !important;
+}
+
+.dt-scroll-body .dt-scroll-sizing {
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.dt-scroll-body thead th {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
 }
 
 /* DataTables empty-state cell */
