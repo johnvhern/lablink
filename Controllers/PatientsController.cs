@@ -39,7 +39,7 @@ namespace lablink.app.Controllers
                 length < 1 ||
                 length > 100 ||
                 sortColumn < 0 ||
-                sortColumn > 3 ||
+                sortColumn > 4 ||
                 (sortDirection != "asc" && sortDirection != "desc"))
             {
                 return BadRequest();
