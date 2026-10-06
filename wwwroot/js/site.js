@@ -21,11 +21,17 @@ htmx.onLoad(function ()
 // Fetch the requested form before opening the shared modal.
 document.addEventListener("htmx:afterSwap", function (event)
 {
+    const modalByContentId = {
+        crudModalContent: "#crudModal",
+        resultOffCanvasContent: "#resultOffCanvas"
+    };
+
     const { target, requestConfig } = event.detail;
-    if (target?.id !== "crudModalContent" || requestConfig?.verb !== "get") return;
+    const overlaySelector = modalByContentId[target?.id];
+    if (!overlaySelector || requestConfig?.verb !== "get") return;
 
     window.HSOverlay.autoInit();
-    window.HSOverlay.open("#crudModal");
+    window.HSOverlay.open(overlaySelector);
 });
 
 function showToast(message, type = "success")

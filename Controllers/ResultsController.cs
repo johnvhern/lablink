@@ -150,5 +150,11 @@ namespace lablink.app.Controllers
             });
         }
         #endregion
+
+        [HttpGet]
+        public IActionResult ResultDetails()
+        {
+            return PartialView("_ResultDetails");
+        }
     }
 }
