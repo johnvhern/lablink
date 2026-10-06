@@ -1,5 +1,6 @@
 ﻿using lablink.app.Data;
 using lablink.app.Enums;
+using lablink.app.ViewModels.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -152,9 +153,25 @@ namespace lablink.app.Controllers
         #endregion
 
         [HttpGet]
-        public IActionResult ResultDetails()
+        public async Task<IActionResult> ResultDetails(int? id)
         {
-            return PartialView("_ResultDetails");
+            if (id == null) return NotFound();
+            var result = await _context.Results.Include(r => r.Patients).FirstOrDefaultAsync(r => r.Id == id);
+            if (result == null || result.Patients == null) return NotFound();
+
+            var resultDetails = new ResultDetails
+            {
+                Id = result.Id,
+                RefNo = result.ReferenceNo,
+                FullName = result.Patients.FullName,
+                TestType = result.TestType,
+                PhoneNumber = result.Patients.PhoneNumber,
+                SMSConsent = result.Patients.SmsConsent,
+                ReadyDate = result.ReadyAt,
+                resultStatus = result.ResultStatus
+            };
+
+            return PartialView("_ResultDetails", resultDetails);
         }
     }
 }

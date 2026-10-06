@@ -1,26 +1,27 @@
-﻿@using lablink.app.ViewModels.Patients
-@model NewViewModel
+﻿@using lablink.app.ViewModels.Results
+@model ResultDetails
 
 <form hx-target="#resultOffCanvasContent" hx-swap="innerHTML">
+    <input asp-for="Id" type="hidden"/>
     <div class="text-start space-y-1 mb-4 mt-1">
-        <small class="text-gray-500 dark:text-neutral-400 text-sm font-mono">LAB-20261005-90E8C797</small>
-        <p class="text-stone-800 dark:text-neutral-200 text-md font-bold">John Vhern Millor Torres Dela Cruz</p>
-        <p class="text-gray-500 dark:text-neutral-400 text-sm">CBC, Urinalysis</p>
+        <small class="text-gray-500 dark:text-neutral-400 text-sm font-mono">@Model.RefNo</small>
+        <p class="text-stone-800 dark:text-neutral-200 text-md font-bold">@Model.FullName</p>
+        <p class="text-gray-500 dark:text-neutral-400 text-sm">@Model.TestType</p>
     </div>
     <!-- Card -->
     <div class="flex flex-col bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 shadow-2xs rounded-xl mb-4">
         <div class="p-4 space-y-2">
             <div class="flex justify-between text-sm">
                 <label class="text-gray-500 dark:text-neutral-400">Mobile Number</label>
-                <p class="text-stone-800 dark:text-neutral-200 text-md">+639695083482</p>
+                <p class="text-stone-800 dark:text-neutral-200 text-md">@Model.PhoneNumber</p>
             </div>
             <div class="flex justify-between text-sm">
                 <label class="text-gray-500 dark:text-neutral-400">SMS Consent</label>
-                <p class="text-stone-800 dark:text-neutral-200 text-md">Given</p>
+                <p class="text-stone-800 dark:text-neutral-200 text-md">@(Model.SMSConsent ? "Given" : "No Consent")</p>
             </div>
             <div class="flex justify-between text-sm">
                 <label class="text-gray-500 dark:text-neutral-400">Ready Date</label>
-                <p class="text-stone-800 dark:text-neutral-200 text-md">Oct 6, 2026</p>
+                <p class="text-stone-800 dark:text-neutral-200 text-md">@(Model.ReadyDate.HasValue ? "Test" : "--")</p>
             </div>
         </div>
     </div>
@@ -30,7 +31,7 @@
         <div class="flex justify-evenly mt-4">
             <div class="flex flex-col items-center">
                 <!-- Icon -->
-                <span class="inline-flex justify-center items-center size-9 rounded-full border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500">
+                <span class="inline-flex justify-center items-center size-9 rounded-full @(Model.resultStatus.ToString() == "Pending" ? "bg-blue-600 dark:bg-blue-500 text-white" : "border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500")">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock preview-icon shrink-0 size-4"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
                 </span>
                 <!-- End Icon -->
