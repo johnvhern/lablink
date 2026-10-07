@@ -17,6 +17,7 @@ namespace lablink.app.Models
         public ResultStatus ResultStatus { get; set; }
         public DateTime? ReadyAt { get; set; }
         public DateTime? ClaimedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
 
     }

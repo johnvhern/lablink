@@ -11,6 +11,7 @@ namespace lablink.app.ViewModels.Results
         public string? PhoneNumber { get; set; }
         public bool SMSConsent { get; set; }
         public DateTime? ReadyDate { get; set; } 
+        public DateTime? ClaimedDate { get; set; } 
         public ResultStatus resultStatus { get; set; }
     }
 }

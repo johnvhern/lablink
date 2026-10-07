@@ -1,5 +1,21 @@
-﻿@using lablink.app.ViewModels.Results
+﻿@using lablink.app.Enums
+@using lablink.app.ViewModels.Results
 @model ResultDetails
+
+@{
+    ResultStatus[] order =
+    {
+        ResultStatus.Pending,
+        ResultStatus.ReadyForClaim,
+        ResultStatus.Notified,
+        ResultStatus.Claimed   // use your actual member name
+    };
+    var current = Array.IndexOf(order, Model.resultStatus);
+
+    string Circle(int i) => i <= current
+        ? "bg-blue-600 dark:bg-blue-500 text-white"
+        : "border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500";
+}
 
 <form hx-target="#resultOffCanvasContent" hx-swap="innerHTML">
     <input asp-for="Id" type="hidden"/>
@@ -23,6 +39,10 @@
                 <label class="text-gray-500 dark:text-neutral-400">Ready Date</label>
                 <p class="text-stone-800 dark:text-neutral-200 text-md">@(Model.ReadyDate.HasValue ? "Test" : "--")</p>
             </div>
+            <div class="flex justify-between text-sm">
+                <label class="text-gray-500 dark:text-neutral-400">Claimed Date</label>
+                <p class="text-stone-800 dark:text-neutral-200 text-md">@(Model.ClaimedDate.HasValue ? "Test" : "--")</p>
+            </div>
         </div>
     </div>
 
@@ -31,7 +51,7 @@
         <div class="flex justify-evenly mt-4">
             <div class="flex flex-col items-center">
                 <!-- Icon -->
-                <span class="inline-flex justify-center items-center size-9 rounded-full @(Model.resultStatus.ToString() == "Pending" ? "bg-blue-600 dark:bg-blue-500 text-white" : "border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500")">
+                <span class="inline-flex justify-center items-center size-9 rounded-full @Circle(0)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock preview-icon shrink-0 size-4"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
                 </span>
                 <!-- End Icon -->
@@ -39,7 +59,7 @@
             </div>
             <div class="flex flex-col items-center">
                 <!-- Icon -->
-                <span class="inline-flex justify-center items-center size-9 rounded-full border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500">
+                <span class="inline-flex justify-center items-center size-9 rounded-full @Circle(1)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-check-corner preview-icon shrink-0 size-4"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="m14 20 2 2 4-4" /></svg>
                 </span>
                 <!-- End Icon -->
@@ -47,7 +67,7 @@
             </div>
             <div class="flex flex-col items-center">
                 <!-- Icon -->
-                <span class="inline-flex justify-center items-center size-9 rounded-full border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500">
+                <span class="inline-flex justify-center items-center size-9 rounded-full @Circle(2)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell preview-icon shrink-0 size-4"><path d="M10.268 21a2 2 0 0 0 3.464 0" /><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></svg>
                 </span>
                 <!-- End Icon -->
@@ -55,7 +75,7 @@
             </div>
             <div class="flex flex-col items-center">
                 <!-- Icon -->
-                <span class="inline-flex justify-center items-center size-9 rounded-full border border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500">
+                <span class="inline-flex justify-center items-center size-9 rounded-full @Circle(3)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-check preview-icon shrink-0 size-4"><path d="M18 6 7 17l-5-5" /><path d="m22 10-7.5 7.5L13 16" /></svg>
                 </span>
                 <!-- End Icon -->

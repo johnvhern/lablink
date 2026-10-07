@@ -1,5 +1,7 @@
 ﻿using lablink.app.Data;
 using lablink.app.Enums;
+using lablink.app.Helpers;
+using lablink.app.Models;
 using lablink.app.ViewModels.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +32,7 @@ namespace lablink.app.Controllers
         [FromQuery] ResultStatus? status = null,
         [FromQuery] DateOnly? fromDate = null,
         [FromQuery] DateOnly? toDate = null,
-        [FromQuery(Name = "order[0][column]")] int sortColumn = 0,
+        [FromQuery(Name = "order[0][column]")] int sortColumn = 1,
         [FromQuery(Name = "order[0][dir]")] string sortDirection = "asc",
         CancellationToken cancellationToken = default)
         {
@@ -39,7 +41,7 @@ namespace lablink.app.Controllers
                 start < 0 ||
                 length < 1 ||
                 length > 100 ||
-                sortColumn < 0 ||
+                sortColumn < 1 ||
                 sortColumn > 5 ||
                 (sortDirection != "asc" && sortDirection != "desc"))
             {
@@ -72,7 +74,7 @@ namespace lablink.app.Controllers
             if (fromDate.HasValue)
             {
                 var startDate = fromDate.Value.ToDateTime(TimeOnly.MinValue);
-                query = query.Where(r => r.ClaimedAt >= startDate);
+                query = query.Where(r => r.CreatedAt >= startDate);
             }
 
             if (fromDate.HasValue && toDate.HasValue && fromDate.Value > toDate.Value)
@@ -91,28 +93,26 @@ namespace lablink.app.Controllers
                     .AddDays(1)
                     .ToDateTime(TimeOnly.MinValue);
 
-                query = query.Where(r => r.ClaimedAt < endDate);
+                query = query.Where(r => r.CreatedAt < endDate);
             }
 
             var recordsFiltered = await query.CountAsync(cancellationToken);
 
             var descending = sortDirection == "desc";
 
-            // Only these explicitly allowed columns can be sorted.
+            // Match the table indexes: column 0 is the selection checkbox.
             var ordered = (sortColumn, descending) switch
             {
-                (1, false) => query.OrderBy(r => r.Patients.FullName),
-                (1, true) => query.OrderByDescending(r => r.Patients.FullName),
-                (2, false) => query.OrderBy(r => r.TestType),
-                (2, true) => query.OrderByDescending(r => r.TestType),
-                (3, false) => query.OrderBy(r => r.ResultStatus),
-                (3, true) => query.OrderByDescending(r => r.ResultStatus),
-                (4, false) => query.OrderBy(r => r.ReadyAt),
-                (4, true) => query.OrderByDescending(r => r.ReadyAt),
-                (5, false) => query.OrderBy(r => r.ClaimedAt),
-                (5, true) => query.OrderByDescending(r => r.ClaimedAt),
-                (0, true) => query.OrderByDescending(p => p.ReferenceNo),
-                _ => query.OrderBy(p => p.ReferenceNo)
+                (2, false) => query.OrderBy(r => r.Patients.FullName),
+                (2, true) => query.OrderByDescending(r => r.Patients.FullName),
+                (3, false) => query.OrderBy(r => r.TestType),
+                (3, true) => query.OrderByDescending(r => r.TestType),
+                (4, false) => query.OrderBy(r => r.ResultStatus),
+                (4, true) => query.OrderByDescending(r => r.ResultStatus),
+                (5, false) => query.OrderBy(r => r.CreatedAt),
+                (5, true) => query.OrderByDescending(r => r.CreatedAt),
+                (1, true) => query.OrderByDescending(r => r.ReferenceNo),
+                _ => query.OrderBy(r => r.ReferenceNo)
             };
 
             var results = await ordered
@@ -126,8 +126,7 @@ namespace lablink.app.Controllers
                     r.Patients.FullName,
                     r.TestType,
                     r.ResultStatus,
-                    r.ReadyAt,
-                    r.ClaimedAt
+                    r.CreatedAt
                 })
                 .ToListAsync(cancellationToken);
 
@@ -143,14 +142,62 @@ namespace lablink.app.Controllers
                     name = r.FullName,
                     testType = r.TestType,
                     resultStatus = r.ResultStatus,
-                    readyAt = r.ReadyAt?.ToString(
-                        "MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture),
-                    claimedAt = r.ClaimedAt?.ToString(
-                        "MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture),
+                    createdAt = r.CreatedAt.ToString(
+                        "MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture)
                 })
             });
         }
         #endregion
+
+        [HttpGet]
+        public async Task<IActionResult> Create(int? id)
+        {
+            if (id == null) return NotFound();
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null) return NotFound();
+
+            var patientDetails = new NewViewModel
+            {
+                PatientsId = patient.Id,
+                FullName = patient.FullName,
+                DOB = patient.DOB,
+                PhoneNumber = patient.PhoneNumber
+            };
+
+            return PartialView("_NewResult", patientDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(int id, NewViewModel model)
+        {
+            if (id != model.PatientsId) return NotFound();
+            var patient = await _context.Patients.FindAsync(id);
+            if (patient == null) return NotFound();
+
+            var patientTest = new Models.Results
+            {
+                ReferenceNo = RefNoGenerator.ResultRefNoGen(),
+                PatientsId = patient.Id,
+                TestType = model.TestType,
+                ResultStatus = Enums.ResultStatus.Pending,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.Results.Add(patientTest);
+            await _context.SaveChangesAsync();
+
+            Response.Headers["HX-Trigger"] = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                dataUpdated = new { },
+                showToast = new
+                {
+                    message = "New test has been added successfully!",
+                    type = "success"
+                }
+            });
+
+            return NoContent();
+        }
 
         [HttpGet]
         public async Task<IActionResult> ResultDetails(int? id)
@@ -168,6 +215,7 @@ namespace lablink.app.Controllers
                 PhoneNumber = result.Patients.PhoneNumber,
                 SMSConsent = result.Patients.SmsConsent,
                 ReadyDate = result.ReadyAt,
+                ClaimedDate = result.ClaimedAt,
                 resultStatus = result.ResultStatus
             };
 

@@ -23,7 +23,7 @@
             processing: true,
             serverSide: true,
             orderMulti: false,
-            order: [[0, "asc"]],
+            order: [[1, "asc"]],
 
             ajax: {
                 url: wrapper.dataset.resultsUrl,
@@ -89,6 +89,11 @@
                             case 2:
                                 return `<div><span class="${baseClass} bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-check preview-icon shrink-0 size-3"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>
+                                Notified</span></div>`;
+
+                            case 3:
+                                return `<div><span class="${baseClass} bg-teal-100 text-teal-800 dark:bg-teal-500/20 dark:text-teal-400">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-check preview-icon shrink-0 size-3"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></svg>
                                 Claimed</span></div>`;
 
                             default:
@@ -99,13 +104,7 @@
                     }
                 },
                 {
-                    data: "readyAt",
-                    searchable: false,
-                    defaultContent: "N/A",
-                    render: DataTable.render.text()
-                },
-                {
-                    data: "claimedAt",
+                    data: "createdAt",
                     searchable: false,
                     defaultContent: "N/A",
                     render: DataTable.render.text()
@@ -135,7 +134,7 @@
                     className: "font-medium"
                 },
                 {
-                    targets: 7,
+                    targets: 6,
                     className: "text-end"
                 }
             ]

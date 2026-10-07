@@ -7,6 +7,7 @@ namespace lablink.app.Enums
         Pending,
         [Display(Name = "Ready for Claim")]
         ReadyForClaim,
+        Notified,
         Claimed
     }
 }

@@ -162,16 +162,7 @@ namespace lablink.app.Controllers
                 ConsentDate = model.SmsConsent ? DateTime.UtcNow : null
             };
 
-            var patientTest = new Models.Results
-            {
-                ReferenceNo = RefNoGenerator.ResultRefNoGen(),
-                Patients = patient,
-                TestType = model.TestType,
-                ResultStatus = Enums.ResultStatus.Pending
-            };
-
             _context.Patients.Add(patient);
-            _context.Results.Add(patientTest);
 
             try
             {

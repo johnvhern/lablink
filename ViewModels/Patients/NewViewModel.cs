@@ -22,11 +22,6 @@ namespace lablink.app.ViewModels.Patients
         [Display(Name = "date of birth")]
         public DateOnly DOB { get; set; }
 
-        // For Results Table
-        [Required]
-        [StringLength(120)]
-        public string TestType { get; set; } = null!;
-
         [Required]
         [MaxLength(15)]
         [Display(Name = "phone number")]
