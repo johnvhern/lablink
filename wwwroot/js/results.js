@@ -119,7 +119,9 @@
 
                         return `
             <div class="inline-flex gap-x-2">
-                <button type="button" hx-sync="#resultOffCanvasContent:replace" hx-get="/Results/ResultDetails/${row.id}" hx-target="#resultOffCanvasContent" hx-swap="innerHTML" hx-disabled-elt="this" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-100 border border-transparent text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-500/20 dark:focus:bg-blue-500/20">View</button>`;
+                <button type="button" hx-sync="#resultOffCanvasContent:replace" hx-get="/Results/ResultDetails/${row.id}" hx-target="#resultOffCanvasContent" hx-swap="innerHTML" hx-disabled-elt="this" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-blue-100 border border-transparent text-blue-800 hover:bg-blue-200 focus:outline-hidden focus:bg-blue-200 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-400 dark:bg-blue-800/30 dark:hover:bg-blue-500/20 dark:focus:bg-blue-500/20">View</button>
+                <button type="button" hx-sync="#crudModalContent:replace" hx-get="/Results/Delete/${row.id}" hx-target="#crudModalContent" hx-swap="innerHTML" hx-disabled-elt="this" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg bg-red-100 border border-transparent text-red-800 hover:bg-red-200 focus:outline-hidden focus:bg-red-200 disabled:opacity-50 disabled:pointer-events-none dark:text-red-500 dark:bg-red-800/30 dark:hover:bg-red-500/20 dark:focus:bg-red-500/20">Delete</button>
+                </div>`;
                     }
                 }
             ],

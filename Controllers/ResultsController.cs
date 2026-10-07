@@ -191,7 +191,7 @@ namespace lablink.app.Controllers
                 dataUpdated = new { },
                 showToast = new
                 {
-                    message = "New test has been added successfully!",
+                    message = "New test has been added!",
                     type = "success"
                 }
             });

@@ -155,7 +155,9 @@ namespace lablink.app.Controllers
                 NormalizeFName = fName,
                 NormalizeMName = mName,
                 NormalizeLName = lName,
-                FullName = model.FirstName + " " + model.MiddleName + " " + model.LastName,
+                FullName = string.Join(" ", new[] { model.FirstName, model.MiddleName, model.LastName }
+                .Where(part => !string.IsNullOrWhiteSpace(part))
+                .Select(part => part!.Trim())),
                 DOB = model.DOB,
                 PhoneNumber = phoneNumber,
                 SmsConsent = model.SmsConsent,
@@ -241,7 +243,9 @@ namespace lablink.app.Controllers
             patient.NormalizeFName = fName;
             patient.NormalizeMName = mName;
             patient.NormalizeLName = lName;
-            patient.FullName = model.FirstName + " " + model.MiddleName + " " + model.LastName;
+            patient.FullName = string.Join(" ", new[] { model.FirstName, model.MiddleName, model.LastName }
+            .Where(part => !string.IsNullOrWhiteSpace(part))
+            .Select(part => part!.Trim()));
             patient.DOB = model.DOB;
             patient.PhoneNumber = phoneNumber;
             patient.SmsConsent = model.SmsConsent;
